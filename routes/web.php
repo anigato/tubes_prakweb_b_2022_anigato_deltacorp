@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 
 /*
@@ -29,4 +31,8 @@ Route::post('/admin/register', [RegisterController::class, 'storeAdmin']);
 // register user
 Route::get('/register', [RegisterController::class, 'indexUser']);
 Route::post('/register', [RegisterController::class, 'storeUser']);
+
+// login user
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'authenticate']);
 
