@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +20,19 @@ use App\Http\Controllers\LoginController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/about', function () {
-    return view('about');
+Route::get('/login',function (){
+    
 });
 
+//Register Admin
+Route::get('/admin/register', [RegisterController::class, 'indexAdmin']);
+Route::post('/admin/register', [RegisterController::class, 'storeAdmin']);
+
+// register user
+Route::get('/register', [RegisterController::class, 'indexUser']);
+Route::post('/register', [RegisterController::class, 'storeUser']);
+
+// login user
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'authenticate']);
-
-Route::get('/dashboard', function() {
-    return view('welcome');
-});
-
 
