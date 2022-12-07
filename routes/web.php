@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 
@@ -18,11 +19,15 @@ use App\Http\Controllers\RegisterController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/about', function () {
-    return view('about');
+Route::get('/login',function (){
+    
 });
 
+//Register Admin
+Route::get('/admin/register', [RegisterController::class, 'indexAdmin']);
+Route::post('/admin/register', [RegisterController::class, 'storeAdmin']);
 
-//Route ke halaman Register Admin
-Route::get('/register', [RegisterController::class, 'index']);
-Route::post('/register', [RegisterController::class, 'store']);
+// register user
+Route::get('/register', [RegisterController::class, 'indexUser']);
+Route::post('/register', [RegisterController::class, 'storeUser']);
+

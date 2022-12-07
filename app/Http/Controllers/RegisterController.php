@@ -2,30 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
-    public function index(){
-        return view('admin.register', [
+
+    public function indexAdmin(){
+         return view('admin.register', [
             'title' => 'Register',
             'active' => 'register'
         ]);
     }
+    
+    public function indexUser(){
+        return view('user.register',[
+            'title'=>'Register',
+            'active'=>'register'
+        ]);
+    }
 
-    public function store(Request $request) {
+    public function storeAdmin(Request $request) {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'username' => ['required', 'min:3', 'max:255', 'unique:users'],
             'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:5|max:255',
+            'password' => 'required|min:5|max:255'
         ]);
 
-        // $validatedData['password'] = bcrypt($validatedData['password']);
-
         $validatedData['password'] = Hash::make($validatedData['password']);
+        
         $validatedData['is_admin'] = 1 ;
 
         User::create($validatedData);
@@ -33,5 +40,22 @@ class RegisterController extends Controller
         // $request->session()->flash('success', 'Registration Successfull! Please login');
 
         return redirect('/login')->with('success', 'Registration Successfull! Please login');
+    }
+    
+    public function store(Request $request){
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'username' => ['required','min:3','max:255','unique:users'],
+            'email' => 'required|unique:users',
+            'password' => 'required|min:6|max:255'
+        ]);
+
+        $validatedData['password'] = Hash::make($validatedData['password']);
+        
+        User::create($validatedData);
+
+        // $request->session()->flash('success','Registration Successful! Please Login');
+
+        return redirect('/login');
     }
 }
