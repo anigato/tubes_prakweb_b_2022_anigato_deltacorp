@@ -23,6 +23,7 @@
       <h1 class="h3 mb-3 fw-normal text-center">Please login</h1>
       <form action="/login" method="post">
         @csrf
+        <input type="hidden" name="is_admin" readonly value="1">
         <div class="form-floating">
           <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" autofocus required value="{{ old('email') }}">
           <label for="email">Email address</label>
