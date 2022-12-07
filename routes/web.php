@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -31,7 +30,10 @@ Route::post('/admin/register', [RegisterController::class, 'storeAdmin']);
 Route::get('/register', [RegisterController::class, 'indexUser']);
 Route::post('/register', [RegisterController::class, 'storeUser']);
 
-// login user
-Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login', [LoginController::class, 'authenticate']);
+// login admin
+Route::get('/admin/login', [LoginController::class, 'indexAdmin']);
+Route::post('/admin/login', [LoginController::class, 'authenticateAdmin']);
 
+// login user
+Route::get('/login', [LoginController::class, 'indexUser']);
+Route::post('/login', [LoginController::class, 'authenticateUser']);

@@ -7,16 +7,40 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function index() 
+    public function indexAdmin()
+    {
+        return view('admin.login', [
+            'title' => 'Login Admin',
+            'active' => 'login'
+        ]);
+    }
+
+    public function indexUser() 
     {
         return view('user.login', [
             'title' => 'Login',
             'active' => 'login'
-
         ]);
     }
+        
+    
+    public function authenticateAdmin(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
 
-    public function authenticate(Request $request)
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/dashboard');
+        }
+    
+        return back()->with('loginError', 'Login failed');
+    }
+    
+    
+    public function authenticateUser(Request $request)
     {
         $credentials = $request->validate([
             'email' => 'required|email',
@@ -32,7 +56,4 @@ class LoginController extends Controller
         return back()->with('loginError', 'Login failed!');
 
     }
-
-
-
 }
