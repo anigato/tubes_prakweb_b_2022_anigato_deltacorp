@@ -10,7 +10,7 @@ class RegisterController extends Controller
 {
 
     public function indexAdmin(){
-         return view('admin.register', [
+        return view('admin.register', [
             'title' => 'Register',
             'active' => 'register'
         ]);
@@ -37,12 +37,10 @@ class RegisterController extends Controller
 
         User::create($validatedData);
 
-        // $request->session()->flash('success', 'Registration Successfull! Please login');
-
-        return redirect('/login')->with('success', 'Registration Successfull! Please login');
+        return redirect('/admin/login')->with('success', 'Registration Successfull! Please login');
     }
     
-    public function store(Request $request){
+    public function storeUser(Request $request){
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'username' => ['required','min:3','max:255','unique:users'],
@@ -53,8 +51,6 @@ class RegisterController extends Controller
         $validatedData['password'] = Hash::make($validatedData['password']);
         
         User::create($validatedData);
-
-        // $request->session()->flash('success','Registration Successful! Please Login');
 
         return redirect('/login');
     }
