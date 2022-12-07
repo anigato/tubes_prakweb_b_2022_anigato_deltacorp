@@ -37,21 +37,22 @@ class RegisterController extends Controller
 
         User::create($validatedData);
 
-        return redirect('/admin/login')->with('success', 'Registration Successfull! Please login');
+        return redirect('/admin/login')->with('success', 'Anda berhasi Daftar, Silahkan Login');
     }
     
     public function storeUser(Request $request){
         $validatedData = $request->validate([
-            'name' => 'required|max:255',
+            'name' => 'required|max:255|min:3',
             'username' => ['required','min:3','max:255','unique:users'],
-            'email' => 'required|unique:users',
-            'password' => 'required|min:6|max:255'
+            'email' => 'required|unique:users|min:3',
+            'password' => 'required|min:6|max:255',
+            'password_confirmation' => 'required|same:password'
         ]);
 
         $validatedData['password'] = Hash::make($validatedData['password']);
         
         User::create($validatedData);
 
-        return redirect('/login');
+        return redirect('/login')->with('success', 'Anda berhasi Daftar, Silahkan Login');
     }
 }

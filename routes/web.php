@@ -17,23 +17,21 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('welcome');
-});
-Route::get('/login',function (){
-    
-});
+})->name('welcome');
+
 
 //Register Admin
-Route::get('/admin/register', [RegisterController::class, 'indexAdmin']);
+Route::get('/admin/register', [RegisterController::class, 'indexAdmin'])->name('registerAdmin');
 Route::post('/admin/register', [RegisterController::class, 'storeAdmin']);
 
 // register user
-Route::get('/register', [RegisterController::class, 'indexUser']);
+Route::get('/register', [RegisterController::class, 'indexUser'])->name('registerUser');
 Route::post('/register', [RegisterController::class, 'storeUser']);
 
 // login admin
-Route::get('/admin/login', [LoginController::class, 'indexAdmin']);
+Route::get('/admin/login', [LoginController::class, 'indexAdmin'])->name('loginAdmin');
 Route::post('/admin/login', [LoginController::class, 'authenticateAdmin']);
 
 // login user
-Route::get('/login', [LoginController::class, 'indexUser']);
+Route::get('/login', [LoginController::class, 'indexUser'])->name('loginUser');
 Route::post('/login', [LoginController::class, 'authenticateUser']);
