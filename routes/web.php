@@ -1,7 +1,8 @@
 <?php
-
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +18,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/about', function () {
-    return view('about');
+Route::get('/login',function (){
+    
 });
 
-Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login', [LoginController::class, 'authenticate']);
+//Register Admin
+Route::get('/admin/register', [RegisterController::class, 'indexAdmin']);
+Route::post('/admin/register', [RegisterController::class, 'storeAdmin']);
 
-Route::get('/dashboard', function () {
-    return view('welcome');
-});
+// register user
+Route::get('/register', [RegisterController::class, 'indexUser']);
+Route::post('/register', [RegisterController::class, 'storeUser']);
+
+// login admin
+Route::get('/admin/login', [LoginController::class, 'indexAdmin']);
+Route::post('/admin/login', [LoginController::class, 'authenticateAdmin']);
+
+// login user
+Route::get('/login', [LoginController::class, 'indexUser']);
+Route::post('/login', [LoginController::class, 'authenticateUser']);
