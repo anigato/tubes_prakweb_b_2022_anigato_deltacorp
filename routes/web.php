@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\UserHomeController;
 
 use App\Http\Controllers\AdminBrandController;
 use App\Http\Controllers\AdminCategoryController;
@@ -56,3 +57,6 @@ Route::resource('/admin/category', AdminCategoryController::class);
 
 // slidder
 Route::resource('/admin/slidder', AdminSlidderController::class);
+
+// home user
+Route::get('/home', [UserHomeController::class, 'homeUser'])->name('home');

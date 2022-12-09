@@ -1,5 +1,5 @@
 <?php
-$slidder = query("select*from slidders where status = 1");
+// $slidder = query("select*from slidders where status = 1");
 
 if (!empty($slidder)) :
 ?>
