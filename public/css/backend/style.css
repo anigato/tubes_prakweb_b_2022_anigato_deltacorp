@@ -1,0 +1,12 @@
+.profile-pic {
+    background: lightskyblue;
+    color: #eeeeee;
+    border-radius: 50%;
+    height: 3.2rem;
+    width: 3.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 2rem;
+}
