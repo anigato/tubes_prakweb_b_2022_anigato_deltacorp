@@ -14,7 +14,7 @@
                             <li><a href="../transaction/index.php"><i class="fas fa-vote-yea"></i> Transaksi Saya</a></li>
                             <li><a href="" onclick="return logout()"><i class="fa fa-user"></i> Logout</a></li>
                         <?php else : ?>
-                            <li><a href="../user/login.php"><i class="fa fa-user"></i> Daftar/Masuk</a></li>
+                            <li><a href="{{ route('loginUser') }}"><i class="fa fa-user"></i> Daftar/Masuk</a></li>
                         <?php endif; ?>
                     </ul>
                 </div>

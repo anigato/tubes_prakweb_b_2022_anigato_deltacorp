@@ -8,11 +8,11 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- jQuery sticky menu -->
-    <script src="../../../themes/frontend/js/owl.carousel.min.js"></script>
-    <script src="../../../themes/frontend/js/jquery.sticky.js"></script>
+    <script src="{{ asset('theme/frontend/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('theme/frontend/js/jquery.sticky.js') }}"></script>
 
     <!-- jQuery easing -->
-    <script src="../../../themes/frontend/js/jquery.easing.1.3.min.js"></script>
+    <script src="{{ asset('themes/frontend/js/jquery.easing.1.3.min.js') }}"></script>
 
     <!-- Main Script -->
-    <script src="../../../themes/frontend/js/main.js"></script>
+    <script src="{{ asset('themes/frontend/js/main.js') }}"></script>

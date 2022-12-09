@@ -1,4 +1,4 @@
-<link rel="icon" href="../../../assets/img/anigato=new-transparent-mini.png">
+<link rel="icon" href="{{ asset('image/anigatomini.png') }}">
 <!-- Google Fonts -->
 <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
@@ -12,6 +12,6 @@
 </link>
 
 <!-- Custom CSS -->
-<link rel="stylesheet" href="../../../themes/frontend/css/owl.carousel.css">
-<link rel="stylesheet" href="../../../themes/frontend/css/style.css">
-<link rel="stylesheet" href="../../../themes/frontend/css/responsive.css">
+<link rel="stylesheet" href="{{ asset('theme/frontend/css/owl.carousel.css') }}">
+<link rel="stylesheet" href="{{ asset('theme/frontend/css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('theme/frontend/css/responsive.css') }}">
