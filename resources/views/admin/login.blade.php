@@ -44,7 +44,7 @@
         <div class="white-panel">
             <div class="login-show show-log-panel mt-5">
                 <h2>MASUK</h2>
-                <form action="/login" method="post">
+                <form action="{{ route('loginAdmin') }}" method="post">
                     @csrf
                     <input type="hidden" name="is_admin" readonly value="1">
 
