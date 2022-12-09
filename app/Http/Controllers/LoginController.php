@@ -7,20 +7,46 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function index() 
+    public function indexAdmin()
+    {
+        return view('admin.login', [
+            'title' => 'Login Admin',
+            'active' => 'login'
+        ]);
+    }
+
+    public function indexUser() 
     {
         return view('user.login', [
             'title' => 'Login',
             'active' => 'login'
-
         ]);
     }
-
-    public function authenticate(Request $request)
+        
+    
+    public function authenticateAdmin(Request $request)
     {
         $credentials = $request->validate([
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
+            'is_admin' => 'required'
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/admin/dashboard');
+        }
+    
+        return back()->with('loginError', 'Username atau Password Salah!');
+    }
+    
+    
+    public function authenticateUser(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+            'is_admin' => 'required'
         ]);
 
         if(Auth::attempt($credentials)) {
@@ -28,10 +54,7 @@ class LoginController extends Controller
             return redirect()->intended('/dashboard');
         }
 
-        return back()->with('loginError', 'Login failed!');
+        return back()->with('loginError', 'Username atau Password Salah!');
 
     }
-
-
-
 }
