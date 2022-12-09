@@ -13,14 +13,13 @@
                 <div class="elevation-2">
                     <?php
                     if (empty($_SESSION['img'])) {
-                        echo getProfilePicture($_SESSION["username"]);
+                        // echo getProfilePicture($_SESSION["username"]);
                     } else {
                         echo '<img src="../../../assets/img/users/' . $_SESSION['img'] . '" class="img-circle"  alt="User Image">';
                     } ?>
                 </div>
             </div>
             <div class="info">
-                <a href="#" class="d-block text-capitalize"><?= $_SESSION['username'] ?></a>
             </div>
         </div>
 

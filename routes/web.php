@@ -2,6 +2,8 @@
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AdminDashboardController;
+
 
 
 /*
@@ -35,3 +37,6 @@ Route::post('/admin/login', [LoginController::class, 'authenticateAdmin']);
 // login user
 Route::get('/login', [LoginController::class, 'indexUser'])->name('loginUser');
 Route::post('/login', [LoginController::class, 'authenticateUser']);
+
+//Dashboard Admin
+Route::get('/admin/dashboard', [AdminDashboardController::class, 'dashboardAdmin'])->name('dashboardAdmin');
