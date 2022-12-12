@@ -9,6 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminSlidderController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -64,3 +65,6 @@ Route::get('/home', [UserHomeController::class, 'homeUser'])->name('home');
 
 // Product Admin
 Route::resource('/admin/product', AdminProductController::class);
+
+// add User Admin
+Route::resource('/admin/userAdmin', AdminUserController::class);
