@@ -14,7 +14,8 @@ class AdminSlidderController extends Controller
     public function index()
     {
         return view('admin.slidder.index', [
-            'title' => 'Slidder'
+            'title' => 'All Slidder',
+            'active' => 'allSlidder'
         ]);
     }
 
@@ -25,7 +26,7 @@ class AdminSlidderController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.slidder.add');
     }
 
     /**
@@ -58,7 +59,7 @@ class AdminSlidderController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.slidder.edit');
     }
 
     /**

@@ -234,7 +234,7 @@
 
     @include('admin.layouts.parts.script-body')
 
-   
+
 
     <!-- Page specific script -->
     {{-- <script>
