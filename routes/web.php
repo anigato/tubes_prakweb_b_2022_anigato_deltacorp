@@ -1,16 +1,17 @@
 <?php
-use App\Http\Controllers\UserHomeController;
-
-use App\Http\Controllers\AdminBrandController;
-use App\Http\Controllers\AdminCategoryController;
-use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserHomeController;
+use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AdminBrandController;
+use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminSlidderController;
-use App\Http\Controllers\AdminUserController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,3 +69,6 @@ Route::resource('/admin/product', AdminProductController::class);
 
 // add User Admin
 Route::resource('/admin/userAdmin', AdminUserController::class);
+
+// Order Admin
+Route::resource('/admin/orders', AdminOrderController::class);
