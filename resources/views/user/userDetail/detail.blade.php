@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,18 +65,19 @@
                                 </nav>
                                 <!-- /Breadcrumb -->
 
-                                {{-- <div class="row gutters-sm">
+                                <div class="row gutters-sm">
                                     <div class="col-lg-4 mb-3">
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="d-flex flex-column align-items-center text-center">
                                                     
 
-                                                    <div class="mt-3">
+                                                    {{-- <div class="mt-3">
                                                         <h4><?= $user['username'] ?></h4>
                                                         <p class="text-secondary mb-1"><?= $user['full_name'] ?></p>
                                                         <p class="text-muted font-size-sm"><?= $user['phone'] ?></p>
-                                                    </div>
+                                                    </div> --}}
+                                                    <a href='../user/edit.php' class='btn btn-sm btn-primary'>Edit Profil</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -97,21 +95,21 @@
                                                     <div class="col-md-5">
                                                         <h6 class="mb-0">Nama Lengkap</h6>
                                                     </div>
-                                                    <div class="col-md-7 text-secondary"><?= (empty($user['full_name'])) ? "Belum Diatur" : $user['full_name']; ?></div>
+                                                    {{-- <div class="col-md-7 text-secondary"><?= (empty($user['full_name'])) ? "Belum Diatur" : $user['full_name']; ?></div> --}}
                                                 </div>
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-md-5">
                                                         <h6 class="mb-0">Nama Panggilan</h6>
                                                     </div>
-                                                    <div class="col-md-7 text-secondary"><?= (empty($user['nick_name'])) ? "Belum Diatur" : $user['nick_name']; ?></div>
+                                                    {{-- <div class="col-md-7 text-secondary"><?= (empty($user['nick_name'])) ? "Belum Diatur" : $user['nick_name']; ?></div> --}}
                                                 </div>
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-md-5">
                                                         <h6 class="mb-0">Email</h6>
                                                     </div>
-                                                    <div class="col-md-7 text-secondary"><?= (empty($user['email'])) ? "Belum Diatur" : $user['email']; ?></div>
+                                                    {{-- <div class="col-md-7 text-secondary"><?= (empty($user['email'])) ? "Belum Diatur" : $user['email']; ?></div> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -126,14 +124,14 @@
                                                             <div class="col-md-5">
                                                                 <h6 class="mb-0">Nama / Nomor Rumah</h6>
                                                             </div>
-                                                            <div class="col-md-7 text-secondary"><?= (empty($alamat['additional'])) ? "Belum Diatur" : $alamat['additional']; ?></div>
+                                                            {{-- <div class="col-md-7 text-secondary"><?= (empty($alamat['additional'])) ? "Belum Diatur" : $alamat['additional']; ?></div> --}}
                                                         </div>
                                                         <hr>
                                                         <div class="row">
                                                             <div class="col-md-5">
                                                                 <h6 class="mb-0">Nomor Telp.</h6>
                                                             </div>
-                                                            <div class="col-md-7 text-secondary"><?= (empty($user['phone'])) ? "Belum Diatur" : $user['phone']; ?></div>
+                                                            {{-- <div class="col-md-7 text-secondary"><?= (empty($user['phone'])) ? "Belum Diatur" : $user['phone']; ?></div> --}}
                                                         </div>
                                                         <hr>
                                                     </div>
@@ -146,28 +144,28 @@
                                                             <div class="col-md-5">
                                                                 <h6 class="mb-0">RT</h6>
                                                             </div>
-                                                            <div class="col-md-7 text-secondary"><?= (empty($alamat['rt'])) ? "Belum Diatur" : $alamat['rt']; ?></div>
+                                                            {{-- <div class="col-md-7 text-secondary"><?= (empty($alamat['rt'])) ? "Belum Diatur" : $alamat['rt']; ?></div> --}}
                                                         </div>
                                                         <hr>
                                                         <div class="row">
                                                             <div class="col-md-5">
                                                                 <h6 class="mb-0">RW</h6>
                                                             </div>
-                                                            <div class="col-md-7 text-secondary"><?= (empty($alamat['rw'])) ? "Belum Diatur" : $alamat['rw']; ?></div>
+                                                            {{-- <div class="col-md-7 text-secondary"><?= (empty($alamat['rw'])) ? "Belum Diatur" : $alamat['rw']; ?></div> --}}
                                                         </div>
                                                         <hr>
                                                         <div class="row">
                                                             <div class="col-md-5">
                                                                 <h6 class="mb-0">Dusun</h6>
                                                             </div>
-                                                            <div class="col-md-7 text-secondary"><?= (empty($alamat['dusun'])) ? "Belum Diatur" : $alamat['dusun']; ?></div>
+                                                            {{-- <div class="col-md-7 text-secondary"><?= (empty($alamat['dusun'])) ? "Belum Diatur" : $alamat['dusun']; ?></div> --}}
                                                         </div>
                                                         <hr>
                                                         <div class="row">
                                                             <div class="col-md-5">
                                                                 <h6 class="mb-0">Desa</h6>
                                                             </div>
-                                                            <div class="col-md-7 text-secondary"><?= (empty($alamat['desa'])) ? "Belum Diatur" : $alamat['desa']; ?></div>
+                                                            {{-- <div class="col-md-7 text-secondary"><?= (empty($alamat['desa'])) ? "Belum Diatur" : $alamat['desa']; ?></div> --}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -179,28 +177,28 @@
                                                             <div class="col-md-5">
                                                                 <h6 class="mb-0">Kecamatan</h6>
                                                             </div>
-                                                            <div class="col-md-7 text-secondary"><?= (empty($alamat['kecamatan'])) ? "Belum Diatur" : $alamat['kecamatan']; ?></div>
+                                                            {{-- <div class="col-md-7 text-secondary"><?= (empty($alamat['kecamatan'])) ? "Belum Diatur" : $alamat['kecamatan']; ?></div> --}}
                                                         </div>
                                                         <hr>
                                                         <div class="row">
                                                             <div class="col-md-5">
                                                                 <h6 class="mb-0">Kabupaten</h6>
                                                             </div>
-                                                            <div class="col-md-7 text-secondary"><?= (empty($alamat['kabupaten'])) ? "Belum Diatur" : $alamat['kabupaten']; ?></div>
+                                                            {{-- <div class="col-md-7 text-secondary"><?= (empty($alamat['kabupaten'])) ? "Belum Diatur" : $alamat['kabupaten']; ?></div> --}}
                                                         </div>
                                                         <hr>
                                                         <div class="row">
                                                             <div class="col-md-5">
                                                                 <h6 class="mb-0">Provinsi</h6>
                                                             </div>
-                                                            <div class="col-md-7 text-secondary"><?= (empty($alamat['provinsi'])) ? "Belum Diatur" : $alamat['provinsi']; ?></div>
+                                                            {{-- <div class="col-md-7 text-secondary"><?= (empty($alamat['provinsi'])) ? "Belum Diatur" : $alamat['provinsi']; ?></div> --}}
                                                         </div>
                                                         <hr>
                                                         <div class="row">
                                                             <div class="col-md-5">
                                                                 <h6 class="mb-0">Kode POS</h6>
                                                             </div>
-                                                            <div class="col-md-7 text-secondary"><?= (empty($alamat['kode_pos'])) ? "Belum Diatur" : $alamat['kode_pos']; ?></div>
+                                                            {{-- <div class="col-md-7 text-secondary"><?= (empty($alamat['kode_pos'])) ? "Belum Diatur" : $alamat['kode_pos']; ?></div> --}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -209,7 +207,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
 
                     
                         @include('user.layouts.parts.related-product')
