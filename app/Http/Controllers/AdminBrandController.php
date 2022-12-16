@@ -14,7 +14,8 @@ class AdminBrandController extends Controller
     public function index()
     {
         return view('admin.brand.index', [
-            'title' => 'Brand'
+            'title' => 'All Brand',
+            'active' => 'allBrand'
         ]);
     }
 
@@ -25,7 +26,7 @@ class AdminBrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.brand.add');
     }
 
     /**
@@ -58,7 +59,7 @@ class AdminBrandController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.brand.edit');
     }
 
     /**
