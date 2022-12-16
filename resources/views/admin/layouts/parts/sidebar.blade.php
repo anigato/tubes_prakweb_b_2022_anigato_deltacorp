@@ -40,7 +40,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 <li class="nav-item">
-                    <a href="../dashboard/index.php" class="nav-link">
+                    <a href="{{ url('/admin/dashboard') }}" class="nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -49,22 +49,22 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="" class="nav-link @if (Request::is('admin/product') || Request::is('admin/product/create')) {{ 'active' }} @endif()">
                         <i class="fas fa-tags"></i>
                         <p>
                             Products
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview" style="@if (Request::is('admin/product') || Request::is('admin/product/create')) {{ 'display:block' }} @endif()">
                         <li class="nav-item">
-                            <a href="../products/index.php" class="nav-link">
+                            <a href="{{ url('/admin/product') }}" class="nav-link {{ Request::is('admin/product') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>All Product</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="../products/add.php" class="nav-link">
+                            <a href="{{ url('/admin/product/create') }}" class="nav-link {{ Request::is('admin/product/create') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add New Product</p>
                             </a>
@@ -73,22 +73,22 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="" class="nav-link @if (Request::is('admin/userAdmin') || Request::is('admin/userAdmin/create')) {{ 'active' }} @endif()">
                         <i class="fas fa-user-tie"></i>
                         <p>
                             User Admins
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview" style="@if (Request::is('admin/userAdmin') || Request::is('admin/userAdmin/create')) {{ 'display:block' }} @endif()">
                         <li class="nav-item">
-                            <a href="../admins/index.php" class="nav-link">
+                            <a href="{{ url('/admin/userAdmin') }}" class="nav-link {{ Request::is('admin/userAdmin') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>All User Admins</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="../admins/add.php" class="nav-link">
+                            <a href="{{ url('/admin/userAdmin/create') }}" class="nav-link {{ Request::is('admin/userAdmin/create') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add New User Admins</p>
                             </a>
@@ -97,22 +97,22 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="" class="nav-link @if (Request::is('admin/brand') || Request::is('admin/brand/create')) {{ 'active' }} @endif()">
                         <i class="fas fa-handshake"></i>
                         <p>
                             Brands
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview" style="@if (Request::is('admin/brand') || Request::is('admin/brand/create')) {{ 'display:block' }} @endif()">
                         <li class="nav-item">
-                            <a href="../brands/index.php" class="nav-link">
+                            <a href="{{ url('/admin/brand') }}" class="nav-link {{ Request::is('admin/brand') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>All Brands</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="../brands/add.php" class="nav-link">
+                            <a href="{{ url('/admin/brand/create') }}" class="nav-link {{ Request::is('admin/brand/create') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add New Brands</p>
                             </a>
@@ -121,41 +121,64 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="" class="nav-link  @if (Request::is('admin/slidder') || Request::is('admin/slidder/create')) {{ 'active' }} @endif()">
                         <i class="fas fa-star"></i>
                         <p>
                             Slidders
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview" style="@if (Request::is('admin/slidder') || Request::is('admin/slidder/create')) {{ 'display:block' }} @endif()">
                         <li class="nav-item">
-                            <a href="../slidders/index.php" class="nav-link">
+                            <a href="{{ url('/admin/slidder') }}" class="nav-link {{ Request::is('admin/slidder') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>All slidders</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="../slidders/add.php" class="nav-link">
+                            <a href="{{ url('/admin/slidder/create') }}" class="nav-link {{ Request::is('admin/slidder/create') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add New slidders</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link @if (Request::is('admin/category') || Request::is('admin/category/create')) {{ 'active' }} @endif()">
+                        <i class="fas fa-star"></i>
+                        <p>
+                            Categories
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" style="@if (Request::is('admin/category') || Request::is('admin/category/create')) {{ 'display:block' }} @endif()">
+                        <li class="nav-item">
+                            <a href="{{ url('/admin/category') }}" class="nav-link {{ Request::is('admin/category') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All categories</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/admin/category/create') }}" class="nav-link {{ Request::is('admin/category/create') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New categories</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="" class="nav-link @if (Request::is('admin/order')) {{ 'active' }} @endif()">
                         <i class="far fa-bookmark"></i>
                         <p>
                             Orders
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview" style="@if (Request::is('admin/order')) {{ 'display:block' }} @endif()">
                         <li class="nav-item">
-                            <a href="../orders/index.php" class="nav-link">
+                            <a href="{{ url('/admin/order') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>All orders</p>
                             </a>
