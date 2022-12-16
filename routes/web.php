@@ -49,7 +49,7 @@ Route::post('/login', [LoginController::class, 'authenticateUser']);
 //Dashboard Admin
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'dashboardAdmin'])->name('dashboardAdmin');
 
-// product
+// product user
 Route::resource('/product', ProductController::class);
 
 // brand
@@ -69,3 +69,4 @@ Route::resource('/admin/product', AdminProductController::class);
 
 // add User Admin
 Route::resource('/admin/userAdmin', AdminUserController::class);
+
