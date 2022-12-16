@@ -1,12 +1,6 @@
-
-use App\Http\Controllers\UserHomeController;
-
-use App\Http\Controllers\AdminBrandController;
-use App\Http\Controllers\AdminCategoryController;
-use App\Http\Controllers\RegisterController;
+<?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
