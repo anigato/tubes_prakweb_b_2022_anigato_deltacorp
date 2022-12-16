@@ -1,8 +1,16 @@
 <?php
+
+use App\Http\Controllers\UserHomeController;
+
+use App\Http\Controllers\AdminBrandController;
+use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\AdminSlidderController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -43,3 +51,22 @@ Route::get('/admin/dashboard', [AdminDashboardController::class, 'dashboardAdmin
 
 // product user
 Route::resource('/product', ProductController::class);
+
+// brand
+Route::resource('/admin/brand', AdminBrandController::class);
+
+// category
+Route::resource('/admin/category', AdminCategoryController::class);
+
+// slidder
+Route::resource('/admin/slidder', AdminSlidderController::class);
+
+// home user
+Route::get('/home', [UserHomeController::class, 'homeUser'])->name('home');
+
+// Product Admin
+Route::resource('/admin/product', AdminProductController::class);
+
+// add User Admin
+Route::resource('/admin/userAdmin', AdminUserController::class);
+

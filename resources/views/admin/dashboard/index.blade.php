@@ -1,5 +1,3 @@
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,13 +9,16 @@
   
   @include('admin.layouts.parts.link-header')
   <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="../../../themes/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="{{ asset('theme/backend/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+
   <!-- iCheck -->
-  <link rel="stylesheet" href="../../../themes/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="{{ asset('theme/backend/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="../../../themes/plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="{{ asset('theme/backend/plugins/daterangepicker/daterangepicker.css') }}">
+
   <!-- summernote -->
-  <link rel="stylesheet" href="../../../themes/plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="{{ asset('theme/backend/plugins/summernote/summernote-bs4.min.css') }}">
 
 </head>
 
@@ -157,7 +158,7 @@
                     <?php endforeach; ?> --}}
                   </table>
                 </div>
-                <!-- /.card-body -->
+                <!-- /.card-body --> 
               </div>
               <!-- /.card -->
             </div>
@@ -338,17 +339,25 @@
   </script>
   <!-- ChartJS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/chart.min.js" integrity="sha512-yadYcDSJyQExcKhjKSQOkBKy2BLDoW6WnnGXCAkCoRlpHGpYuVuBqGObf3g/TdB86sSbss1AOP4YlGSb6EKQPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
   <!-- Sparkline -->
-  <script src="../../../themes/plugins/sparklines/sparkline.js"></script>
+  <script src="{{ asset('theme/backend/plugins/sparklines/sparkline.js') }}"></script>
+  
+
   <!-- jQuery Knob Chart -->
-  <script src="../../../themes/plugins/jquery-knob/jquery.knob.min.js"></script>
+  <script src="{{ asset('theme/backend/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
+  
+
   <!-- daterangepicker -->
-  <script src="../../../themes/plugins/moment/moment.min.js"></script>
-  <script src="../../../themes/plugins/daterangepicker/daterangepicker.js"></script>
+  <script src=" {{ asset('theme/backend/plugins/daterangepicker/daterangepicker.js') }}"></script>
+ 
+
   <!-- Tempusdominus Bootstrap 4 -->
-  <script src="../../../themes/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+  <script src="{{ asset('theme/backend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+
   <!-- Summernote -->
-  <script src="../../../themes/plugins/summernote/summernote-bs4.min.js"></script>
+  <script src="{{ asset('theme/backend/plugins/summernote/summernote-bs4.min.js') }}"></script>
+  
   
   @include('admin.layouts.parts.script-body')
   {{-- <script>
