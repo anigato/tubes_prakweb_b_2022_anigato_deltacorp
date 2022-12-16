@@ -15,7 +15,7 @@ class UserDetailController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -45,9 +45,12 @@ class UserDetailController extends Controller
      * @param  \App\Models\UserDetail  $userDetail
      * @return \Illuminate\Http\Response
      */
-    public function show(UserDetail $userDetail)
-    {
-        //
+    public function show() {
+        return view('user.userDetail.detail', [
+            'title' => 'User Detail',
+            'active' => 'User_detail'
+        ]);
+        
     }
 
     /**
