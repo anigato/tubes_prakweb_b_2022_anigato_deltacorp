@@ -83,20 +83,18 @@
 
                                         <div class="col-md-6">
 
-                                            {{-- <div class="form-group">
+                                            <div class="form-group">
                                                 <label>Brand</label>
                                                 <div class="input-group mb-3">
                                                     <select class="custom-select text-uppercase" name="brand" required>
                                                         <option value="" disabled selected>Pilih Brand</option>
-                                                        <?php foreach ($brands as $row) : ?>
-                                                            <option value="<?= $row['id']; ?>"><?= $row['name']; ?></option>
-                                                        <?php endforeach; ?>
-                                                    </select>
+                                                            <option value="1">SSD</option>
+                                                        </select>
                                                     <div class="invalid-feedback">
                                                         Please provide a valid Product Brand.
                                                     </div>
                                                 </div>
-                                            </div> --}}
+                                            </div>
                                             <div class="form-group">
                                                 <label>Capacity</label>
                                                 <select class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;" name="capacity" required>

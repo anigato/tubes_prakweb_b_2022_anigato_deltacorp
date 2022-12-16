@@ -72,9 +72,37 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            
+                                            <?php $i = 1; ?>
+                                            <?php foreach ($products as $products) : ?>
+                                                <tr class="text-center">
+                                                    <td><?= $i++; ?></td>
+                                                    <td><img src="{{ asset('image/'. $products->img) }}" alt="" class="img-tumbnail rounded" width="100px"></td>
+                                                    <td><?= strtoupper($products["name"]); ?></td>
+
+                                                    <?php foreach ($brands as $br) : ?>
+                                                        <td><?= $br['name']; ?></td>
+                                                    <?php endforeach ?>
+                                                    <td><?= $products["price"]; ?></td>
+                                                    <td><?= $products["capacity"]; ?></td>
+                                                    <td><?= $products["id"]; ?></td>
+                                                    <td><?= $products["stok"]; ?></td>
+                                                    <td rowspan="2" class="row">
+                                                        <a href="edit.php?id=<?= $products['id']; ?>" class="btn btn-sm btn-info col-md-6 update-link">Edit</a>
+                                                        <a href="delete.php?id=<?= $products['id'] ?>" class="btn btn-sm btn-danger col-md-6 delete-link">Delete</a>
+                                                    </td>
+                                                    
+
+                                                    
+                                                        
+                                                    
+                                                    <td><?php
+                                                        
+                                                         ?>
+                                                    </td>
+                                                    
+                                                   
                                                 </tr>
-                
+                                            <?php endforeach; ?>
                                         </tbody>
                                         <tfoot>
                                             <tr class="text-center">
