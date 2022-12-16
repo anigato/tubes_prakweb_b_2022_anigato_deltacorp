@@ -1,4 +1,10 @@
-<?php
+
+use App\Http\Controllers\UserHomeController;
+
+use App\Http\Controllers\AdminBrandController;
+use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\RegisterController;
+
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LoginController;
@@ -49,7 +55,7 @@ Route::post('/login', [LoginController::class, 'authenticateUser']);
 //Dashboard Admin
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'dashboardAdmin'])->name('dashboardAdmin');
 
-// product
+// product user
 Route::resource('/product', ProductController::class);
 
 // brand
@@ -72,3 +78,4 @@ Route::resource('/admin/userAdmin', AdminUserController::class);
 
 // Order Admin
 Route::resource('/admin/orders', AdminOrderController::class);
+

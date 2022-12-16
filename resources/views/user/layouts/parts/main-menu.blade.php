@@ -1,10 +1,4 @@
-<?php 
-if (isset($_GET['go'])) {
-    $keyword = $_GET['keyword'];
-    header("Location: ../product/search.php?search=key&keyword=$keyword");
-}else {
-}
-?>
+
 <div class="mainmenu-area">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
