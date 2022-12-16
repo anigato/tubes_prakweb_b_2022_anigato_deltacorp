@@ -61,7 +61,22 @@
                       </tr>
                     </thead>
                     <tbody>
+
                       <?php $i = 1; ?>
+                      <?php foreach ($brands as $row) : ?>
+                        <tr class="text-center">
+                          <td><?= $i++; ?></td>
+                          <td><img src="{{ asset('image/'. $row->img) }}" alt="" class="img-tumbnail rounded" width="100px"></td>
+                          <td><?= strtoupper($row["name"]); ?></td>
+
+                          <td rowspan="2" class="row">
+                            <div class="col-md-3"></div>
+                            <a href="edit.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-info col-md-3 update-link">Edit</a>
+                            <a href="delete.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-danger col-md-3 delete-link">Delete</a>
+                            <div class="col-md-3"></div>
+                          </td>
+                        </tr>
+                      <?php endforeach; ?>
 
                     </tbody>
                     <tfoot>
