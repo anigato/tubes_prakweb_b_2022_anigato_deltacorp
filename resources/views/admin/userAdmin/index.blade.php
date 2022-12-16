@@ -6,17 +6,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ADMIN Panel</title>
-    <?php require_once '../../../themes/backend/parts/link-header.php' ?>
+    @include('admin.layouts.parts.link-header')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
     <div class="wrapper">
         <!-- Navbar -->
-        <?php require_once '../../../themes/backend/parts/navbar.php'; ?>
+        @include('admin.layouts.parts.navbar')
         <!-- endnavbar -->
 
         <!-- sidebar -->
-        <?php require_once '../../../themes/backend/parts/sidebar.php'; ?>
+        @include('admin.layouts.parts.sidebar')
         <!-- endsidebar -->
 
         <!-- Main content -->
@@ -62,36 +62,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $i = 1; ?>
-                                            <?php foreach ($admin as $row) : ?>
-                                                <tr class="text-center">
-                                                    <td><?= $i++; ?></td>
-                                                    <td>
-                                                        <?php if(empty($row["img"])) :?>
-                                                        <div class="mx-auto">
-                                                            <?=getProfilePicture($row["username"])?>
-                                                        </div>
-                                                        <?php else : ?>
-                                                        <img src="../../../assets/img/users/<?= $row["img"]; ?>" alt="" class="img-tumbnail img-circle" width="35rem">
-                                                        <?php endif?>
-                                                    </td>
-                                                    <td><?= $row["username"]; ?></td>
-                                                    <td rowspan="2" class="row">
-                                                        <?php if($_SESSION["username"] == 'admin') : ?>
-                                                            <a href="edit.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-info col-md-6 update-link">Edit</a>
-                                                            <?php if($row["username"] != 'admin') : ?>
-                                                            <a href="delete.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-danger col-md-6 delete-link">Delete</a>
-                                                            <?php endif; ?>
-                                                        <?php else : ?>
-                                                            <?php if($row["username"] == $_SESSION["username"]) : ?>
-                                                                <a href="edit.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-info col-md-6 update-link">Edit</a>
-                                                            <?php else : ?>
-                                                                <p class="text-danger">You Cant Edit or Delete other Admin Users</p>
-                                                            <?php endif; ?>
-                                                        <?php endif; ?>
-                                                    </td>
-                                                </tr>
-                                            <?php endforeach; ?>
+                                            
                                         </tbody>
                                         <tfoot>
                                             <tr class="text-center">
@@ -117,7 +88,7 @@
 
 
         <!-- footer -->
-        <?php require_once '../../../themes/backend/parts/footer.php'; ?>
+        @include('admin.layouts.parts.footer')
         <!-- endfooter -->
 
         <!-- Control Sidebar -->
@@ -128,9 +99,10 @@
 
     </div>
 
-    <?php require_once '../../../themes/backend/parts/script-body.php' ?>
-    <?php require_once '../../../themes/backend/parts/script-dataTable.php' ?>
-    <script>
+    
+    @include('admin.layouts.parts.script-body')
+    @include('admin.layouts.parts.script-dataTable')
+    {{-- <script>
         $(function() {
             $("#example1").DataTable({
                 "responsive": true,
@@ -204,7 +176,7 @@
                 return false;
             });
         });
-    </script>
+    </script> --}}
 </body>
 
 </html>

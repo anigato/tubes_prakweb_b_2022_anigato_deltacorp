@@ -27,7 +27,7 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.userAdmin.add');
     }
 
     /**
@@ -58,9 +58,9 @@ class AdminUserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit()
     {
-        //
+        return view('admin.userAdmin.edit');
     }
 
     /**

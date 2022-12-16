@@ -7,18 +7,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ADMIN Panel | Add New User Admin</title>
-    <?php require_once '../../../themes/backend/parts/link-header.php' ?>
-    @include()
+    @include('admin.layouts.parts.link-header')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
     <div class="wrapper">
         <!-- Navbar -->
-        <?php require_once '../../../themes/backend/parts/navbar.php'; ?>
+        @include('admin.layouts.parts.navbar')
         <!-- endnavbar -->
 
         <!-- sidebar -->
-        <?php require_once '../../../themes/backend/parts/sidebar.php'; ?>
+        @include('admin.layouts.parts.sidebar')
         <!-- endsidebar -->
 
         <!-- Main content -->
@@ -117,7 +116,7 @@
 
 
         <!-- footer -->
-        <?php require_once '../../../themes/backend/parts/footer.php'; ?>
+        @include('admin.layouts.parts.footer')
         <!-- endfooter -->
 
         <!-- Control Sidebar -->
@@ -129,83 +128,10 @@
     </div>
 
     <!-- bs-custom-file-input -->
-    <script src="../../../themes/js/input-form/bs-custom-file-input.min.js"></script>
-    <?php require_once '../../../themes/backend/parts/script-body.php' ?>
+    <script src=" {{ asset('theme/backend/js/input-form/bs-custom-file-input.min.js') }}"></script>
    
-
-    <?php
-    if (isset($_POST['tambah'])) {
-        $username = $_POST['username'];
-        $res = mysqli_query(koneksi(), "select*from user_admin where username ='$username'");
-        if (mysqli_fetch_assoc($res)) {
-            echo "
-                <script type='text/javascript'>
-                    Swal.fire({
-                        title:'Error!',
-                        text:'Username has been used.',
-                        type:'error',
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: 'OK'
-                    })
-                </script>
-            ";
-        } else {
-            
-            $upload = uploadImage('../../../assets/img/users/',$_POST,'upload-user-admin');
-            if ($upload == "success") {
-                echo "
-                    <script type='text/javascript'>
-                    
-                    Swal.fire({
-                        title:'Success!',
-                        text:'New User Admin added Successfully',
-                        type:'success',
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: 'OK'
-                    }).then((result) => {
-                        if (result.value) {
-                        document.location.href='index.php';
-                        }
-                    })
-                    </script>
-                ";
-            } else if($upload == "tooLarge") {
-                echo "
-                    <script type='text/javascript'>
-                    Swal.fire({
-                        title:'Error!',
-                        text:'Your Image is too Large, Please choose another image with minim size',
-                        type:'error',
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: 'OK'
-                    }).then((result) => {
-                        if (result.value) {
-                        document.location.href='add.php';
-                        }
-                    })
-                    </script>
-                ";
-            }else if($upload == "notImage") {
-                echo "
-                    <script type='text/javascript'>
-                    Swal.fire({
-                        title:'Error!',
-                        text:'Only JPG, JPEG and PNG files are allowed',
-                        type:'error',
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: 'OK'
-                    }).then((result) => {
-                        if (result.value) {
-                        document.location.href='add.php';
-                        }
-                    })
-                    </script>
-                ";
-            }
-        }
-    }
-
-    ?>
+    @include('admin.layouts.parts.script-body')
+   
 
     <!-- Page specific script -->
     <script>
