@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\UserHomeController;
 
 use App\Http\Controllers\AdminBrandController;
