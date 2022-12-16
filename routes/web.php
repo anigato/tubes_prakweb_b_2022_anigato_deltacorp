@@ -24,9 +24,9 @@ use App\Http\Controllers\AdminDashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+
+// home user
+Route::get('/', [UserHomeController::class, 'homeUser'])->name('home');
 
 
 //Register Admin
@@ -61,8 +61,6 @@ Route::resource('/admin/category', AdminCategoryController::class);
 // slidder
 Route::resource('/admin/slidder', AdminSlidderController::class);
 
-// home user
-Route::get('/home', [UserHomeController::class, 'homeUser'])->name('home');
 
 // Product Admin
 Route::resource('/admin/product', AdminProductController::class);
