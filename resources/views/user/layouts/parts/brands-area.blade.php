@@ -6,9 +6,9 @@
             <div class="col-md-12">
                 <div class="brand-wrapper">
                     <div class="brand-list">
-                    {{-- <?php foreach($brand as $row) : ?>
-                            <a href="../product/search.php?search=brand&keyword=<?= $row['id'] ?>"><img src="../../../assets/img/brands/<?= $row['img'] ?>" alt=""></a>
-                        <?php endforeach; ?> --}}
+                    <?php foreach($brands as $brand) : ?>
+                            <a href="../product/search.php?search=brand&keyword=<?= $brand['id'] ?>"><img src="{{ asset('storage/img/brand/'.$brand['img']) }}" alt=""></a>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
