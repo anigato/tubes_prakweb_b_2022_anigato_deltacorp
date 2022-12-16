@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
 class AdminBrandController extends Controller
@@ -15,7 +16,8 @@ class AdminBrandController extends Controller
     {
         return view('admin.brand.index', [
             'title' => 'All Brand',
-            'active' => 'allBrand'
+            'active' => 'allBrand',
+            'brands' => Brand::all()
         ]);
     }
 
