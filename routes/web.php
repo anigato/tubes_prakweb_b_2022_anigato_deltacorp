@@ -41,6 +41,5 @@ Route::post('/login', [LoginController::class, 'authenticateUser']);
 //Dashboard Admin
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'dashboardAdmin'])->name('dashboardAdmin');
 
-// product
+// product user
 Route::resource('/product', ProductController::class);
-

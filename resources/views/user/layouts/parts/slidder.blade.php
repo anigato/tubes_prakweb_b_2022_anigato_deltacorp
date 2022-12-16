@@ -1,8 +1,4 @@
-<?php
-$slidder = query("select*from slidders where status = 1");
 
-if (!empty($slidder)) :
-?>
     <div class="slider-area">
         <!-- Slider -->
         <div class="block-slider block-slider4">
