@@ -71,5 +71,5 @@ Route::resource('/admin/product', AdminProductController::class);
 Route::resource('/admin/userAdmin', AdminUserController::class);
 
 // Order Admin
-Route::resource('/admin/orders', AdminOrderController::class);
+Route::resource('/admin/order', AdminOrderController::class);
 

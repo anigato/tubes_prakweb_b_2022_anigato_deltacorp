@@ -1,25 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ADMIN Panel | Update Brand</title>
-  <!-- Select2 -->
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-  @include('admin.layouts.parts.link-header')
-</head>
-
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
-  <div class="wrapper">
-    <!-- Navbar -->
-    @include('admin.layouts.parts.navbar')
-    <!-- endnavbar -->
-
-    <!-- sidebar -->
-    @include('admin.layouts.parts.sidebar')
-    <!-- endsidebar -->
-
+@extends('admin.layouts.main')
+@section('container')
     <!-- Main content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -114,24 +94,12 @@
     </div>
     <!-- end main content -->
 
-
-    <!-- footer -->
-    @include('admin.layouts.parts.footer')
-    <!-- endfooter -->
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-
-  </div>
-
-  <!-- Select2 -->
+@endsection
+    @section('script-custom')
+        <!-- Select2 -->
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <!-- bs-custom-file-input -->
   <script src="../../../themes/js/input-form/bs-custom-file-input.min.js"></script>
-  @include('admin.layouts.parts.script-body')
 
   <!-- Page specific script -->
   <script>
@@ -192,6 +160,4 @@
     //Initialize Select2 Elements
     $('.select2').select2()
   </script>
-</body>
-
-</html>
+    @endsection

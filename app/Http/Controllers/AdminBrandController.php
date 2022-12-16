@@ -26,7 +26,10 @@ class AdminBrandController extends Controller
      */
     public function create()
     {
-        return view('admin.brand.add');
+        return view('admin.brand.add', [
+            'title' => 'Add New Brand',
+            'active' => 'addNewBrand'
+        ]);
     }
 
     /**
@@ -59,7 +62,10 @@ class AdminBrandController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.brand.edit');
+        return view('admin.brand.edit',[
+            'title' => 'Edit Brand',
+            'active' => 'editBrand'
+        ]);
     }
 
     /**
