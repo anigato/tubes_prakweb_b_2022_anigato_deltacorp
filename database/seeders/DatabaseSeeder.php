@@ -57,6 +57,55 @@ class DatabaseSeeder extends Seeder
             'img'=>'San238611.png',
             'description'=>'&lt;div&gt;Garansi Resmi 3 Tahun&lt;br&gt;&lt;br&gt;Fitur:&lt;br&gt;- perpanjang daya laptop atau PC desktop anda&lt;br&gt;- melakukan boot-up, shutdown,dan respon aplikasi dengan lebih cepat&lt;br&gt;- desain padat yang tahan lama&lt;br&gt;- cocok untuk beban kerja PC biasanya&lt;br&gt;- kemudahan pemasangan&lt;br&gt;- drive yang lebih efisien (jadi baterai laptop Anda bisa bertahan lama hanya dengan sekali pengisian.)&lt;br&gt;&lt;br&gt;Spesifikasi:&lt;br&gt;Kecepatan Baca: hingga 530 MB/s**&lt;br&gt;Kecepatan Tulis: hingga 310 MB/s**&lt;br&gt;Antarmuka: SATA Revision 3.0 (6 Gb/s)&lt;/div&gt;'
         ]);
+        Product::create([
+            'sku'=>'6-240-SSD-550000',
+            'name'=>'Sandisk SSD Plus 240GB Sata 3 - Sandisk SSD 240 GB',
+            'id_category'=>'1',
+            'id_brand'=>'1',
+            'stok'=>'19',
+            'capacity'=>'240',
+            'price'=>'550000',
+            'weight'=>'200',
+            'img'=>'San286837.png',
+            'description'=>'&lt;div&gt;Garansi Resmi 3 Tahun&lt;br&gt;&lt;br&gt;Fitur:&lt;br&gt;- perpanjang daya laptop atau PC desktop anda&lt;br&gt;- melakukan boot-up, shutdown,dan respon aplikasi dengan lebih cepat&lt;br&gt;- desain padat yang tahan lama&lt;br&gt;- cocok untuk beban kerja PC biasanya&lt;br&gt;- kemudahan pemasangan&lt;br&gt;- drive yang lebih efisien (jadi baterai laptop Anda bisa bertahan lama hanya dengan sekali pengisian.)&lt;br&gt;&lt;br&gt;Spesifikasi:&lt;br&gt;Kecepatan Baca: hingga 530 MB/s**&lt;br&gt;Kecepatan Tulis: hingga 310 MB/s**&lt;br&gt;Antarmuka: SATA Revision 3.0 (6 Gb/s)&lt;/div&gt;'
+        ]);
+        Product::create([
+            'sku'=>'6-480-SSD-900000',
+            'name'=>'Sandisk SSD Plus 240GB Sata 3 - Sandisk SSD 480 GB',
+            'id_category'=>'1',
+            'id_brand'=>'1',
+            'stok'=>'19',
+            'capacity'=>'480',
+            'price'=>'900000',
+            'weight'=>'300',
+            'img'=>'San122699.png',
+            'description'=>'&lt;div&gt;Garansi Resmi 3 Tahun&lt;br&gt;&lt;br&gt;Fitur:&lt;br&gt;- perpanjang daya laptop atau PC desktop anda&lt;br&gt;- melakukan boot-up, shutdown,dan respon aplikasi dengan lebih cepat&lt;br&gt;- desain padat yang tahan lama&lt;br&gt;- cocok untuk beban kerja PC biasanya&lt;br&gt;- kemudahan pemasangan&lt;br&gt;- drive yang lebih efisien (jadi baterai laptop Anda bisa bertahan lama hanya dengan sekali pengisian.)&lt;br&gt;&lt;br&gt;Spesifikasi:&lt;br&gt;Kecepatan Baca: hingga 530 MB/s**&lt;br&gt;Kecepatan Tulis: hingga 310 MB/s**&lt;br&gt;Antarmuka: SATA Revision 3.0 (6 Gb/s)&lt;/div&gt;'
+        ]);
+        Product::create([
+            'sku'=>'6-1-SSD-2300000',
+            'name'=>'Sandisk SSD Plus 240GB Sata 3 - Sandisk SSD 1 TB 2',
+            'id_category'=>'1',
+            'id_brand'=>'1',
+            'stok'=>'19',
+            'capacity'=>'1',
+            'price'=>'2300000',
+            'weight'=>'200',
+            'img'=>'San382820.png',
+            'description'=>'&lt;div&gt;Garansi Resmi 3 Tahun&lt;br&gt;&lt;br&gt;Fitur:&lt;br&gt;- perpanjang daya laptop atau PC desktop anda&lt;br&gt;- melakukan boot-up, shutdown,dan respon aplikasi dengan lebih cepat&lt;br&gt;- desain padat yang tahan lama&lt;br&gt;- cocok untuk beban kerja PC biasanya&lt;br&gt;- kemudahan pemasangan&lt;br&gt;- drive yang lebih efisien (jadi baterai laptop Anda bisa bertahan lama hanya dengan sekali pengisian.)&lt;br&gt;&lt;br&gt;Spesifikasi:&lt;br&gt;Kecepatan Baca: hingga 530 MB/s**&lt;br&gt;Kecepatan Tulis: hingga 310 MB/s**&lt;br&gt;Antarmuka: SATA Revision 3.0 (6 Gb/s)&lt;/div&gt;'
+        ]);
+
+        Product::create([
+            'sku'=>'11-120-SSD-250000',
+            'name'=>'Adata SSD SU650 Ultimate 120GB Sata 3',
+            'id_category'=>'1',
+            'id_brand'=>'1',
+            'stok'=>'19',
+            'capacity'=>'120',
+            'price'=>'200000',
+            'weight'=>'200',
+            'img'=>'Ada654263.png',
+            'description'=>'balalalla'
+        ]);
 
         Brand::create([
             'name'=>'samsung',

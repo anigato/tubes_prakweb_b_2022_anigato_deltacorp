@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Slidder;
 use Illuminate\Http\Request;
 
 class AdminSlidderController extends Controller
@@ -15,7 +17,9 @@ class AdminSlidderController extends Controller
     {
         return view('admin.slidder.index', [
             'title' => 'All Slidder',
-            'active' => 'allSlidder'
+            'active' => 'allSlidder',
+            'slidders' => Slidder::all(),
+            'products' => Product::all()
         ]);
     }
 

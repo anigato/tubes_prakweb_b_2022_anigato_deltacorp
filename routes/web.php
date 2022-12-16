@@ -1,8 +1,6 @@
 
 <?php
-
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
@@ -10,6 +8,7 @@ use App\Http\Controllers\UserHomeController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminBrandController;
 use App\Http\Controllers\AdminOrderController;
+use App\Http\Controllers\UserDetailController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminSlidderController;
 use App\Http\Controllers\AdminCategoryController;
@@ -26,9 +25,9 @@ use App\Http\Controllers\AdminDashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+
+// home user
+Route::get('/', [UserHomeController::class, 'homeUser'])->name('home');
 
 
 //Register Admin
@@ -63,8 +62,6 @@ Route::resource('/admin/category', AdminCategoryController::class);
 // slidder
 Route::resource('/admin/slidder', AdminSlidderController::class);
 
-// home user
-Route::get('/home', [UserHomeController::class, 'homeUser'])->name('home');
 
 // Product Admin
 Route::resource('/admin/product', AdminProductController::class);
@@ -73,5 +70,8 @@ Route::resource('/admin/product', AdminProductController::class);
 Route::resource('/admin/userAdmin', AdminUserController::class);
 
 // Order Admin
-Route::resource('/admin/orders', AdminOrderController::class);
+Route::resource('/admin/order', AdminOrderController::class);
+
+// user detail
+Route::resource('/user', UserDetailController::class);
 

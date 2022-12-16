@@ -12,7 +12,7 @@
     <script src="{{ asset('theme/frontend/js/jquery.sticky.js') }}"></script>
 
     <!-- jQuery easing -->
-    <script src="{{ asset('themes/frontend/js/jquery.easing.1.3.min.js') }}"></script>
+    <script src="{{ asset('theme/frontend/js/jquery.easing.1.3.min.js') }}"></script>
 
     <!-- Main Script -->
-    <script src="{{ asset('themes/frontend/js/main.js') }}"></script>
+    <script src="{{ asset('theme/frontend/js/main.js') }}"></script>
