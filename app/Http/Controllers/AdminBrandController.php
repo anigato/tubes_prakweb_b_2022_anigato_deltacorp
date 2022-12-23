@@ -42,7 +42,18 @@ class AdminBrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'img' => 'image|file|max:1024'
+        ]);
+
+        if ($request->file('img')) {
+            $validatedData['img'] = $request->file('img')->store('img');
+        }
+
+        Brand::create($validatedData);
+
+        return redirect('/admin/brand');
     }
 
     /**
@@ -64,7 +75,7 @@ class AdminBrandController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.brand.edit',[
+        return view('admin.brand.edit', [
             'title' => 'Edit Brand',
             'active' => 'editBrand'
         ]);
