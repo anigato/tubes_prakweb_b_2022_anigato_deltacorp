@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Wishlist;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -48,12 +52,16 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Product $product)
     {
         return view('user.product.detail', [
-            "title" => "Singgle Post",
+            "title" => $product->name,
             "active" => "posts",
-            
+            "detailProduct" => $product,
+            "newProducts" => Product::latest()->paginate(4),
+            "randomProducts" => Product::inRandomOrder()->paginate(10),
+            "brands" => Brand::all()
+            // "checkWish" => Wishlist::with(['user',2])->get()
         ]);
     }
 
