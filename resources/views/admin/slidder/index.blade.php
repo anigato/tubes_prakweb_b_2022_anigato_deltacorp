@@ -55,7 +55,7 @@
                     <thead>
                       <tr class="text-center">
                         <th>NO</th>
-                        <th>ID_PRODUCT</th>
+                        <th>PRODUCT</th>
                         <th>TITLE</th>
                         <th>DESCRIPTION</th>
                         <th>STATUS</th>
@@ -83,7 +83,7 @@
                         </td>
 
                         <td rowspan="2" class="row">
-                          <a href="edit.php?id={{ $slidder['id']; }}" class="btn btn-sm btn-info col-md-6 update-link">Edit</a>
+                          <a href="{{ url ('admin/slidder/' .$slidder['id'].'/edit') }}" class="btn btn-sm btn-info col-md-6 update-link">Edit</a>
                           <a href="delete.php?id={{ $slidder['id']; }}" class="btn btn-sm btn-danger col-md-6 delete-link">Delete</a>
                           <?php
                           switch ($slidder["status"]) {
@@ -105,6 +105,7 @@
                         <th>NO</th>
                         <th>PRODUCT</th>
                         <th>TITLE</th>
+                        <th>DESCRIPTION</th>
                         <th>STATUS</th>
                         <th>ACTION</th>
                       </tr>
