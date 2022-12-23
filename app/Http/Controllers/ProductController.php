@@ -60,7 +60,7 @@ class ProductController extends Controller
             "detailProduct" => $product,
             "newProducts" => Product::latest()->paginate(4),
             "randomProducts" => Product::inRandomOrder()->paginate(10),
-            "brands" => Brand::all()
+            "brands" => Brand::all(),
             // "checkWish" => Wishlist::with(['user',2])->get()
         ]);
     }
