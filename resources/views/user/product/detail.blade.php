@@ -8,7 +8,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    @include('user.layouts.parts.link-head')
 
-   <title>ANIGASTORE - </title>
+   <title>ANIGASTORE - {{ $title }}</title>
 </head>
 
 <body>
@@ -27,7 +27,7 @@
          <div class="row">
                <div class="col-md-12">
                   <div class="product-bit-title text-center">
-                     <h2 class="text-capitalize">Buy  Now</h2>
+                     <h2 class="text-capitalize">Buy {{ $detailProduct['name'] }} Now</h2>
                   </div>
                </div>
          </div>
@@ -47,57 +47,59 @@
                <div class="col-md-8">
                   <div class="product-content-right">
                      <div class="product-breadcroumb">
-                           <a href="index.php">HOME</a>
-                           <a href="#"></a>
-                           
-                           <a href="#" class="text-uppercase"></a>
-                           
-                           <a href="#" class="text-uppercase"></a>
+                           <a href="{{ route('home') }}">HOME</a>
+                           <a href="#" class="text-uppercase">{{ $detailProduct->category->name }}</a>
+                           <a href="#" class="text-uppercase">{{ $detailProduct->brand->name }}</a>
                      </div>
 
                      <div class="row">
                            <div class="col-sm-6">
                               <div class="product-images">
                                  <div class="product-main-img">
-                                       <img src="../../../assets/img/products/"
-                                          alt="" class="img-tumbnail rounded">
+                                       <img src="{{ asset('storage/img/product/'.$detailProduct['img']) }}" alt="" class="img-tumbnail rounded">
                                  </div>
                               </div>
                               <div class="p">Bagikan :</div>
                               <div class="share mt-2">
-                                 <div class="addthis_inline_share_toolbox_c0ma"></div>
+                                 <div class="addthis_inline_share_toolbox"></div>
                               </div>
                            </div>
 
                            <div class="col-sm-6">
                               <div class="product-inner">
-                                
-                                 <h2 class="font-weight-bold text-uppercase"></h2>
+                                 @if ($detailProduct['stok'] > 50)
+                                    <span class='badge badge-success'>Stok Masih Banyak</span>
+                                 @elseif($detailProduct['stok'] > 10)
+                                    <span class='badge badge-warning'>Stok Sudah Sedikit</span>
+                                 @else
+                                    <span class='badge badge-danger'>Stok Hampir Habis</span>
+                                 @endif
+                                 <h2 class="font-weight-bold text-uppercase">{{ $detailProduct['name'] }}</h2>
 
                                  <div class="product-inner-price">
-                                       <h3 class="text-danger font-weight-bold"></h3>
+                                       <h3 class="text-danger font-weight-bold">{{ $detailProduct['price'] }}</h3>
                                  </div>
 
                                  <table class="table mt-3">
                                        <tr>
                                           <td>Kapasitas</td>
                                           <td>:</td>
-                                          <td></td>
+                                          <td>{{ $detailProduct->capacity }}</td>
                                        </tr>
                                        <tr>
                                           <td>Berat</td>
                                           <td>:</td>
-                                          <td>gr</td>
+                                          <td>{{ $detailProduct->weight }} gr</td>
                                        </tr>
                                        <tr>
                                           <td>Stok</td>
                                           <td>:</td>
-                                          <td>pcs</td>
+                                          <td>{{ $detailProduct->stok }} pcs</td>
                                        </tr>
                                  </table>
                                  <form method="post" action="../cart/index.php" class="cart">
                                        <div class="quantity">
-                                          <input type="hidden" name="id_product" value="">
+                                          <input type="hidden" name="product_id" value="">
                                           <input type="hidden" name="img" value="">
 
                                           <input type="text" class="form-control mb-2" placeholder="Jumlah"
@@ -108,14 +110,6 @@
                                                    class="fas fa-cart-plus"></i> Masukan Ke Keranjang</button>
                                        </div>
                                  </form>
-                                 
-                                 <a href="../wishlist/delete.php?id_user=&id_product="
-                                       class="btn btn-danger mt-3"><i class="fas fa-heart"></i> Hapus Keinginan</a>
-                                 
-                                 <a href="../wishlist/add.php?id_user=&id_product="
-                                       class="btn btn-danger mt-3"><i class="far fa-heart"></i> Tambah Keinginan</a>
-                                 
-
                               </div>
                            </div>
                      </div>
@@ -145,37 +139,39 @@
                                                    <tr>
                                                       <td>SKU Produk</td>
                                                       <td>:</td>
-                                                      <td></td>
+                                                      <td>{{ $detailProduct->sku }}</td>
                                                    </tr>
                                                    
                                                    <tr>
                                                       <td>Merk</td>
                                                       <td>:</td>
-                                                      <td></td>
+                                                      <td>{{ $detailProduct->brand->name }}</td>
                                                    </tr>
                                                    <tr>
                                                       <td>Kategori</td>
                                                       <td>:</td>
-                                                      <td></td>
+                                                      <td>{{ $detailProduct->category->name }}</td>
                                                    </tr>
                                                    <tr>
                                                       <td>Kapasitas</td>
                                                       <td>:</td>
-                                                      <td></td>
+                                                      <td>{{ $detailProduct->capacity }}</td>
                                                    </tr>
                                                    <tr>
                                                       <td>Berat</td>
                                                       <td>:</td>
-                                                      <td>gr</td>
+                                                      <td>{{ $detailProduct->weight }} gr</td>
                                                    </tr>
                                                    <tr>
                                                       <td>Stok</td>
                                                       <td>:</td>
-                                                      <td>pcs</td>
+                                                      <td>{{ $detailProduct->stok }} pcs</td>
                                                    </tr>
                                              </table>
                                           </div>
-                                          
+                                          <article>
+                                             {!! $detailProduct->description !!}
+                                          </article>
                                        </div>
                                        <div class="tab-pane fade" id="review" role="tabpanel"
                                           aria-labelledby="review-tab">
@@ -221,7 +217,7 @@
 
    @include('user.layouts.parts.script-body')
    <!-- share button -->
-   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e9e4256855b7795"></script>
+   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-63a57699101d958a"></script>
 
    <!-- disqus -->
    <script>
