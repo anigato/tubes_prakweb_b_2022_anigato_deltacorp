@@ -59,9 +59,12 @@ class UserDetailController extends Controller
      * @param  \App\Models\UserDetail  $userDetail
      * @return \Illuminate\Http\Response
      */
-    public function edit(UserDetail $userDetail)
-    {
-        //
+    public function edit(){
+        return view('user.userDetail.edit', [
+            'title' => 'Detail User',
+            'active' => 'Detail_user'
+        ]);
+        
     }
 
     /**
