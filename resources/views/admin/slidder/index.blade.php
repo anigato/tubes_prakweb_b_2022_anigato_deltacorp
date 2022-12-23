@@ -55,50 +55,49 @@
                     <thead>
                       <tr class="text-center">
                         <th>NO</th>
-                        <th>PRODUCT</th>
+                        <th>ID_PRODUCT</th>
                         <th>TITLE</th>
+                        <th>DESCRIPTION</th>
                         <th>STATUS</th>
                         <th>ACTION</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php $i = 1; ?>
-                      <?php foreach ($slidders as $slidder) : ?>
-                        <tr class="text-center">
-                          <td><?= $i++; ?></td>
-                          <?php foreach ($products as $product) : ?>
-                            <td><?= $product['name']; ?></td>
-                          <?php endforeach ?>
+                      @foreach ($slidders as $slidder)
+                      <tr class="text-center">
+                        <td>{{ $i++; }}</td>
+                        <td>{{ $slidder["id_product"]; }}</td>
+                        <td>{{ $slidder["title"]; }}</td>
+                        <td>{{ $slidder["description"]; }}</td>
+                        <td>
+                          <?php
+                          switch ($slidder["status"]) {
+                            case 0:
+                              echo "Inactive";
+                              break;
+                            case 1:
+                              echo "Active";
+                              break;
+                          } ?>
+                        </td>
 
-                          <td><?= $slidder["title"]; ?></td>
-                          <td>
-                            <?php
-                            switch ($slidder["status"]) {
-                              case 0:
-                                echo "Inactive";
-                                break;
-                              case 1:
-                                echo "Active";
-                                break;
-                            } ?>
-                          </td>
+                        <td rowspan="2" class="row">
+                          <a href="edit.php?id={{ $slidder['id']; }}" class="btn btn-sm btn-info col-md-6 update-link">Edit</a>
+                          <a href="delete.php?id={{ $slidder['id']; }}" class="btn btn-sm btn-danger col-md-6 delete-link">Delete</a>
+                          <?php
+                          switch ($slidder["status"]) {
+                            case 0:
+                              echo '<a href="status.php?status=1&id=' . $slidder['id'] . '" class="btn btn-sm btn-success col-md-12 status-link">Activate</a>';
+                              break;
+                            case 1:
+                              echo '<a href="status.php?status=0&id=' . $slidder['id'] . '" class="btn btn-sm btn-warning col-md-12 status-link">Inactivate</a>';
+                              break;
+                          } ?>
 
-                          <td rowspan="2" class="row">
-                            <a href="edit.php?id=<?= $slidder['id']; ?>" class="btn btn-sm btn-info col-md-6 update-link">Edit</a>
-                            <a href="delete.php?id=<?= $slidder['id'] ?>" class="btn btn-sm btn-danger col-md-6 delete-link">Delete</a>
-                            <?php
-                            switch ($slidder["status"]) {
-                              case 0:
-                                echo '<a href="status.php?status=1&id=' . $slidder['id'] . '" class="btn btn-sm btn-success col-md-12 status-link">Activate</a>';
-                                break;
-                              case 1:
-                                echo '<a href="status.php?status=0&id=' . $slidder['id'] . '" class="btn btn-sm btn-warning col-md-12 status-link">Inactivate</a>';
-                                break;
-                            } ?>
-
-                          </td>
-                        </tr>
-                      <?php endforeach; ?>
+                        </td>
+                      </tr>
+                      @endforeach
 
                     </tbody>
                     <tfoot>

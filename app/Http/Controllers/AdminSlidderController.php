@@ -41,7 +41,17 @@ class AdminSlidderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'id_product' => 'required',
+            'title' => 'required|max:255',
+            'description' => 'required'
+        ]);
+
+        $validatedData['status'] = 1;
+
+        Slidder::create($validatedData);
+
+        return redirect('/admin/slidder');
     }
 
     /**
