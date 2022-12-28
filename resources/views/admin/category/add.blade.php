@@ -12,7 +12,7 @@
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Update Brand</li>
+                <li class="breadcrumb-item active">Add New Brand</li>
               </ol>
             </div>
           </div>
@@ -26,11 +26,10 @@
             <div class="col-12">
               <div class="card card-info">
                 <div class="card-header">
-                  <h3 class="card-title">Update Brand</h3>
+                  <h3 class="card-title">Add New Brand</h3>
                 </div>
                 <div class="card-body">
                   <form class="row needs-validation" novalidate method="post" action="" enctype="multipart/form-data">
-                    <input type="hidden" name="id" id="id">
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Name</label>
@@ -47,31 +46,25 @@
                       <div class="form-group">
                         <label>Image</label>
                         <div class="custom-file mb-2">
-                          <input type="file" class="custom-file-input form-control" name="img" id="img" onchange="showImage(this);">
-                          <input type="hidden" name="old_img">
+                          <input type="file" class="custom-file-input form-control" name="img" id="img" onchange="showImage(this);" required>
                           <label class="custom-file-label" for="img">Choose an image</label>
                           <div class="invalid-feedback">
-                            Please provide a valid brand Image.
+                            Please provide a valid Brand Image.
                           </div>
                         </div>
 
                         <div class="row">
                           <div class="col-md-3 mx-auto d-block">
-                            <p class="text-center">New Image</p>
                             <img class="rounded" src="#" alt="" id="show-image" style="width: 100%;">
-                          </div>
-                          <div class="col-md-3 mx-auto d-block">
-                            <p class="text-center">Old Image</p>
-                            <img class="rounded" src="../../../assets/img/brands/" alt="" style="width: 100%;">
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group ">
-                        <button type="submit" class="btn btn-primary  start" name="edit">
+                        <button type="submit" class="btn btn-primary  start" name="tambah">
                           <i class="fas fa-upload"></i>
-                          <span> Update Brand</span>
+                          <span> Add New Brand</span>
                         </button>
                         <a href="index.php" class="btn btn-warning  cancel">
                           <i class="fas fa-times-circle"></i>
@@ -93,10 +86,9 @@
       <!-- /.content -->
     </div>
     <!-- end main content -->
-
 @endsection
-    @section('script-custom')
-        <!-- Select2 -->
+@section('script-custom')
+    <!-- Select2 -->
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <!-- bs-custom-file-input -->
   <script src="../../../themes/js/input-form/bs-custom-file-input.min.js"></script>
@@ -136,28 +128,3 @@
     $(function() {
       bsCustomFileInput.init();
     });
-
-    // menampilkan gambar ketika dipilih
-    function showImage(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-          $('#show-image')
-            .attr('src', e.target.result)
-        };
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-    // input form khusus nomor
-    function onlyNumber(evt) {
-      var charCode = (evt.which) ? evt.which : event.keyCode
-      if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-        return false;
-      } else {
-        return true;
-      }
-    }
-    //Initialize Select2 Elements
-    $('.select2').select2()
-  </script>
-    @endsection

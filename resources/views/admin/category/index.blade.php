@@ -25,7 +25,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Brand</h1>
+              <h1>Category</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -55,19 +55,30 @@
                     <thead>
                       <tr class="text-center">
                         <th>NO</th>
-                        <th>IMG</th>
                         <th>NAME</th>
                         <th>ACTION</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php $i = 1; ?>
+                      <?php foreach ($categories as $row) : ?>
+                      <tr class="text-center">
+                        <td><?= $i++; ?></td>
+                        <td><?= strtoupper($row["name"]); ?></td>
+
+                        <td rowspan="2" class="row">
+                          <div class="col-md-3"></div>
+                          <a href="edit.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-info col-md-3 update-link">Edit</a>
+                          <a href="delete.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-danger col-md-3 delete-link">Delete</a>
+                          <div class="col-md-3"></div>
+                        </td>
+                      </tr>
+                    <?php endforeach; ?>
 
                     </tbody>
                     <tfoot>
                       <tr class="text-center">
                         <th>NO</th>
-                        <th>IMG</th>
                         <th>NAME</th>
                         <th>ACTION</th>
                       </tr>
