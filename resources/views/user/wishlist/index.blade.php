@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,16 +19,14 @@
 <body>
 
 
-    <!-- End header area -->
     @include('user.layouts.parts.header')
+    <!-- End header area -->
 
-
-    <!-- End site branding area -->
     @include('user.layouts.parts.branding-area')
+    <!-- End site branding area -->
 
-
-    <!-- End mainmenu area -->
     @include('user.layouts.parts.main-menu')
+    <!-- End mainmenu area -->
 
     <div class="product-big-title-area">
         <div class="container">
@@ -50,7 +46,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="single-sidebar">
-                        <h2 class="sidebar-title">Produk Terbaru</h2>
+                        @include('user.layouts.parts.new-product')
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -69,38 +65,38 @@
                                         <td></td>
                                     </tr>
                                     @foreach ($wishlist as $wish)
-                                    <tr>
-                                        <td><img src="{{ asset('storage/img/product/') }}" alt="" class="rounded" width="70" alt=""></td>
-                                        <td><a href="">{{ $wish['id_product'] }}</a></td>
-                                        <td><a href="">{{ $wish['id_user'] }}</a></td>
-                                        <td><a href="../product/detail.php">{{ $wish['id'] }}</a></td>
-                                        <td>
-                                            <a href="../wishlist/delete" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
-                                        </td>
-                                        <td>
-                                            <form method="post" action="../cart/index.php" class="cart">
-                                                <div class="quantity">
-                                                    <input type="hidden" name="id_product" value="">
-                                                    <input type="hidden" name="img" value="">
+                                        <tr>
+                                            <td><img src="{{ asset('storage/img/product/') }}" alt=""
+                                                    class="rounded" width="70" alt=""></td>
+                                            <td><a href="">{{ $wish['id_product'] }}</a></td>
+                                            <td><a href="">{{ $wish['id_user'] }}</a></td>
+                                            <td><a href="../product/detail.php">{{ $wish['id'] }}</a></td>
+                                            <td>
+                                                <a href="../wishlist/delete" class="btn btn-sm btn-danger"><i
+                                                        class="far fa-trash-alt"></i></a>
+                                            </td>
+                                            <td>
+                                                <form method="post" action="../cart/index.php" class="cart">
+                                                    <div class="quantity">
+                                                        <input type="hidden" name="id_product" value="">
+                                                        <input type="hidden" name="img" value="">
 
-                                                    <input type="hidden" id="qty" name="qty" value="1">
-                                                    <button type="submit" class="btn btn-sm btn-primary add_to_cart_button"><i class="fas fa-cart-plus"></i></button>
-                                                </div>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                                        <input type="hidden" id="qty" name="qty"
+                                                            value="1">
+                                                        <button type="submit"
+                                                            class="btn btn-sm btn-primary add_to_cart_button"><i
+                                                                class="fas fa-cart-plus"></i></button>
+                                                    </div>
+                                                </form>
+                                            </td>
+                                        </tr>
                                     @endforeach
 
 
                                 </table>
                             </div>
                         </div>
-                        <div class="related-products-wrapper">
-                            <h2 class="related-products-title">Mungkin Kamu Suka</h2>
-                            <div class="related-products-carousel">
-                                
-                            </div>
-                        </div>
+                        @include('user.layouts.parts.related-product')
                     </div>
 
                 </div>
@@ -122,58 +118,58 @@
     <?php
     if (isset($_POST['edit'])) {
         $upload = uploadImage('../../../assets/img/users/', $_POST, 'edit-user');
-        if ($upload == "success") {
+        if ($upload == 'success') {
             echo "
-                <script type='text/javascript'>
-                
-                Swal.fire({
-                    title:'Success!',
-                    text:'Profil anda berhasil diperbarui',
-                    type:'success',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.value) {
-                    document.location.href='../user/detail.php';
-                    }
-                })
-                </script>
+                    <script type='text/javascript'>
+                    
+                    Swal.fire({
+                        title:'Success!',
+                        text:'Profil anda berhasil diperbarui',
+                        type:'success',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.value) {
+                        document.location.href='../user/detail.php';
+                        }
+                    })
+                    </script>
+                    ";
+        } elseif ($upload == 'tooLarge') {
+            echo "
+                    <script type='text/javascript'>
+                    Swal.fire({
+                        title:'Error!',
+                        text:'Gambar Terllau besar, coba kecilkan ukuran gambar',
+                        type:'error',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.value) {
+                        document.location.href='../user/detail.php';
+                        }
+                    })
+                    </script>
+                    ";
+        } elseif ($upload == 'notImage') {
+            echo "
+                    <script type='text/javascript'>
+                    Swal.fire({
+                        title:'Error!',
+                        text:'Hanya gambar JPG, JPEG dan PNG yang diperbolehkan',
+                        type:'error',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.value) {
+                        document.location.href='../user/detail.php';
+                        }
+                    })
+                    </script>
                 ";
-        } else if ($upload == "tooLarge") {
-            echo "
-                <script type='text/javascript'>
-                Swal.fire({
-                    title:'Error!',
-                    text:'Gambar Terllau besar, coba kecilkan ukuran gambar',
-                    type:'error',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.value) {
-                    document.location.href='../user/detail.php';
-                    }
-                })
-                </script>
-                ";
-        } else if ($upload == "notImage") {
-            echo "
-                <script type='text/javascript'>
-                Swal.fire({
-                    title:'Error!',
-                    text:'Hanya gambar JPG, JPEG dan PNG yang diperbolehkan',
-                    type:'error',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.value) {
-                    document.location.href='../user/detail.php';
-                    }
-                })
-                </script>
-            ";
         }
     }
-
+    
     ?>
     <script>
         (function() {
@@ -205,6 +201,7 @@
             }
         }
         input form khusus nomor
+
         function onlyNumber(evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode
             if (charCode > 31 && (charCode < 48 || charCode > 57)) {

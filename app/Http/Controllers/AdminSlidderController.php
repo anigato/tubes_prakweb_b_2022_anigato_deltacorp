@@ -42,7 +42,7 @@ class AdminSlidderController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'id_product' => 'required',
+            'product_id' => 'required',
             'title' => 'required|max:255',
             'description' => 'required'
         ]);
@@ -92,7 +92,7 @@ class AdminSlidderController extends Controller
     public function update(Request $request, Slidder $slidder)
     {
         $rules = [
-            'id_product' => 'required',
+            'product_id' => 'required',
             'title' => 'required|max:225',
             'description' => 'required'
         ];

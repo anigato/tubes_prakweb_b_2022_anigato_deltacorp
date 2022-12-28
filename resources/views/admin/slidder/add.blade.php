@@ -59,7 +59,7 @@
                       <div class="form-group">
                         <label>Product</label>
                         <div class="input-group mb-3">
-                          <select class="custom-select" name="id_product" required>
+                          <select class="custom-select" name="product_id" required>
                             <option value="" disabled selected>Choose Product</option>
                             <option value="1" selected>1</option>
                             <option value="2" selected>2</option>

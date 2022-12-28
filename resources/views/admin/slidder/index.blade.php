@@ -67,7 +67,7 @@
                       @foreach ($slidders as $slidder)
                       <tr class="text-center">
                         <td>{{ $i++; }}</td>
-                        <td>{{ $slidder["id_product"]; }}</td>
+                        <td>{{ $slidder["product_id"]; }}</td>
                         <td>{{ $slidder["title"]; }}</td>
                         <td>{{ $slidder["description"]; }}</td>
                         <td>
