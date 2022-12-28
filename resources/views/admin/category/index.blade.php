@@ -61,19 +61,21 @@
                     </thead>
                     <tbody>
                       <?php $i = 1; ?>
-                      <?php foreach ($categories as $row) : ?>
+                      @foreach ($categories as $category)
+                          
+                      
                       <tr class="text-center">
-                        <td><?= $i++; ?></td>
-                        <td><?= strtoupper($row["name"]); ?></td>
+                        <td>{{ $i++; }}</td>
+                        <td>{{ strtoupper($category["name"]); }}</td>
 
                         <td rowspan="2" class="row">
                           <div class="col-md-3"></div>
-                          <a href="edit.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-info col-md-3 update-link">Edit</a>
-                          <a href="delete.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-danger col-md-3 delete-link">Delete</a>
+                          <a href="{{ url('admin/category/'.$category['id'].'/edit') }}" class="btn btn-sm btn-info col-md-3 update-link">Edit</a>
+                          <a href="delete.php?id=<?= $category['id'] ?>" class="btn btn-sm btn-danger col-md-3 delete-link">Delete</a>
                           <div class="col-md-3"></div>
                         </td>
                       </tr>
-                    <?php endforeach; ?>
+                      @endforeach
 
                     </tbody>
                     <tfoot>
