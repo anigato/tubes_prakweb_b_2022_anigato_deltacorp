@@ -1,29 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ADMIN Panel | Add New slidder</title>
-  <!-- trix editor -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.css" integrity="sha512-CWdvnJD7uGtuypLLe5rLU3eUAkbzBR3Bm1SFPEaRfvXXI2v2H5Y0057EMTzNuGGRIznt8+128QIDQ8RqmHbAdg==" crossorigin="anonymous" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js" integrity="sha512-/1nVu72YEESEbcmhE/EvjH/RxTg62EKvYWLG3NdeZibTCuEtW5M4z3aypcvsoZw03FAopi94y04GhuqRU9p+CQ==" crossorigin="anonymous"></script>
-  <!-- Select2 -->
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
-  @include('admin.layouts.parts.link-header')
-</head>
-
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
-  <div class="wrapper">
-    <!-- Navbar -->
-    @include('admin.layouts.parts.navbar')
-    <!-- endnavbar -->
-
-    <!-- sidebar -->
-    @include('admin.layouts.parts.sidebar')
-    <!-- endsidebar -->
-
+@extends('admin.layouts.main')
+@section('container')
     <!-- Main content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -31,12 +7,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>slidder</h1>
+              <h1>Category</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Add New slidder</li>
+                <li class="breadcrumb-item active">Update Brand</li>
               </ol>
             </div>
           </div>
@@ -50,54 +26,52 @@
             <div class="col-12">
               <div class="card card-info">
                 <div class="card-header">
-                  <h3 class="card-title">Add New slidder</h3>
+                  <h3 class="card-title">Update Brand</h3>
                 </div>
                 <div class="card-body">
-                  <form class="row needs-validation" novalidate method="post" action="/admin/slidder" enctype="multipart/form-data">
-                    @csrf
-                    <div class="col-md-7">
+                  <form class="row needs-validation" novalidate method="post" action="" enctype="multipart/form-data">
+                    <input type="hidden" name="id" id="id">
+                    <div class="col-md-6">
                       <div class="form-group">
-                        <label>Product</label>
+                        <label>Name</label>
                         <div class="input-group mb-3">
-                          <select class="custom-select" name="id_product" required>
-                            <option value="" disabled selected>Choose Product</option>
-                            <option value="1" selected>1</option>
-                            <option value="2" selected>2</option>
-                            <option value="3" selected>3</option>
-
-                          </select>
+                          <input type="text" class="form-control" name="name" id="name" placeholder="Brand Name" required>
                           <div class="invalid-feedback">
-                            Please provide a valid slidder Name.
+                            Please provide a valid Brand Name.
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                       <div class="form-group">
-                        <label>Title</label>
-                        <div class="input-group mb-3">
-                          <input type="text" class="form-control" name="title" id="title" placeholder="Title" required>
+                        <label>Image</label>
+                        <div class="custom-file mb-2">
+                          <input type="file" class="custom-file-input form-control" name="img" id="img" onchange="showImage(this);">
+                          <input type="hidden" name="old_img">
+                          <label class="custom-file-label" for="img">Choose an image</label>
                           <div class="invalid-feedback">
-                            Please provide a valid Brand Title.
+                            Please provide a valid brand Image.
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-3 mx-auto d-block">
+                            <p class="text-center">New Image</p>
+                            <img class="rounded" src="#" alt="" id="show-image" style="width: 100%;">
+                          </div>
+                          <div class="col-md-3 mx-auto d-block">
+                            <p class="text-center">Old Image</p>
+                            <img class="rounded" src="../../../assets/img/brands/" alt="" style="width: 100%;">
                           </div>
                         </div>
                       </div>
                     </div>
-
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="description">Description</label>
-                        <input id="description" type="hidden" name="description">
-                        <trix-editor input="description"></trix-editor>
-                      </div>
-                    </div>
-
                     <div class="col-md-12">
                       <div class="form-group ">
-                        <button type="submit" class="btn btn-primary  start" name="tambah">
+                        <button type="submit" class="btn btn-primary  start" name="edit">
                           <i class="fas fa-upload"></i>
-                          <span> Add New slidder</span>
+                          <span> Update Brand</span>
                         </button>
                         <a href="index.php" class="btn btn-warning  cancel">
                           <i class="fas fa-times-circle"></i>
@@ -120,24 +94,12 @@
     </div>
     <!-- end main content -->
 
-
-    <!-- footer -->
-    @include('admin.layouts.parts.footer')
-    <!-- endfooter -->
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-
-  </div>
-
-  <!-- Select2 -->
+@endsection
+    @section('script-custom')
+        <!-- Select2 -->
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <!-- bs-custom-file-input -->
   <script src="../../../themes/js/input-form/bs-custom-file-input.min.js"></script>
-  @include('admin.layouts.parts.script-body')
 
   <!-- Page specific script -->
   <script>
@@ -159,14 +121,43 @@
         });
       }, false);
     })();
+    // menampilkan gambar ketika dipilih
+    function showImage(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          $('#show-image')
+            .attr('src', e.target.result)
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
     // select2
     $(function() {
       bsCustomFileInput.init();
     });
 
+    // menampilkan gambar ketika dipilih
+    function showImage(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          $('#show-image')
+            .attr('src', e.target.result)
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    // input form khusus nomor
+    function onlyNumber(evt) {
+      var charCode = (evt.which) ? evt.which : event.keyCode
+      if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+      } else {
+        return true;
+      }
+    }
     //Initialize Select2 Elements
     $('.select2').select2()
   </script>
-</body>
-
-</html>
+    @endsection

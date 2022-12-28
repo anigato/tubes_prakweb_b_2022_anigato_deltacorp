@@ -1,6 +1,7 @@
-<?php
-use Illuminate\Support\Facades\Route;
 
+<?php
+
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
@@ -72,7 +73,7 @@ Route::resource('/admin/product', AdminProductController::class);
 Route::resource('/admin/userAdmin', AdminUserController::class);
 
 // Order Admin
-Route::resource('/admin/orders', AdminOrderController::class);
+Route::resource('/admin/order', AdminOrderController::class);
 
 // user detail
 Route::resource('/user', UserDetailController::class);

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class AdminProductController extends Controller
@@ -16,7 +18,10 @@ class AdminProductController extends Controller
     {
         return view('admin.product.index', [
             'title' => 'All Product',
-            'active' => 'allProduct'
+            'active' => 'allProduct',
+            'products' => Product::all(),
+            'brands' => Brand::all(),
+            'categories' => Category::all()
         ]);
     }
 

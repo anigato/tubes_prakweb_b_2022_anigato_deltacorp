@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Slidder;
 use Illuminate\Http\Request;
 
 class AdminSlidderController extends Controller
@@ -15,7 +17,9 @@ class AdminSlidderController extends Controller
     {
         return view('admin.slidder.index', [
             'title' => 'All Slidder',
-            'active' => 'allSlidder'
+            'active' => 'allSlidder',
+            'slidders' => Slidder::all(),
+            'products' => Product::all()
         ]);
     }
 
@@ -37,7 +41,17 @@ class AdminSlidderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'id_product' => 'required',
+            'title' => 'required|max:255',
+            'description' => 'required'
+        ]);
+
+        $validatedData['status'] = 1;
+
+        Slidder::create($validatedData);
+
+        return redirect('/admin/slidder');
     }
 
     /**
@@ -57,9 +71,15 @@ class AdminSlidderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Slidder $slidder)
     {
-        return view('admin.slidder.edit');
+        return view('admin.slidder.edit', [
+            'title' => 'Edit Slidder',
+            'active' => 'editSlidder',
+            'slidder' => $slidder,
+            'slidders' => Slidder::all(),
+            'products' => Product::all()
+        ]);
     }
 
     /**
@@ -69,9 +89,21 @@ class AdminSlidderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Slidder $slidder)
     {
-        //
+        $rules = [
+            'id_product' => 'required',
+            'title' => 'required|max:225',
+            'description' => 'required'
+        ];
+
+        $validatedData['status'] = 1;
+
+        $validatedData = $request->validate($rules);
+
+        Slidder::where('id', $slidder->id)
+            ->update($validatedData);
+        return redirect('/admin/slidder/');
     }
 
     /**

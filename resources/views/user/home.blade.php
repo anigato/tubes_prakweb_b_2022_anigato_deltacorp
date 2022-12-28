@@ -7,27 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ANIGASTORE</title>
 
-    
+
     @include('user.layouts.parts.link-head')
 
 </head>
 
 <body>
 
-    
+
     <!-- End header area -->
     @include('user.layouts.parts.header')
 
-    
     <!-- End site branding area -->
     @include('user.layouts.parts.branding-area')
 
     <!-- End mainmenu area -->
     @include('user.layouts.parts.main-menu')
 
-    
-    <!-- End slider area -->
-    @include('user.layouts.parts.slidder')
+    <div class="container">
+        <!-- End slider area -->
+        @include('user.layouts.parts.slidder')
+    </div>
 
     <!--End promo area -->
     @include('user.layouts.parts.promo')
@@ -40,6 +40,23 @@
                     <div class="latest-product">
                         <h2 class="section-title">Produk Baru</h2>
                         <div class="product-carousel">
+                            @foreach ($newProducts as $newProduct)
+                                <div class="single-product">
+                                    <div class="product-f-image">
+                                        <img src="{{ asset('storage/img/product/'.$newProduct['img']) }}" alt="">
+                                        <div class="product-hover">
+                                            <a href="{{ url('product/'.$newProduct['id']) }}"
+                                                class="view-details-link"><i class="fa fa-link"></i> Lihat Detail</a>
+                                        </div>
+                                    </div>
+                                    <h2><a class="text-uppercase"
+                                            href="{{ url('product/'.$newProduct['id']) }}"><?= $newProduct['name'] ?></a>
+                                    </h2>
+                                    <div class="product-carousel-price">
+                                        <h2><ins>100000</ins></h2>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -50,21 +67,16 @@
     <!-- End brands area -->
     @include('user.layouts.parts.brands-area')
 
-
-    <!-- End product widget area -->
-    @include('user.layouts.parts.widget')
-
-
     <!-- End footer bottom area -->
     @include('user.layouts.parts.footer')
 
     <!--End Script-body area-->
     @include('user.layouts.parts.script-body')
-    
+
     <!-- Slider -->
     <script type="text/javascript" src="{{ asset('frontend/js/script.slider.js') }}"></script>
     <script type="text/javascript" src="{{ asset('frontend/js/script.slider.js') }}"></script>
-    
+
 </body>
+
 </html>
-{{ asset(' ---- ') }}
