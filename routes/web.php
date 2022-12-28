@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminBrandController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\UserDetailController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminSlidderController;
 use App\Http\Controllers\AdminCategoryController;
@@ -79,4 +81,10 @@ Route::resource('/user', UserDetailController::class);
 
 // wishlist
 Route::resource('/wishlist', WishlistController::class);
+
+// cart
+Route::resource('/cart', CartController::class);
+
+//transaction
+Route::resource('/transaction', TransactionController::class);
 
