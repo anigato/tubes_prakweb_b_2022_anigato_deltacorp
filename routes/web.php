@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserHomeController;
+use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminBrandController;
 use App\Http\Controllers\AdminOrderController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminSlidderController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminDashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -75,3 +77,7 @@ Route::resource('/admin/order', AdminOrderController::class);
 
 // user detail
 Route::resource('/user', UserDetailController::class);
+
+// wishlist
+Route::resource('/wishlist', WishlistController::class);
+

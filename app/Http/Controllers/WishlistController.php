@@ -13,9 +13,13 @@ class WishlistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        return view('user.wishlist.index', [
+            'title' => 'Wishlist User',
+            'active' => 'wishlist',
+            'wishlist' => Wishlist::all()
+        ]);
+        
     }
 
     /**
