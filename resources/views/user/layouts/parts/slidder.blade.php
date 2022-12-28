@@ -17,7 +17,7 @@
                             </div>
                             @endforeach
                     </li>
-                    @endforeach
+                 @endforeach
             </ul>
         </div>
         <!-- ./Slider -->
