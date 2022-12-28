@@ -47,10 +47,10 @@ class AdminBrandController extends Controller
             'img' => 'image|file|max:1024'
         ]);
 
-        // $file_name = $request->img->getClientOriginalName();
-
         if ($request->file('img')) {
-            $validatedData['img'] = $request->file('img')->store('img/brand');
+            $img = $request->file('img')->store('img/brand');
+            $imageSplit = explode('/',$img);
+            $validatedData['img'] = $imageSplit[2];
         }
 
         Brand::create($validatedData);
@@ -80,8 +80,7 @@ class AdminBrandController extends Controller
         return view('admin.brand.edit', [
             'title' => 'Edit Brand',
             'active' => 'editBrand',
-            'brand' => $brand,
-            'brands' => Brand::all()
+            'brand' => $brand
         ]);
     }
 
@@ -100,6 +99,13 @@ class AdminBrandController extends Controller
         ];
 
         $validatedData = $request->validate($rules);
+        
+        if ($request->file('img')) {
+            $img = $request->file('img')->store('img/brand');
+            $imageSplit = explode('/',$img);
+            $validatedData['img'] = $imageSplit[2];
+        }
+
 
         Brand::where('id', $brand->id)
             ->update($validatedData);

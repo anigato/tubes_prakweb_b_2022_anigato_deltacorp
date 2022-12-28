@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DeltaCorp Admin | <?= $title ?></title>
+  <title>DeltaCorp Admin | {{ $title }}</title>
   @include('admin.layouts.parts.link-header')
 </head>
 

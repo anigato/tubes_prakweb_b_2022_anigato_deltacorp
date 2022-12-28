@@ -11,7 +11,7 @@
                         <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('product.index') }}">Semua Produk</a>
+                        <a class="nav-link" href="{{ url('product') }}">Semua Produk</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
