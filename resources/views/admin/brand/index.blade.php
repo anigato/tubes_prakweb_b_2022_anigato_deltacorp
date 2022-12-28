@@ -45,20 +45,20 @@
                 <tbody>
 
                   <?php $i = 1; ?>
-                  <?php foreach ($brands as $row) : ?>
-                    <tr class="text-center">
-                      <td><?= $i++; ?></td>
-                      <td><img src="{{ asset('storage/img/brand/'. $row->img) }}" alt="" class="img-tumbnail rounded" width="100px"></td>
-                      <td><?= strtoupper($row["name"]); ?></td>
+                  @foreach ($brands as $brand)
+                  <tr class="text-center">
+                    <td>{{ $i++; }}</td>
+                    <td><img src="{{ asset('storage/img/brand/'. $brand->img) }}" alt="" class="img-tumbnail rounded" width="100px"></td>
+                    <td>{{ strtoupper($brand["name"]); }}</td>
 
-                      <td rowspan="2" class="row">
-                        <div class="col-md-3"></div>
-                        <a href="edit.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-info col-md-3 update-link">Edit</a>
-                        <a href="delete.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-danger col-md-3 delete-link">Delete</a>
-                        <div class="col-md-3"></div>
-                      </td>
-                    </tr>
-                  <?php endforeach; ?>
+                    <td rowspan="2" class="row">
+                      <div class="col-md-3"></div>
+                      <a href="edit.php?id={{ $brand['id']; }}" class="btn btn-sm btn-info col-md-3 update-link">Edit</a>
+                      <a href="delete.php?id={{ $brand['id'] }}" class="btn btn-sm btn-danger col-md-3 delete-link">Delete</a>
+                      <div class="col-md-3"></div>
+                    </td>
+                  </tr>
+                  @endforeach
 
                 </tbody>
                 <tfoot>
