@@ -15,7 +15,7 @@ use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminSlidderController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminDashboardController;
-
+use App\Http\Controllers\AdminUserListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,3 +81,5 @@ Route::resource('/user', UserDetailController::class);
 // wishlist
 Route::resource('/wishlist', WishlistController::class);
 
+// User List
+Route::resource('/admin/userList', AdminUserListController::class);
