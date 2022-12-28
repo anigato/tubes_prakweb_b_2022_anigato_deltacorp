@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ANIGASTORE</title>
+    <title>DeltaCorp - {{ $title }}</title>
 
 
     @include('user.layouts.parts.link-head')
@@ -74,8 +74,8 @@
     @include('user.layouts.parts.script-body')
 
     <!-- Slider -->
-    <script type="text/javascript" src="{{ asset('frontend/js/script.slider.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('frontend/js/script.slider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('theme/frontend/js/bxslider.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('theme/frontend/js/script.slider.js') }}"></script>
 
 </body>
 

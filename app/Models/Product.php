@@ -18,7 +18,7 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
     public function slidder(){
-        return $this->belongsTo(Slidder::class);
+        return $this->hashOne(Slidder::class);
     }
     public function wishlist(){
         return $this->hasOne(Wishlist::class);

@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
             'sku'=>'6-240-SSD-550000',
             'name'=>'Sandisk SSD Plus 240GB Sata 3 - Sandisk SSD 240 GB',
             'category_id'=>'1',
-            'brand_id'=>'1',
+            'brand_id'=>'2',
             'stok'=>'19',
             'capacity'=>'240',
             'price'=>'550000',
@@ -72,8 +72,8 @@ class DatabaseSeeder extends Seeder
         Product::create([
             'sku'=>'6-480-SSD-900000',
             'name'=>'Sandisk SSD Plus 240GB Sata 3 - Sandisk SSD 480 GB',
-            'category_id'=>'1',
-            'brand_id'=>'1',
+            'category_id'=>'2',
+            'brand_id'=>'2',
             'stok'=>'19',
             'capacity'=>'480',
             'price'=>'900000',
@@ -84,7 +84,7 @@ class DatabaseSeeder extends Seeder
         Product::create([
             'sku'=>'6-1-SSD-2300000',
             'name'=>'Sandisk SSD Plus 240GB Sata 3 - Sandisk SSD 1 TB 2',
-            'category_id'=>'1',
+            'category_id'=>'2',
             'brand_id'=>'1',
             'stok'=>'19',
             'capacity'=>'1',
@@ -111,15 +111,28 @@ class DatabaseSeeder extends Seeder
             'name'=>'samsung',
             'img'=>'sam934072.png'
         ]);
+        Brand::create([
+            'name'=>'adata',
+            'img'=>'ada752461.png'
+        ]);
 
         Category::create([
             'name'=>'SSD'
+        ]);
+        Category::create([
+            'name'=>'HDD'
         ]);
 
         Slidder::create([
             'product_id' => '1',
             'status' => '1',
             'title' => 'Produk Terbaru dan Terlaris',
+            'description' => '&lt;div&gt;Aya buruan pesan sekarang juga sebelum kehabisan&lt;/div&gt;'
+        ]);
+        Slidder::create([
+            'product_id' => '5',
+            'status' => '1',
+            'title' => 'Produk Terbaik',
             'description' => '&lt;div&gt;Aya buruan pesan sekarang juga sebelum kehabisan&lt;/div&gt;'
         ]);
 
@@ -142,6 +155,10 @@ class DatabaseSeeder extends Seeder
 
         Wishlist::create([
             'product_id' => '1',
+            'user_id' => '2'
+        ]);
+        Wishlist::create([
+            'product_id' => '3',
             'user_id' => '2'
         ]);
 

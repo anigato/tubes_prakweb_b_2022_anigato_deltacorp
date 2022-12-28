@@ -16,10 +16,12 @@ class UserHomeController extends Controller
             'title' => 'Home User',
             'active' => 'home',
             'brands' => Brand::all(),
-            'categories' => Category::all(),
+            'categories' => Category::latest()->first()->limit(5)->get(),
             'products' => Product::all(),
-            'slidders' => Slidder::where('status','1'),
-            'newProducts' => Product::all(),
+            // 'slidders' => Slidder::all(),
+            // 'slidders' => Slidder::where('status','1'),
+            'slidders' => Slidder::where('status', '=', 1)->get(),
+            'newProducts' => Product::latest()->paginate(10),
         ]);
     }
 }

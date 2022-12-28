@@ -8,23 +8,19 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="../product/index.php">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../product/search.php?search=all&keyword=">Semua Produk</a>
+                        <a class="nav-link" href="{{ route('product.index') }}">Semua Produk</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Kategori Produk
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="../product/search.php?search=category&keyword=SSD">SSD</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="../product/search.php?search=category&keyword=HDD">HDD</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="../product/search.php?search=category&keyword=SSHD">SSHD</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="../product/search.php?search=category&keyword=SSD NVME">SSD NVME</a>
+                            @foreach ($categories as $category)
+                                <a class="dropdown-item" href="../product/search.php?search=category&keyword=SSD">{{ $category['name'] }}</a>
+                            @endforeach
                         </div>
                     </li>
                 </ul>
