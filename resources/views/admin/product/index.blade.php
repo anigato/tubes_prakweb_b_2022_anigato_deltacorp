@@ -76,7 +76,7 @@
                                             <?php foreach ($products as $products) : ?>
                                                 <tr class="text-center">
                                                     <td><?= $i++; ?></td>
-                                                    <td><img src="{{ asset('image/'. $products->img) }}" alt="" class="img-tumbnail rounded" width="100px"></td>
+                                                    <td><img src="{{ asset('storage/img/product/'. $products->img) }}" alt="" class="img-tumbnail rounded" width="100px"></td>
                                                     <td><?= strtoupper($products["name"]); ?></td>
 
                                                     <?php foreach ($brands as $br) : ?>
