@@ -45,12 +45,12 @@
                                     <div class="product-f-image">
                                         <img src="{{ asset('storage/img/product/'.$newProduct['img']) }}" alt="">
                                         <div class="product-hover">
-                                            <a href="../product/detail.php?id=<?= $newProduct['id'] ?>"
+                                            <a href="{{ url('product/'.$newProduct['id']) }}"
                                                 class="view-details-link"><i class="fa fa-link"></i> Lihat Detail</a>
                                         </div>
                                     </div>
                                     <h2><a class="text-uppercase"
-                                            href="../product/detail.php?id=<?= $newProduct['id'] ?>"><?= $newProduct['name'] ?></a>
+                                            href="{{ url('product/'.$newProduct['id']) }}"><?= $newProduct['name'] ?></a>
                                     </h2>
                                     <div class="product-carousel-price">
                                         <h2><ins>100000</ins></h2>
