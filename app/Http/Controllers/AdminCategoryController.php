@@ -45,7 +45,7 @@ class AdminCategoryController extends Controller
         $validateData = $request->validate([
             'name' => 'required|max:255'
         ]);
-        // var_dump($validateData);
+
         Category::create($validateData);
 
         return redirect('/admin/category');

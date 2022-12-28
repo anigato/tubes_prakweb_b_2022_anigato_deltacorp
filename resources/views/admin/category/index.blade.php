@@ -63,8 +63,8 @@
                       <?php $i = 1; ?>
                       @foreach ($categories as $category)
                       <tr class="text-center">
-                        <td><?= $i++; ?></td>
-                        <td>{{ strtoupper($category["name"]) }}</td>
+                        <td>{{ $i++; }}</td>
+                        <td>{{ strtoupper($category["name"]); }}</td>
 
                         <td rowspan="2" class="row">
                           <div class="col-md-3"></div>
@@ -73,7 +73,7 @@
                           <div class="col-md-3"></div>
                         </td>
                       </tr>
-                    @endforeach
+                      @endforeach
 
                     </tbody>
                     <tfoot>

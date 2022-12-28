@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\Password;
+ 
 
 class AdminUserController extends Controller
 {
@@ -16,7 +19,9 @@ class AdminUserController extends Controller
     {
         return view('admin.userAdmin.index', [
             'title' => 'Add User Admin',
-            'active' => 'adduserAdmin'
+            'active' => 'adduserAdmin',
+            'users' => User::all()
+            
         ]);
     }
 
@@ -27,7 +32,10 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        return view('admin.userAdmin.add');
+        return view('admin.userAdmin.add', [
+            'title' => 'Add New user Admin',
+            'active' => 'addNewuserAdmin'
+        ]);
     }
 
     /**
@@ -38,7 +46,16 @@ class AdminUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'name' => 'required|max:255',
+            'username' => ['required', 'min:3', 'max:255', 'unique:users'],
+            'email' => 'required|email:dns|unique:users',
+            'password' => 'required|min:5|max:255'
+        ]);
+
+        User::create($validateData);
+
+        return redirect('/admin/userAdmin');
     }
 
     /**
@@ -47,7 +64,7 @@ class AdminUserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show()
     {
         //
     }
@@ -58,9 +75,13 @@ class AdminUserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(User $user)
     {
-        return view('admin.userAdmin.edit');
+        return view('admin.userAdmin.edit',[
+            'title' => 'Edit User',
+            'active' => 'editUser',
+            'user' => $user
+        ]);
     }
 
     /**
@@ -72,7 +93,22 @@ class AdminUserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $rules = [
+            'name' => 'required|max:255',
+            'username' => ['required', 'min:3', 'max:255', 'unique:users'],
+            'email' => 'required|email:dns|unique:users',
+            'password' => 'required|min:5|max:255',
+            'confirmPassword' => 'password_confirmation|min:5|max|255'
+        ];
+        // $validator = Validator::make($request->all(), [
+        //     'password' => ['required', 'confirmed', Password::min(8)],
+        // ]);
+
+        $validatedData = $request->validate($rules);
+
+        User::where('id', $user->id)
+            ->update($validatedData);
+        return redirect('/admin/userAdmin/');
     }
 
     /**
