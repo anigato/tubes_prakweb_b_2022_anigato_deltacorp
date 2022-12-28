@@ -48,8 +48,8 @@ class DatabaseSeeder extends Seeder
         Product::create([
             'sku'=>'6-120-SSD-350000',
             'name'=>'Sandisk SSD Plus 240GB Sata 3 - Sandisk SSD 120 GB',
-            'id_category'=>'1',
-            'id_brand'=>'1',
+            'category_id'=>'1',
+            'brand_id'=>'1',
             'stok'=>'19',
             'capacity'=>'120',
             'price'=>'350000',
@@ -60,8 +60,8 @@ class DatabaseSeeder extends Seeder
         Product::create([
             'sku'=>'6-240-SSD-550000',
             'name'=>'Sandisk SSD Plus 240GB Sata 3 - Sandisk SSD 240 GB',
-            'id_category'=>'1',
-            'id_brand'=>'1',
+            'category_id'=>'1',
+            'brand_id'=>'2',
             'stok'=>'19',
             'capacity'=>'240',
             'price'=>'550000',
@@ -72,8 +72,8 @@ class DatabaseSeeder extends Seeder
         Product::create([
             'sku'=>'6-480-SSD-900000',
             'name'=>'Sandisk SSD Plus 240GB Sata 3 - Sandisk SSD 480 GB',
-            'id_category'=>'1',
-            'id_brand'=>'1',
+            'category_id'=>'2',
+            'brand_id'=>'2',
             'stok'=>'19',
             'capacity'=>'480',
             'price'=>'900000',
@@ -84,8 +84,8 @@ class DatabaseSeeder extends Seeder
         Product::create([
             'sku'=>'6-1-SSD-2300000',
             'name'=>'Sandisk SSD Plus 240GB Sata 3 - Sandisk SSD 1 TB 2',
-            'id_category'=>'1',
-            'id_brand'=>'1',
+            'category_id'=>'2',
+            'brand_id'=>'1',
             'stok'=>'19',
             'capacity'=>'1',
             'price'=>'2300000',
@@ -97,8 +97,8 @@ class DatabaseSeeder extends Seeder
         Product::create([
             'sku'=>'11-120-SSD-250000',
             'name'=>'Adata SSD SU650 Ultimate 120GB Sata 3',
-            'id_category'=>'1',
-            'id_brand'=>'1',
+            'category_id'=>'1',
+            'brand_id'=>'1',
             'stok'=>'19',
             'capacity'=>'120',
             'price'=>'200000',
@@ -111,20 +111,33 @@ class DatabaseSeeder extends Seeder
             'name'=>'samsung',
             'img'=>'sam934072.png'
         ]);
+        Brand::create([
+            'name'=>'adata',
+            'img'=>'ada752461.png'
+        ]);
 
         Category::create([
             'name'=>'SSD'
         ]);
+        Category::create([
+            'name'=>'HDD'
+        ]);
 
         Slidder::create([
-            'id_product' => '1',
+            'product_id' => '1',
             'status' => '1',
             'title' => 'Produk Terbaru dan Terlaris',
             'description' => '&lt;div&gt;Aya buruan pesan sekarang juga sebelum kehabisan&lt;/div&gt;'
         ]);
+        Slidder::create([
+            'product_id' => '5',
+            'status' => '1',
+            'title' => 'Produk Terbaik',
+            'description' => '&lt;div&gt;Aya buruan pesan sekarang juga sebelum kehabisan&lt;/div&gt;'
+        ]);
 
         UserDetail::create([
-            'id_user' => '2',
+            'user_id' => '2',
             'nick_name' => 'nanana',
             'full_name' => 'nana sekali',
             'phone' => '8521635822',
@@ -141,8 +154,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Wishlist::create([
-            'id_product' => '1',
-            'id_user' => '2'
+            'product_id' => '1',
+            'user_id' => '2'
+        ]);
+        Wishlist::create([
+            'product_id' => '3',
+            'user_id' => '2'
         ]);
 
 

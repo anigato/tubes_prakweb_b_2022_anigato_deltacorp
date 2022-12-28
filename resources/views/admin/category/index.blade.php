@@ -62,8 +62,6 @@
                     <tbody>
                       <?php $i = 1; ?>
                       @foreach ($categories as $category)
-                          
-                      
                       <tr class="text-center">
                         <td>{{ $i++; }}</td>
                         <td>{{ strtoupper($category["name"]); }}</td>

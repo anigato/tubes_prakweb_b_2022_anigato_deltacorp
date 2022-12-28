@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +43,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                
+
                                 <div class="card-header">
                                     <h3 class="card-title">List All Admin</h3>
                                 </div>
@@ -115,7 +114,7 @@
 
     </div>
 
-    
+
     @include('admin.layouts.parts.script-body')
     @include('admin.layouts.parts.script-dataTable')
 </body>

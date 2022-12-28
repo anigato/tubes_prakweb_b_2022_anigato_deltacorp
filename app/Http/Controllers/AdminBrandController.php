@@ -42,7 +42,20 @@ class AdminBrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'img' => 'image|file|max:1024'
+        ]);
+
+        if ($request->file('img')) {
+            $img = $request->file('img')->store('img/brand');
+            $imageSplit = explode('/',$img);
+            $validatedData['img'] = $imageSplit[2];
+        }
+
+        Brand::create($validatedData);
+
+        return redirect('/admin/brand');
     }
 
     /**
@@ -62,11 +75,12 @@ class AdminBrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Brand $brand)
     {
-        return view('admin.brand.edit',[
+        return view('admin.brand.edit', [
             'title' => 'Edit Brand',
-            'active' => 'editBrand'
+            'active' => 'editBrand',
+            'brand' => $brand
         ]);
     }
 
@@ -77,9 +91,25 @@ class AdminBrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Brand $brand)
     {
-        //
+        $rules = [
+            'name' => 'required|max:225',
+            'img' => 'image|file|max:1024'
+        ];
+
+        $validatedData = $request->validate($rules);
+        
+        if ($request->file('img')) {
+            $img = $request->file('img')->store('img/brand');
+            $imageSplit = explode('/',$img);
+            $validatedData['img'] = $imageSplit[2];
+        }
+
+
+        Brand::where('id', $brand->id)
+            ->update($validatedData);
+        return redirect('/admin/brand/');
     }
 
     /**

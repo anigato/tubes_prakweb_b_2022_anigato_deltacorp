@@ -72,8 +72,7 @@ class AdminCategoryController extends Controller
         return view('admin.category.edit',[
             'title' => 'Edit category',
             'active' => 'editCategory',
-            'category' => $category, 
-            'categories' => Category::all()
+            'category' => $category
         ]);
     }
 
@@ -87,13 +86,14 @@ class AdminCategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $rules = [
-            'name' => 'required|max:255',
+            'name' => 'required|max:225'
         ];
 
         $validatedData = $request->validate($rules);
+        
 
         Category::where('id', $category->id)
-                ->update($validatedData);
+            ->update($validatedData);
         return redirect('/admin/category/');
     }
 

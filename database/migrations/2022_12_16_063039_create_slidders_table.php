@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('slidders', function (Blueprint $table) {
             $table->id();
-            $table->integer("id_product");
+            $table->integer("product_id");
             $table->string("status");
             $table->string("title");
             $table->string("description");

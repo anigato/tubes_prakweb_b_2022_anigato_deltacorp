@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ADMIN Panel | <?= $title ?></title>
+  <title>ADMIN Panel</title>
   @include('admin.layouts.parts.link-header')
 </head>
 
@@ -25,12 +25,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Brand</h1>
+              <h1>Users</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">List All Brand</li>
+                <li class="breadcrumb-item active">List All Users</li>
               </ol>
             </div>
           </div>
@@ -45,7 +45,7 @@
               <div class="card">
 
                 <div class="card-header">
-                  <h3 class="card-title">List All Brand</h3>
+                  <h3 class="card-title">List All Users</h3>
                 </div>
                 <!-- /.card-header -->
 
@@ -55,46 +55,24 @@
                     <thead>
                       <tr class="text-center">
                         <th>NO</th>
-                        <th>PRODUCT</th>
-                        <th>TITLE</th>
-                        <th>DESCRIPTION</th>
-                        <th>STATUS</th>
+                        <th>AVATAR</th>
+                        <th>USERNAME</th>
+                        <th>EMAIL</th>
                         <th>ACTION</th>
                       </tr>
                     </thead>
                     <tbody>
+
                       <?php $i = 1; ?>
-                      @foreach ($slidders as $slidder)
+                      @foreach ($users as $user)
                       <tr class="text-center">
                         <td>{{ $i++; }}</td>
-                        <td>{{ $slidder["product_id"]; }}</td>
-                        <td>{{ $slidder["title"]; }}</td>
-                        <td>{{ $slidder["description"]; }}</td>
+                        <td>{{ $user["avatar"]; }}</td>
+                        <td>{{ $user["username"]; }}</td>
+                        <td>{{ $user["email"]; }}</td>
+
                         <td>
-                          <?php
-                          switch ($slidder["status"]) {
-                            case 0:
-                              echo "Inactive";
-                              break;
-                            case 1:
-                              echo "Active";
-                              break;
-                          } ?>
-                        </td>
-
-                        <td rowspan="2" class="row">
-                          <a href="{{ url ('admin/slidder/' .$slidder['id'].'/edit') }}" class="btn btn-sm btn-info col-md-6 update-link">Edit</a>
-                          <a href="delete.php?id={{ $slidder['id']; }}" class="btn btn-sm btn-danger col-md-6 delete-link">Delete</a>
-                          <?php
-                          switch ($slidder["status"]) {
-                            case 0:
-                              echo '<a href="status.php?status=1&id=' . $slidder['id'] . '" class="btn btn-sm btn-success col-md-12 status-link">Activate</a>';
-                              break;
-                            case 1:
-                              echo '<a href="status.php?status=0&id=' . $slidder['id'] . '" class="btn btn-sm btn-warning col-md-12 status-link">Inactivate</a>';
-                              break;
-                          } ?>
-
+                          <a href="{{ url ('admin/userList/' .$user['id']) }}" class="btn btn-sm btn-info col-md-6 update-link">Detail</a>
                         </td>
                       </tr>
                       @endforeach
@@ -103,10 +81,9 @@
                     <tfoot>
                       <tr class="text-center">
                         <th>NO</th>
-                        <th>PRODUCT</th>
-                        <th>TITLE</th>
-                        <th>DESCRIPTION</th>
-                        <th>STATUS</th>
+                        <th>AVATAR</th>
+                        <th>USERNAME</th>
+                        <th>EMAIL</th>
                         <th>ACTION</th>
                       </tr>
                     </tfoot>
@@ -175,7 +152,7 @@
           if (result.value) {
             Swal.fire({
               title: 'Success!',
-              text: 'One Brand has been deleted',
+              text: 'One Admin has been deleted',
               type: 'success',
               confirmButtonColor: '#3085d6',
               confirmButtonText: 'OK',

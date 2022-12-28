@@ -53,14 +53,19 @@
                   <h3 class="card-title">Edit slidder</h3>
                 </div>
                 <div class="card-body">
-                  <form class="row needs-validation" novalidate method="post" action="" enctype="multipart/form-data">
+                  <form class="row needs-validation" novalidate method="post" action="/admin/slidder/{{ $slidder->id }}" enctype="multipart/form-data">
+                    @method('put')
+                    @csrf
                     <input type="hidden" name="id">
                     <div class="col-md-7">
                       <div class="form-group">
                         <label>Product</label>
                         <div class="input-group mb-3">
-                          <select class="custom-select" name="id_product" required>
+                          <select class="custom-select" name="product_id" required>
                             <option value="" disabled selected>Choose Product</option>
+                            <option value="1" selected>1</option>
+                            <option value="2" selected>2</option>
+                            <option value="3" selected>3</option>
 
                           </select>
                           <div class="invalid-feedback">
@@ -74,7 +79,7 @@
                       <div class="form-group">
                         <label>Title</label>
                         <div class="input-group mb-3">
-                          <input type="text" class="form-control" name="title" id="title" placeholder="Title" required>
+                          <input type="text" class="form-control" name="title" id="title" placeholder="Title" required value="{{ old('title', $slidder->title) }}">
                           <div class="invalid-feedback">
                             Please provide a valid Brand Title.
                           </div>
@@ -85,7 +90,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label for="description">Description</label>
-                        <input id="description" type="hidden" name="description" required>
+                        <input id="description" type="hidden" name="description" required value="{{ old('description', $slidder->description) }}">
                         <div class="invalid-feedback">
                           Please provide a valid the sli$slidder Description.
                         </div>

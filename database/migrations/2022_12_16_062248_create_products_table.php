@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('sku')->unique();
             $table->string('name')->unique();
-            $table->string('id_category');
-            $table->integer('id_brand');
+            $table->string('category_id');
+            $table->integer('brand_id');
             $table->integer('stok');
             $table->integer('capacity');
             $table->integer('price');

@@ -53,13 +53,17 @@
                   <h3 class="card-title">Add New slidder</h3>
                 </div>
                 <div class="card-body">
-                  <form class="row needs-validation" novalidate method="post" action="" enctype="multipart/form-data">
+                  <form class="row needs-validation" novalidate method="post" action="/admin/slidder" enctype="multipart/form-data">
+                    @csrf
                     <div class="col-md-7">
                       <div class="form-group">
                         <label>Product</label>
                         <div class="input-group mb-3">
-                          <select class="custom-select" name="id_product" required>
+                          <select class="custom-select" name="product_id" required>
                             <option value="" disabled selected>Choose Product</option>
+                            <option value="1" selected>1</option>
+                            <option value="2" selected>2</option>
+                            <option value="3" selected>3</option>
 
                           </select>
                           <div class="invalid-feedback">
