@@ -1,89 +1,89 @@
 @extends('admin.layouts.main')
 @section('container')
-    <!-- Main content -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <section class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1>Brand</h1>
+<!-- Main content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Brand</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">List All Brand</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+
+            <div class="card-header">
+              <h3 class="card-title">List All Brand</h3>
             </div>
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">List All Brand</li>
-              </ol>
+            <!-- /.card-header -->
+
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr class="text-center">
+                    <th>NO</th>
+                    <th>IMG</th>
+                    <th>NAME</th>
+                    <th>ACTION</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <?php $i = 1; ?>
+                  @foreach ($brands as $brand)
+                  <tr class="text-center">
+                    <td>{{ $i++; }}</td>
+                    <td><img src="{{ asset('storage/img/brand/'. $brand->img) }}" alt="" class="img-tumbnail rounded" width="100px"></td>
+                    <td>{{ strtoupper($brand["name"]); }}</td>
+
+                    <td rowspan="2" class="row">
+                      <div class="col-md-3"></div>
+                      <a href="edit.php?id={{ $brand['id']; }}" class="btn btn-sm btn-info col-md-3 update-link">Edit</a>
+                      <a href="delete.php?id={{ $brand['id'] }}" class="btn btn-sm btn-danger col-md-3 delete-link">Delete</a>
+                      <div class="col-md-3"></div>
+                    </td>
+                  </tr>
+                  @endforeach
+
+                </tbody>
+                <tfoot>
+                  <tr class="text-center">
+                    <th>NO</th>
+                    <th>IMG</th>
+                    <th>NAME</th>
+                    <th>ACTION</th>
+                  </tr>
+                </tfoot>
+              </table>
             </div>
+            <!-- /.card -->
           </div>
-        </div><!-- /.container-fluid -->
-      </section>
-
-      <!-- Main content -->
-      <section class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-
-                <div class="card-header">
-                  <h3 class="card-title">List All Brand</h3>
-                </div>
-                <!-- /.card-header -->
-
-                <!-- /.card-header -->
-                <div class="card-body">
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                      <tr class="text-center">
-                        <th>NO</th>
-                        <th>IMG</th>
-                        <th>NAME</th>
-                        <th>ACTION</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-
-                      <?php $i = 1; ?>
-                      <?php foreach ($brands as $row) : ?>
-                        <tr class="text-center">
-                          <td><?= $i++; ?></td>
-                          <td><img src="{{ asset('image/'. $row->img) }}" alt="" class="img-tumbnail rounded" width="100px"></td>
-                          <td><?= strtoupper($row["name"]); ?></td>
-
-                          <td rowspan="2" class="row">
-                            <div class="col-md-3"></div>
-                            <a href="edit.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-info col-md-3 update-link">Edit</a>
-                            <a href="delete.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-danger col-md-3 delete-link">Delete</a>
-                            <div class="col-md-3"></div>
-                          </td>
-                        </tr>
-                      <?php endforeach; ?>
-
-                    </tbody>
-                    <tfoot>
-                      <tr class="text-center">
-                        <th>NO</th>
-                        <th>IMG</th>
-                        <th>NAME</th>
-                        <th>ACTION</th>
-                      </tr>
-                    </tfoot>
-                  </table>
-                </div>
-                <!-- /.card -->
-              </div>
-              <!-- /.col -->
-            </div>
-            <!-- /.row -->
-          </div>
-          <!-- /.container-fluid -->
-      </section>
-      <!-- /.content -->
-    </div>
-    <!-- end main content -->
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- end main content -->
 @endsection
-    
+
 @section('script-custom')
 <script>
   $(function() {
