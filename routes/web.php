@@ -1,5 +1,6 @@
 
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
@@ -74,4 +75,3 @@ Route::resource('/admin/order', AdminOrderController::class);
 
 // user detail
 Route::resource('/user', UserDetailController::class);
-
