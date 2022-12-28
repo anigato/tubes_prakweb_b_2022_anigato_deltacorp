@@ -51,6 +51,7 @@ class AdminProductController extends Controller
     public function store(Request $request)
     {
         
+        
         $validateData = $request->validate([
             'name' => 'required|max:255',
             'sku' => 'required',
