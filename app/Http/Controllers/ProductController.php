@@ -19,9 +19,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('user.product.search', [
+        return view('user.product.index', [
             'title' => 'All Product',
-            'active' => 'allProduct'
+            'active' => 'allProduct',
+            'products' => Product::latest()->paginate(20),
+            'categories' => Category::latest()->first()->limit(5)->get(),
+            'brands' => Brand::all(),
         ]);
     }
 
@@ -58,8 +61,9 @@ class ProductController extends Controller
             "title" => $product->name,
             "active" => "posts",
             "detailProduct" => $product,
-            "newProducts" => Product::latest()->paginate(4),
-            "randomProducts" => Product::inRandomOrder()->paginate(10),
+            'categories' => Category::latest()->first()->limit(5)->get(),
+            "newProducts" => Product::latest()->limit(4)->get(),
+            "randomProducts" => Product::inRandomOrder()->limit(10)->get(),
             "brands" => Brand::all(),
             // "checkWish" => Wishlist::with(['user',2])->get()
         ]);

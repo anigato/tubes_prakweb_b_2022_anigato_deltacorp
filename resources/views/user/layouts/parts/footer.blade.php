@@ -39,10 +39,9 @@
                 <div class="footer-menu">
                     <h2 class="footer-wid-title">Kategori</h2>
                     <ul>
+                        @foreach ($categories as $category)
                         <li><a href="../product/search.php?search=category&keyword=SSD">SSD</a></li>
-                        <li><a href="../product/search.php?search=category&keyword=HDD">HDD</a></li>
-                        <li><a href="../product/search.php?search=category&keyword=SSHD">SSHD</a></li>
-                        <li><a href="../product/search.php?search=category&keyword=SSD NVME">SSD NVME</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -65,7 +64,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="copyright">
-                    <p>&copy; 2021 <a href="http://www.youtube.com/anigato" target="_blank">ANIGATO</a>. All Rights Reserved. </p>
+                    <p>&copy; 2022 <a href="http://www.youtube.com/anigato" target="_blank">DeltaCorp</a>. All Rights Reserved. </p>
                 </div>
             </div>
 
