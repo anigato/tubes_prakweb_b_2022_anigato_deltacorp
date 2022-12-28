@@ -45,7 +45,7 @@ class AdminCategoryController extends Controller
         $validateData = $request->validate([
             'name' => 'required|max:255'
         ]);
-        // var_dump($validateData);
+
         Category::create($validateData);
 
         return redirect('/admin/category');
@@ -67,11 +67,13 @@ class AdminCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
         return view('admin.category.edit',[
             'title' => 'Edit category',
-            'active' => 'editCategory'
+            'active' => 'editCategory',
+            'category' => $category, 
+            'categories' => Category::all()
         ]);
     }
 
@@ -82,9 +84,17 @@ class AdminCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $rules = [
+            'name' => 'required|max:255',
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        Category::where('id', $category->id)
+                ->update($validatedData);
+        return redirect('/admin/category/');
     }
 
     /**

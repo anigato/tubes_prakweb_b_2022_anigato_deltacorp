@@ -32,7 +32,7 @@
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Add New User Admin</li>
+                                <li class="breadcrumb-item active">Edit User Admin</li>
                             </ol>
                         </div>
                     </div>
@@ -46,45 +46,81 @@
                         <div class="col-12">
                             <div class="card card-info">
                                 <div class="card-header">
-                                    <h3 class="card-title">Add New User Admin</h3>
+                                    <h3 class="card-title">Edit User Admin</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form class="row needs-validation" novalidate method="post" action="" enctype="multipart/form-data">
+                                    <form class="row needs-validation" novalidate method="post" action="/admin/userAdmin/{{ $user->id }}" enctype="multipart/form-data">
+                                        @method('put')
+                                        @csrf
+                                        <input type="hidden" name="id" id="id">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Username</label>
-                                                <div class="input-group mb-3">
-                                                    <input type="text" class="form-control" name="username" id="username" placeholder="username" required>
-                                                    <div class="invalid-feedback">
-                                                        Please provide a valid Userame.
-                                                    </div>
+                                              <label>Name</label>
+                                              <div class="input-group mb-3">
+                                                <input type="text" class="form-control" name="name" id="name" placeholder="Name" required value="{{ old('name', $user->name) }}">
+                                                <div class="invalid-feedback">
+                                                  Please provide a Name here.
                                                 </div>
+                                              </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6">
+                                          </div>
+                                          <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Password</label>
-                                                <div class="input-group mb-3">
-                                                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
-                                                    <div class="invalid-feedback">
-                                                        Please provide a valid Password.
-                                                    </div>
+                                              <label>Username</label>
+                                              <div class="input-group mb-3">
+                                                <input type="text" class="form-control" name="username" id="username" placeholder="User Name" required readonly value="{{ old('username', $user->username) }}">
+                                                <div class="invalid-feedback">
+                                                  Please provide a Username here.
                                                 </div>
+                                              </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-12">
+                                          </div>
+                                          <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Image</label>
-                                                <div class="custom-file mb-2">
-                                                    <input type="file" class="custom-file-input form-control" name="img" id="img" onchange="showImage(this);">
-                                                    <label class="custom-file-label" for="img">Choose an image (Optional)</label>
+                                              <label>Email</label>
+                                              <div class="input-group mb-3">
+                                                <input type="text" class="form-control" name="email" id="email" placeholder="Email" required value="{{ old('email', $user->email) }}">
+                                                <div class="invalid-feedback">
+                                                  Please provide a Email name here.
                                                 </div>
-
-                                                <div class="row">
-                                                    <div class="col-md-3 mx-auto d-block">
-                                                        <img class="rounded" src="#" alt="" id="show-image" style="width: 100%;">
-                                                    </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label>Old Password</label>
+                                              <div class="input-group mb-3">
+                                                <input type="password" class="form-control" name="oldPassword" id="oldPassword" placeholder="Old Password" required value="">
+                                                <div class="invalid-feedback">
+                                                  Please provide a Password here.
                                                 </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label>New Password</label>
+                                              <div class="input-group mb-3">
+                                                <input type="password" class="form-control" name="password" id="password" placeholder="New Password" required value="">
+                                                <div class="invalid-feedback">
+                                                  Please provide a New Password here.
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label>Confirm Password</label>
+                                              <div class="input-group mb-3">
+                                                <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Confirm New Password" required value="">
+                                                <div class="invalid-feedback">
+                                                  Please Confirm your Password here.
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                       
+                                                
                                             </div>
                                         </div>
                                         <div class="col-md-12">

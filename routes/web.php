@@ -62,7 +62,6 @@ Route::resource('/admin/category', AdminCategoryController::class);
 // slidder
 Route::resource('/admin/slidder', AdminSlidderController::class);
 
-
 // Product Admin
 Route::resource('/admin/product', AdminProductController::class);
 
@@ -74,4 +73,3 @@ Route::resource('/admin/order', AdminOrderController::class);
 
 // user detail
 Route::resource('/user', UserDetailController::class);
-

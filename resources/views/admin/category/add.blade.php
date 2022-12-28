@@ -43,17 +43,6 @@
                       </div>
                     </div>
 
-                    {{-- <div class="col-md-6">
-                      <div class="form-group">
-                        <label>Image</label>
-                        <div class="custom-file mb-2">
-                          <input type="file" class="custom-file-input form-control" name="img" id="img" onchange="showImage(this);" required>
-                          <label class="custom-file-label" for="img">Choose an image</label>
-                          <div class="invalid-feedback">
-                            Please provide a valid Brand Image.
-                          </div>
-                        </div> --}}
-
                         <div class="row">
                           <div class="col-md-3 mx-auto d-block">
                             <img class="rounded" src="#" alt="" id="show-image" style="width: 100%;">
@@ -91,66 +80,6 @@
 @section('script-custom')
     <!-- Select2 -->
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-  <!-- bs-custom-file-input -->
-  <script src="../../../themes/js/input-form/bs-custom-file-input.min.js"></script>
 
-  <!-- Page specific script -->
-  <script>
-    // validasi form
-    (function() {
-      'use strict';
-      window.addEventListener('load', function() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.getElementsByClassName('needs-validation');
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-          form.addEventListener('submit', function(event) {
-            if (form.checkValidity() === false) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-          }, false);
-        });
-      }, false);
-    })();
-    // menampilkan gambar ketika dipilih
-    function showImage(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-          $('#show-image')
-            .attr('src', e.target.result)
-        };
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-    // select2
-    $(function() {
-      bsCustomFileInput.init();
-    });
-
-    // menampilkan gambar ketika dipilih
-    function showImage(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-          $('#show-image')
-            .attr('src', e.target.result)
-        };
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-    // input form khusus nomor
-    function onlyNumber(evt) {
-      var charCode = (evt.which) ? evt.which : event.keyCode
-      if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-        return false;
-      } else {
-        return true;
-      }
-    }
-    //Initialize Select2 Elements
-    $('.select2').select2()
-  </script>
+ 
 @endsection

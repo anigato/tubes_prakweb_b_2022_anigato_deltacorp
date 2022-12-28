@@ -17,7 +17,7 @@ class AdminProductController extends Controller
     public function index()
     {
         return view('admin.product.index', [
-            'title' => 'All Product',
+            'title' => 'Product',
             'active' => 'allProduct',
             'products' => Product::all(),
             'brands' => Brand::all(),
@@ -32,11 +32,14 @@ class AdminProductController extends Controller
      */
     public function create()
     {
-        // return view('admin.product.add', [
-        //     'title' => 'Add Product',
-        //     'active' => 'addProduct'
-        // ]);
-        return view('admin.product.add');
+        return view('admin.product.add', [
+            'title' => 'Add Product',
+            'active' => 'addProduct',
+            'brands' => Brand::all(),
+            'categories' => Category::all()
+            
+        ]);
+    
     }
 
     /**
@@ -47,7 +50,22 @@ class AdminProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $validateData = $request->validate([
+            'name' => 'required|max:255',
+            'sku' => 'required',
+            'id_category' => 'required' ,
+            'id_brand' => 'required',
+            'stok' => 'required', 'min:2', 'max:2',
+            'capacity' => 'required',
+            'price' => 'required', 'min:2', 'max:8',
+            'weight' => 'required', 'min:3', 'max:4',
+            'description' => 'required|min:5|max:255'
+        ]);
+
+        Product::create($validateData);
+
+        return redirect('/admin/product');
     }
 
     /**
