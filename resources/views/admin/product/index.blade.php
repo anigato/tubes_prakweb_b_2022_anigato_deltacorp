@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -90,7 +87,6 @@
                                                         <a href="delete.php?id=<?= $products['id'] ?>" class="btn btn-sm btn-danger col-md-6 delete-link">Delete</a>
                                                     </td>
                                                     
-                                                   
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -120,8 +116,6 @@
             <!-- /.content -->
         </div>
         <!-- end main content -->
-
-
         <!-- footer -->
         @include('admin.layouts.parts.footer')
         <!-- endfooter -->
@@ -131,14 +125,8 @@
             <!-- Control sidebar content goes here -->
         </aside>
         <!-- /.control-sidebar -->
-
     </div>
-
     @include('admin.layouts.parts.script-body')
-
     @include('admin.layouts.parts.script-dataTable')
-
-    
 </body>
-
 </html>

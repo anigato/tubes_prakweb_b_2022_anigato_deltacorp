@@ -230,10 +230,10 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="../users/index.php" class="nav-link">
+                    <a href="{{ url('admin/userList') }}" class="nav-link">
                         <i class="fas fa-users"></i>
                         <p>
-                            Users
+                            User Lists
                         </p>
                     </a>
                 </li>
