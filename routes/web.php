@@ -11,11 +11,13 @@ use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminBrandController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\UserDetailController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminSlidderController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminUserListController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,6 +81,12 @@ Route::resource('/user', UserDetailController::class);
 
 // wishlist
 Route::resource('/wishlist', WishlistController::class);
+
+// cart
+Route::resource('/cart', CartController::class);
+
+//transaction
+Route::resource('/transaction', TransactionController::class);
 
 // User List
 Route::resource('/admin/userList', AdminUserListController::class);
