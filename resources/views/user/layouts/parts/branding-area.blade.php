@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="logo">
-                    <h1><a href="../product/index.php"><img src="{{ asset('image/anigatomini.png') }}" width="100"> ANIGASTORE</a></h1>
+                    <h1><a href="{{ route('home') }}"><img src="{{ asset('image/anigatomini.png') }}" width="100"> DeltaCorp</a></h1>
                 </div>
             </div>
 

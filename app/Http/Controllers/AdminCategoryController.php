@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class AdminCategoryController extends Controller
 {
@@ -14,7 +15,9 @@ class AdminCategoryController extends Controller
     public function index()
     {
         return view('admin.category.index', [
-            'title' => 'Category'
+            'title' => 'Category',
+            'active' => 'allCategory',
+            'categories' => Category::all()
         ]);
     }
 
@@ -25,7 +28,10 @@ class AdminCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category.add', [
+            'title' => 'Add New Category',
+            'active' => 'addNewCategory'
+        ]);
     }
 
     /**
@@ -36,9 +42,14 @@ class AdminCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $validateData = $request->validate([
+            'name' => 'required|max:255'
+        ]);
 
+        Category::create($validateData);
+
+        return redirect('/admin/category');
+    }
     /**
      * Display the specified resource.
      *
@@ -56,9 +67,13 @@ class AdminCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('admin.category.edit',[
+            'title' => 'Edit category',
+            'active' => 'editCategory',
+            'category' => $category
+        ]);
     }
 
     /**
@@ -68,9 +83,18 @@ class AdminCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $rules = [
+            'name' => 'required|max:225'
+        ];
+
+        $validatedData = $request->validate($rules);
+        
+
+        Category::where('id', $category->id)
+            ->update($validatedData);
+        return redirect('/admin/category/');
     }
 
     /**

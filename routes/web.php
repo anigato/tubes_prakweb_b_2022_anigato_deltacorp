@@ -1,7 +1,7 @@
-<?php
-use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\CartController;
+<?php
+
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
@@ -16,7 +16,8 @@ use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminSlidderController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminDashboardController;
-
+use App\Http\Controllers\AdminUserListController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,7 +67,6 @@ Route::resource('/admin/category', AdminCategoryController::class);
 // slidder
 Route::resource('/admin/slidder', AdminSlidderController::class);
 
-
 // Product Admin
 Route::resource('/admin/product', AdminProductController::class);
 
@@ -74,7 +74,7 @@ Route::resource('/admin/product', AdminProductController::class);
 Route::resource('/admin/userAdmin', AdminUserController::class);
 
 // Order Admin
-Route::resource('/admin/orders', AdminOrderController::class);
+Route::resource('/admin/order', AdminOrderController::class);
 
 // user detail
 Route::resource('/user', UserDetailController::class);
@@ -88,3 +88,5 @@ Route::resource('/cart', CartController::class);
 //transaction
 Route::resource('/transaction', TransactionController::class);
 
+// User List
+Route::resource('/admin/userList', AdminUserListController::class);

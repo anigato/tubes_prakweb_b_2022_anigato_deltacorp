@@ -49,12 +49,35 @@
                                     <h3 class="card-title">Add New User Admin</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form class="row needs-validation" novalidate method="post" action="" enctype="multipart/form-data">
+                                    <form class="row needs-validation" novalidate method="post" action="/admin/userAdmin/" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Name</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" name="name" id="name" placeholder="name" required>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid Userame.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Username</label>
                                                 <div class="input-group mb-3">
                                                     <input type="text" class="form-control" name="username" id="username" placeholder="username" required>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid Userame.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" name="email" id="email" placeholder="email" required>
                                                     <div class="invalid-feedback">
                                                         Please provide a valid Userame.
                                                     </div>
@@ -72,13 +95,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Image</label>
-                                                <div class="custom-file mb-2">
-                                                    <input type="file" class="custom-file-input form-control" name="img" id="img" onchange="showImage(this);">
-                                                    <label class="custom-file-label" for="img">Choose an image (Optional)</label>
-                                                </div>
 
                                                 <div class="row">
                                                     <div class="col-md-3 mx-auto d-block">

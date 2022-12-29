@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Wishlist;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -15,9 +19,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('user.product.search', [
+        return view('user.product.index', [
             'title' => 'All Product',
-            'active' => 'allProduct'
+            'active' => 'allProduct',
+            'products' => Product::latest()->paginate(20),
+            'categories' => Category::latest()->first()->limit(5)->get(),
+            'brands' => Brand::all(),
         ]);
     }
 
@@ -48,12 +55,17 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Product $product)
     {
         return view('user.product.detail', [
-            "title" => "Singgle Post",
+            "title" => $product->name,
             "active" => "posts",
-            
+            "detailProduct" => $product,
+            'categories' => Category::latest()->first()->limit(5)->get(),
+            "newProducts" => Product::latest()->limit(4)->get(),
+            "randomProducts" => Product::inRandomOrder()->limit(10)->get(),
+            "brands" => Brand::all(),
+            // "checkWish" => Wishlist::with(['user',2])->get()
         ]);
     }
 

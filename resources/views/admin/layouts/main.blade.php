@@ -1,30 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeltaCorp Admin | {{ $title }}</title>
+  @yield('script-head')
+  @include('admin.layouts.parts.link-header')
+</head>
 
-    {{-- Boostrap Icon --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
+  <div class="wrapper">
+    <!-- Navbar -->
+    @include('admin.layouts.parts.navbar')
+    <!-- endnavbar -->
 
-    {{-- My Style --}}
-    <link rel="stylesheet" href="/css/style.css">
+    <!-- sidebar -->
+    @include('admin.layouts.parts.sidebar')
+    <!-- endsidebar -->
 
-    <title>DeltaCorp | {{ $title }}</title>
-  </head>
-  <body>
-   
-     {{-- @include('partials.navbar') --}}
+    <!-- Main content -->
+    @yield('container')
+    <!-- end main content -->
 
-      <div class="container mt-4">
-          @yield('container')
-      </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-  </body>
+    <!-- footer -->
+    @include('admin.layouts.parts.footer')
+    <!-- endfooter -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+  </div>
+
+  @include('admin.layouts.parts.script-body')
+  @include('admin.layouts.parts.script-dataTable')
+  
+  @yield('script-custom')
+</body>
+
 </html>

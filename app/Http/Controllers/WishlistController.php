@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Wishlist;
 use App\Http\Requests\StoreWishlistRequest;
 use App\Http\Requests\UpdateWishlistRequest;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Product;
 
 class WishlistController extends Controller
 {
@@ -17,7 +20,11 @@ class WishlistController extends Controller
         return view('user.wishlist.index', [
             'title' => 'Wishlist User',
             'active' => 'wishlist',
-            'wishlist' => Wishlist::all()
+            'wishlist' => Wishlist::all(),
+            'categories' => Category::latest()->first()->limit(5)->get(),
+            "newProducts" => Product::latest()->limit(4)->get(),
+            "randomProducts" => Product::inRandomOrder()->limit(10)->get(),
+            "brands" => Brand::all(),
         ]);
         
     }

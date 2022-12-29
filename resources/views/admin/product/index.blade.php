@@ -17,7 +17,6 @@
 
         @include('admin.layouts.parts.navbar')
         <!-- endnavbar -->
-        {{-- ? --}}
 
         <!-- sidebar -->
         @include('admin.layouts.parts.sidebar')
@@ -72,9 +71,28 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            
+                                            <?php $i = 1; ?>
+                                            @foreach($products as $products)
+                                                <tr class="text-center">
+                                                    <td>{{  $i++; }}</td>
+                                                    <td><img src="{{ asset('storage/img/product/'. $products->img) }}" alt="" class="img-tumbnail rounded" width="100px"></td>
+                                                    <td>{{  strtoupper($products["name"]); }}</td>
+
+                                                    @foreach($brands as $br)
+                                                        <td>{{  $br['id']; }}</td>
+                                                    @endforeach
+                                                    <td>{{  $products["price"]; }}</td>
+                                                    <td>{{  $products["capacity"]; }}</td>
+                                                    <td>{{  $products["id"]; }}</td>
+                                                    <td>{{  $products["stok"]; }}</td>
+                                                    <td rowspan="2" class="row">
+                                                        <a href="edit.php?id=<?= $products['id']; ?>" class="btn btn-sm btn-info col-md-6 update-link">Edit</a>
+                                                        <a href="delete.php?id=<?= $products['id'] ?>" class="btn btn-sm btn-danger col-md-6 delete-link">Delete</a>
+                                                    </td>
+                                                    
+                                                   
                                                 </tr>
-                
+                                            @endforeach
                                         </tbody>
                                         <tfoot>
                                             <tr class="text-center">
@@ -120,81 +138,7 @@
 
     @include('admin.layouts.parts.script-dataTable')
 
-    {{-- <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-        jQuery(document).ready(function($) {
-            $('.delete-link').on('click', function() {
-                var getLink = $(this).attr('href');
-
-                Swal.fire({
-                    title: 'Warning!',
-                    text: 'Are you sure you want to delete it? data will be lost',
-                    type: 'warning',
-                    // html:true,
-                    showCancelButton: true,
-                    cancelButtonColor: '#d33',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'Yes, Delete It!',
-                    allowOutsideClick: false
-                }).then((result) => {
-                    if (result.value) {
-                        Swal.fire({
-                            title: 'Success!',
-                            text: 'One Product has been deleted',
-                            type: 'success',
-                            confirmButtonColor: '#3085d6',
-                            confirmButtonText: 'OK',
-                            allowOutsideClick: false
-                        }).then((result) => {
-                            if (result.value) {
-                                window.location.href = getLink;
-                            }
-                        })
-
-                    }
-                });
-                return false;
-            });
-        });
-
-        jQuery(document).ready(function($) {
-            $('.update-link').on('click', function() {
-                var getLink = $(this).attr('href');
-
-                Swal.fire({
-                    title: 'Warning!',
-                    text: 'Are you sure you want to edit it?',
-                    type: 'question',
-                    // html:true,
-                    showCancelButton: true,
-                    cancelButtonColor: '#d33',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'Yes'
-                }).then((result) => {
-                    if (result.value) {
-                        window.location.href = getLink;
-                    }
-                });
-                return false;
-            });
-        });
-    </script> --}}
+    
 </body>
 
 </html>
