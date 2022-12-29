@@ -86,9 +86,13 @@ class AdminProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Product $product)
     {
-        return view('admin.product.edit');
+        return view('admin.product.edit',[
+            'title' => 'Edit category',
+            'active' => 'editCategory',
+            'product' => $product
+        ]);
     }
 
     /**
@@ -100,7 +104,24 @@ class AdminProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $rules = [
+            'name' => 'required|max:225',
+            'sku' => 'required',
+            'id_category' => 'required' ,
+            'id_brand' => 'required',
+            'stok' => 'required', 'min:2', 'max:2',
+            'capacity' => 'required',
+            'price' => 'required', 'min:2', 'max:8',
+            'weight' => 'required', 'min:3', 'max:4',
+            'description' => 'required|min:5|max:255'
+        ];
+
+        $validatedData = $request->validate($rules);
+        
+
+        Product::where('id', $product->id)
+            ->update($validatedData);
+        return redirect('/admin/product/');
     }
 
     /**
