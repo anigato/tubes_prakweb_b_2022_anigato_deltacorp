@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +25,6 @@
         <!-- sidebar -->
         @include('admin.layouts.parts.sidebar')
         <!-- endsidebar -->
-
         <!-- Main content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -36,7 +37,7 @@
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Add New Product</li>
+                                <li class="breadcrumb-item active">Edit Product</li>
                             </ol>
                         </div>
                     </div>
@@ -50,10 +51,10 @@
                         <div class="col-12">
                             <div class="card card-info">
                                 <div class="card-header">
-                                    <h3 class="card-title">Add New Product</h3>
+                                    <h3 class="card-title">Edit Product</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form class="row needs-validation" novalidate method="post" action="" enctype="multipart/form-data">
+                                    <form class="row needs-validation" novalidate method="post" action="/admin/product/{{ $product->id }}" enctype="multipart/form-data">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Name</label>
@@ -86,8 +87,8 @@
                                                 <div class="input-group mb-3">
                                                     <select class="custom-select text-uppercase" name="brand" required>
                                                         <option value="" disabled selected>Pilih Brand</option>
-                                                        <?php foreach ($brands as $row) : ?>
-                                                            <option value="<?= $row['id']; ?>"><?= $row['name']; ?></option>
+                                                        <?php foreach ($brands as $brand) : ?>
+                                                            <option value="<?= $brand['id']; ?>"><?= $brand['name']; ?></option>
                                                         <?php endforeach; ?>
                                                     </select>
                                                     <div class="invalid-feedback">
@@ -236,65 +237,7 @@
 
 
 
-    <!-- Page specific script -->
-    {{-- <script>
-        // validasi form
-        (function() {
-            'use strict';
-            window.addEventListener('load', function() {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function(form) {
-                    form.addEventListener('submit', function(event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
-        // menampilkan gambar ketika dipilih
-        function showImage(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#show-image')
-                        .attr('src', e.target.result)
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-        // select2
-        $(function() {
-            bsCustomFileInput.init();
-        });
-
-        // menampilkan gambar ketika dipilih
-        function showImage(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#show-image')
-                        .attr('src', e.target.result)
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-        // input form khusus nomor
-        function onlyNumber(evt) {
-            var charCode = (evt.which) ? evt.which : event.keyCode
-            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-                return false;
-            } else {
-                return true;
-            }
-        }
-        //Initialize Select2 Elements
-        $('.select2').select2()
-    </script> --}}
+   
 </body>
 
 </html>

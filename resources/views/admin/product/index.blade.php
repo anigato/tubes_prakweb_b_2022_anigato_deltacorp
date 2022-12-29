@@ -74,16 +74,13 @@
                                                     <td>{{  $i++; }}</td>
                                                     <td><img src="{{ asset('storage/img/product/'. $products->img) }}" alt="" class="img-tumbnail rounded" width="100px"></td>
                                                     <td>{{  strtoupper($products["name"]); }}</td>
-
-                                                    @foreach($brands as $br)
-                                                        <td>{{  $br['id']; }}</td>
-                                                    @endforeach
+                                                    <td>{{ $products->brand->name }}</td>
                                                     <td>{{  $products["price"]; }}</td>
                                                     <td>{{  $products["capacity"]; }}</td>
-                                                    <td>{{  $products["id"]; }}</td>
-                                                    <td>{{  $products["stok"]; }}</td>
+                                                    <td>{{  $products->category->id}}</td>
+                                                    <td>{{  $products["stok"]; }}</td>z
                                                     <td rowspan="2" class="row">
-                                                        <a href="edit.php?id=<?= $products['id']; ?>" class="btn btn-sm btn-info col-md-6 update-link">Edit</a>
+                                                        <a href="{{ url('admin/product/'.$products['id'].'/edit') }}" class="btn btn-sm btn-info col-md-6 update-link">Edit</a>
                                                         <a href="delete.php?id=<?= $products['id'] ?>" class="btn btn-sm btn-danger col-md-6 delete-link">Delete</a>
                                                     </td>
                                                     
