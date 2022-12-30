@@ -50,8 +50,6 @@ class AdminProductController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
-        
         $validateData = $request->validate([
             'name' => 'required|max:255',
             'sku' => 'required',
@@ -63,9 +61,6 @@ class AdminProductController extends Controller
             'weight' => 'required', 'min:3', 'max:4',
             'description' => 'required|min:5|max:255'
         ]);
-
-        return $validateData;
-
         Product::create($validateData);
 
         return redirect('/admin/product');
@@ -109,8 +104,8 @@ class AdminProductController extends Controller
         $rules = [
             'name' => 'required|max:225',
             'sku' => 'required',
-            'id_category' => 'required' ,
-            'id_brand' => 'required',
+            'category_id' => 'required' ,
+            'brand_id' => 'required',
             'stok' => 'required', 'min:2', 'max:2',
             'capacity' => 'required',
             'price' => 'required', 'min:2', 'max:8',
@@ -132,8 +127,9 @@ class AdminProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy( Product $product)
     {
-        //
+        Product::destroy($product->id);
+        return redirect('/admin/product')->with('success','Product has been deleted!');
     }
 }

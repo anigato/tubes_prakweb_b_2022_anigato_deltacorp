@@ -50,7 +50,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Category</label>
-                                            <select class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;" name="category_brand" required>
+                                            <select class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;" name="category_id" required>
                                                 <option selected="selected" disabled value="">Open list Product Category</option>
                                                 @foreach ($categories as $category)
                                                         <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
@@ -173,7 +173,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group ">
-                                            <button type="submit" class="btn btn-primary  start" name="tambah">
+                                            <button type="submit" class="btn btn-primary  start">
                                                 <i class="fas fa-upload"></i>
                                                 <span> Add New Product</span>
                                             </button>

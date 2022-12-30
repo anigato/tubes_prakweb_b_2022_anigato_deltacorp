@@ -103,8 +103,9 @@ class AdminCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Category $category)
     {
-        //
+        Category::destroy($category->id);
+        return redirect('/admin/category')->with('success','Category has been deleted!');
     }
 }

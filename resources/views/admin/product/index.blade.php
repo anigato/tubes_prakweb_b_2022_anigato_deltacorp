@@ -77,11 +77,17 @@
                                                     <td>{{ $product->brand->name }}</td>
                                                     <td>{{  $product["price"]; }}</td>
                                                     <td>{{  $product["capacity"]; }}</td>
-                                                    <td>{{  $product->category->id}}</td>
+                                                    <td>{{  $product->category->name}}</td>
                                                     <td>{{  $product["stok"]; }}</td>z
                                                     <td rowspan="2" class="row">
+
                                                         <a href="{{ url('admin/product/'.$product['id'].'/edit') }}" class="btn btn-sm btn-info col-md-6 update-link">Edit</a>
-                                                        <a href="delete.php?id=<?= $product['id'] ?>" class="btn btn-sm btn-danger col-md-6 delete-link">Delete</a>
+                                                        
+                                                        <form action="{{ url('admin/product/'.$product['id']) }}" method="post" class="d-inline">
+                                                            @method('delete')
+                                                            @csrf
+                                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                                        </form>
                                                     </td>
                                                     
                                                 </tr>
