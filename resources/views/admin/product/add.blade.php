@@ -37,7 +37,7 @@
                             <div class="card-body">
                                 <form class="row needs-validation" novalidate method="post" action="/admin/product" enctype="multipart/form-data">
                                     @csrf
-                                   <input type="hidden" name="sku" value="2">
+                                    <input type="hidden" name="sku" value="{{ rand(1 , 99) }}">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Name</label>
@@ -50,7 +50,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Category</label>
-                                            <select class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;" name="id_category" required>
+                                            <select class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;" name="category_brand" required>
                                                 <option selected="selected" disabled value="">Open list Product Category</option>
                                                 @foreach ($categories as $category)
                                                         <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
@@ -68,7 +68,7 @@
                                         <div class="form-group">
                                             <label>Brand</label>
                                             <div class="input-group mb-3">
-                                                <select class="custom-select text-uppercase" name="id_brand" required>
+                                                <select class="custom-select text-uppercase" name="brand_id" required>
                                                     <option value="" disabled selected>Pilih Brand</option>
                                                     @foreach ($brands as $brand)
                                                         <option value="{{ $brand['id'] }}">{{ $brand['name'] }}</option>
