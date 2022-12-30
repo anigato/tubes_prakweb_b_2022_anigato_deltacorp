@@ -46,18 +46,25 @@
 
                   <?php $i = 1; ?>
                   @foreach ($brands as $brand)
-                    <tr class="text-center">
-                      <td><?= $i++; ?></td>
-                      <td><img src="{{ asset('storage/img/brand/'. $brand->img) }}" alt="" class="img-tumbnail rounded" width="100px"></td>
-                      <td>{{ strtoupper($brand["name"]) }}</td>
+                  <tr class="text-center">
+                    <td><?= $i++; ?></td>
+                    <td><img src="{{ asset('storage/img/brand/'. $brand->img) }}" alt="" class="img-tumbnail rounded" width="100px"></td>
+                    <td>{{ strtoupper($brand["name"]) }}</td>
 
-                      <td rowspan="2" class="row">
-                        <div class="col-md-3"></div>
-                        <a href="{{ url('admin/brand/'.$brand['id'].'/edit') }}" class="btn btn-sm btn-info col-md-3 update-link">Edit</a>
-                        <a href="delete.php?id=<?= $brand['id'] ?>" class="btn btn-sm btn-danger col-md-3 delete-link">Delete</a>
-                        <div class="col-md-3"></div>
-                      </td>
-                    </tr>
+                    <td rowspan="2" class="row">
+                      <div class="col-md-3"></div>
+                      <a href="{{ url('admin/brand/'.$brand['id'].'/edit') }}" class="btn btn-sm btn-info col-md-3 update-link">Edit</a>
+
+                      <form action="{{ url('admin/brand/'.$brand['id']) }}" method="post" class="d-inline">
+                        @method('delete')
+                        @csrf
+                        <button class="btn btn-sm btn-danger">Delete</button>
+
+                      </form>
+
+                      <div class="col-md-3"></div>
+                    </td>
+                  </tr>
                   @endforeach;
 
                 </tbody>
@@ -85,79 +92,79 @@
 @endsection
 
 @section('script-custom')
-    <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-        jQuery(document).ready(function($) {
-            $('.delete-link').on('click', function() {
-                var getLink = $(this).attr('href');
+<script>
+  $(function() {
+    $("#example1").DataTable({
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+  jQuery(document).ready(function($) {
+    $('.delete-link').on('click', function() {
+      var getLink = $(this).attr('href');
 
-                Swal.fire({
-                    title: 'Warning!',
-                    text: 'Are you sure you want to delete it? data will be lost',
-                    type: 'warning',
-                    // html:true,
-                    showCancelButton: true,
-                    cancelButtonColor: '#d33',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'Yes, Delete It!',
-                    allowOutsideClick: false
-                }).then((result) => {
-                    if (result.value) {
-                        Swal.fire({
-                            title: 'Success!',
-                            text: 'One Brand has been deleted',
-                            type: 'success',
-                            confirmButtonColor: '#3085d6',
-                            confirmButtonText: 'OK',
-                            allowOutsideClick: false
-                        }).then((result) => {
-                            if (result.value) {
-                                window.location.href = getLink;
-                            }
-                        })
+      Swal.fire({
+        title: 'Warning!',
+        text: 'Are you sure you want to delete it? data will be lost',
+        type: 'warning',
+        // html:true,
+        showCancelButton: true,
+        cancelButtonColor: '#d33',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, Delete It!',
+        allowOutsideClick: false
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire({
+            title: 'Success!',
+            text: 'One Brand has been deleted',
+            type: 'success',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK',
+            allowOutsideClick: false
+          }).then((result) => {
+            if (result.value) {
+              window.location.href = getLink;
+            }
+          })
 
-                    }
-                });
-                return false;
-            });
-        });
+        }
+      });
+      return false;
+    });
+  });
 
-        jQuery(document).ready(function($) {
-            $('.update-link').on('click', function() {
-                var getLink = $(this).attr('href');
+  jQuery(document).ready(function($) {
+    $('.update-link').on('click', function() {
+      var getLink = $(this).attr('href');
 
-                Swal.fire({
-                    title: 'Warning!',
-                    text: 'Are you sure you want to edit it?',
-                    type: 'question',
-                    // html:true,
-                    showCancelButton: true,
-                    cancelButtonColor: '#d33',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'Yes'
-                }).then((result) => {
-                    if (result.value) {
-                        window.location.href = getLink;
-                    }
-                });
-                return false;
-            });
-        });
-    </script>
+      Swal.fire({
+        title: 'Warning!',
+        text: 'Are you sure you want to edit it?',
+        type: 'question',
+        // html:true,
+        showCancelButton: true,
+        cancelButtonColor: '#d33',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Yes'
+      }).then((result) => {
+        if (result.value) {
+          window.location.href = getLink;
+        }
+      });
+      return false;
+    });
+  });
+</script>
 @endsection

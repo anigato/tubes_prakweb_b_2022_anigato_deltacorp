@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminBrandController extends Controller
 {
@@ -49,7 +50,7 @@ class AdminBrandController extends Controller
 
         if ($request->file('img')) {
             $img = $request->file('img')->store('img/brand');
-            $imageSplit = explode('/',$img);
+            $imageSplit = explode('/', $img);
             $validatedData['img'] = $imageSplit[2];
         }
 
@@ -99,10 +100,10 @@ class AdminBrandController extends Controller
         ];
 
         $validatedData = $request->validate($rules);
-        
+
         if ($request->file('img')) {
             $img = $request->file('img')->store('img/brand');
-            $imageSplit = explode('/',$img);
+            $imageSplit = explode('/', $img);
             $validatedData['img'] = $imageSplit[2];
         }
 
@@ -118,8 +119,12 @@ class AdminBrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Brand $brand)
     {
-        //
+        if ($brand->img) {
+            Storage::delete($brand->img);
+        }
+        Brand::destroy($brand->id);
+        return redirect('/admin/brand')->with('success', 'Post has been deleted');
     }
 }
