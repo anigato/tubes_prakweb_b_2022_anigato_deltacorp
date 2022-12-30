@@ -16,19 +16,19 @@ return new class extends Migration
         Schema::create('user_details', function (Blueprint $table) {
             $table->id();
             $table->integer("user_id");
-            $table->string("nick_name");
-            $table->string("full_name");
-            $table->string("phone");
-            $table->string("street");
-            $table->string("rt");
-            $table->string("rw");
-            $table->string("dusun");
-            $table->string("desa");
-            $table->string("kecamatan");
-            $table->string("kabupaten");
-            $table->string("provinsi");
-            $table->integer("postal_code");
-            $table->string("img");
+            $table->string("nick_name")->nullable();
+            $table->string("full_name")->nullable();
+            $table->string("phone")->nullable();
+            $table->string("street")->nullable();
+            $table->string("rt")->nullable();
+            $table->string("rw")->nullable();
+            $table->string("dusun")->nullable();
+            $table->string("desa")->nullable();
+            $table->string("kecamatan")->nullable();
+            $table->string("kabupaten")->nullable();
+            $table->string("provinsi")->nullable();
+            $table->integer("postal_code")->nullable();
+            $table->string("img")->nullable();
             $table->timestamps();
         });
     }

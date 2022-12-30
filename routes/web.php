@@ -50,7 +50,8 @@ Route::post('/admin/login', [LoginController::class, 'authenticateAdmin']);
 // login user
 Route::get('/login', [LoginController::class, 'indexUser'])->name('loginUser');
 Route::post('/login', [LoginController::class, 'authenticateUser']);
-
+//logout
+Route::post('/logout', [LoginController::class, 'logout']);
 
 //Dashboard Admin
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'dashboardAdmin'])->name('dashboardAdmin');

@@ -4,18 +4,25 @@
             <div class="col-md-8">
                 <div class="user-menu">
                     <ul>
-                        <?php if (isset($_COOKIE['user_name'])) {
-                            $_SESSION['user_name'] = $_COOKIE['user_name'];
-                        } ?>
-                        <?php if (isset($_SESSION['user_name'])) : ?>
-                            <li><a class="text-uppercase" href="../user/detail.php"><i class="fa fa-user"></i> <?= $_SESSION['user_name'] ?></a></li>
-                            <li><a href="../wishlist/index.php"><i class="fa fa-heart"></i> Daftar Keinginan</a></li>
-                            <li><a href="../cart/index.php"><i class="fas fa-shopping-cart"></i> Keranjang Saya</a></li>
-                            <li><a href="../transaction/index.php"><i class="fas fa-vote-yea"></i> Transaksi Saya</a></li>
-                            <li><a href="" onclick="return logout()"><i class="fa fa-user"></i> Logout</a></li>
-                        <?php else : ?>
+                        @auth
+                            <li>
+                                <a class="text-uppercase" href="{{ url('user/'.auth()->user()->id) }}"><i class="fa fa-user"></i>{{ auth()->user()->name }}</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('wishlist') }}"><i class="fa fa-heart"></i> Daftar Keinginan</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('cart') }}"><i class="fas fa-shopping-cart"></i> Keranjang Saya</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('transaction') }}"><i class="fas fa-vote-yea"></i> Transaksi Saya</a>
+                            </li>
+                            <li>
+                                <a href="" onclick="return logout()"><i class="fa fa-user"></i> Logout</a>
+                            </li>
+                        @else
                             <li><a href="{{ route('loginUser') }}"><i class="fa fa-user"></i> Daftar/Masuk</a></li>
-                        <?php endif; ?>
+                        @endauth
                     </ul>
                 </div>
             </div>
@@ -45,7 +52,7 @@
                     allowOutsideClick: false
                 }).then((result) => {
                     if (result.value) {
-                        window.location.href = '../user/logout.php';
+                        window.location.href = '{{ url("logout") }}';
                     }
                 })
 

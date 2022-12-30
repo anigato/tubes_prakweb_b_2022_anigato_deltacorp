@@ -66,14 +66,19 @@
                                     </tr>
                                     @foreach ($wishlist as $wish)
                                         <tr>
-                                            <td><img src="{{ asset('storage/img/product/') }}" alt=""
-                                                    class="rounded" width="70" alt=""></td>
-                                            <td><a href="">{{ $wish['id_product'] }}</a></td>
-                                            <td><a href="">{{ $wish['id_user'] }}</a></td>
-                                            <td><a href="../product/detail.php">{{ $wish['id'] }}</a></td>
                                             <td>
-                                                <a href="../wishlist/delete" class="btn btn-sm btn-danger"><i
-                                                        class="far fa-trash-alt"></i></a>
+                                                <img src="{{ asset('storage/img/product/' . $wish->product->img) }}"
+                                                    alt=""class="rounded" width="70" alt="">
+                                            </td>
+                                            <td>
+                                                <a
+                                                    href="{{ url('product/' . $wish->product->id) }}">{{ $wish->product->name }}</a>
+                                            </td>
+                                            <td>
+                                                {{ $wish->product->price }}
+                                            </td>
+                                            <td>
+                                                <a href="../wishlist/delete" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
                                             </td>
                                             <td>
                                                 <form method="post" action="../cart/index.php" class="cart">
@@ -115,102 +120,6 @@
 
     <!--End script-body-->
     @include('user.layouts.parts.script-body')
-    <?php
-    if (isset($_POST['edit'])) {
-        $upload = uploadImage('../../../assets/img/users/', $_POST, 'edit-user');
-        if ($upload == 'success') {
-            echo "
-                    <script type='text/javascript'>
-                    
-                    Swal.fire({
-                        title:'Success!',
-                        text:'Profil anda berhasil diperbarui',
-                        type:'success',
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: 'OK'
-                    }).then((result) => {
-                        if (result.value) {
-                        document.location.href='../user/detail.php';
-                        }
-                    })
-                    </script>
-                    ";
-        } elseif ($upload == 'tooLarge') {
-            echo "
-                    <script type='text/javascript'>
-                    Swal.fire({
-                        title:'Error!',
-                        text:'Gambar Terllau besar, coba kecilkan ukuran gambar',
-                        type:'error',
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: 'OK'
-                    }).then((result) => {
-                        if (result.value) {
-                        document.location.href='../user/detail.php';
-                        }
-                    })
-                    </script>
-                    ";
-        } elseif ($upload == 'notImage') {
-            echo "
-                    <script type='text/javascript'>
-                    Swal.fire({
-                        title:'Error!',
-                        text:'Hanya gambar JPG, JPEG dan PNG yang diperbolehkan',
-                        type:'error',
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: 'OK'
-                    }).then((result) => {
-                        if (result.value) {
-                        document.location.href='../user/detail.php';
-                        }
-                    })
-                    </script>
-                ";
-        }
-    }
-    
-    ?>
-    <script>
-        (function() {
-            'use strict';
-            window.addEventListener('load', function() {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function(form) {
-                    form.addEventListener('submit', function(event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
-
-        function showImage(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#show-image')
-                        .attr('src', e.target.result)
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-        input form khusus nomor
-
-        function onlyNumber(evt) {
-            var charCode = (evt.which) ? evt.which : event.keyCode
-            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-                return false;
-            } else {
-                return true;
-            }
-        }
-    </script>
 </body>
 
 </html>

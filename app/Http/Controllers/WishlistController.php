@@ -20,7 +20,7 @@ class WishlistController extends Controller
         return view('user.wishlist.index', [
             'title' => 'Wishlist User',
             'active' => 'wishlist',
-            'wishlist' => Wishlist::all(),
+            'wishlist' => Wishlist::where('user_id',auth()->user()->id)->get(),
             'categories' => Category::latest()->first()->limit(5)->get(),
             "newProducts" => Product::latest()->limit(4)->get(),
             "randomProducts" => Product::inRandomOrder()->limit(10)->get(),

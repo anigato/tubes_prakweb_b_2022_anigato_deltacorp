@@ -13,7 +13,17 @@
 </head>
 
 <body>
-
+    @if (session()->has('success'))
+    <script type='text/javascript'>
+        Swal.fire({
+            title: 'Success!',
+            text: '{{ session('success') }}',
+            icon: 'success',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK'
+        })
+    </script>
+    @endif
 
     <!-- End header area -->
     @include('user.layouts.parts.header')

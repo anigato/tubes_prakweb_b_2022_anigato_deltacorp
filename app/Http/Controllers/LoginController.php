@@ -27,7 +27,7 @@ class LoginController extends Controller
     public function authenticateAdmin(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email',
+            'username' => 'required|email',
             'password' => 'required',
             'is_admin' => 'required'
         ]);
@@ -44,17 +44,23 @@ class LoginController extends Controller
     public function authenticateUser(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required',
             'is_admin' => 'required'
         ]);
 
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/')->with('success', 'Anda Berhasil Masuk!');
         }
 
         return back()->with('loginError', 'Username atau Password Salah!');
+    }
 
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 }
