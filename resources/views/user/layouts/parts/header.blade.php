@@ -18,7 +18,14 @@
                                 <a href="{{ url('transaction') }}"><i class="fas fa-vote-yea"></i> Transaksi Saya</a>
                             </li>
                             <li>
-                                <a href="" onclick="return logout()"><i class="fa fa-user"></i> Logout</a>
+                                {{-- <a href="" onclick="return logout()"><i class="fa fa-user"></i> Logout</a> --}}
+
+                                <form action="/logout" method="post">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">
+                                        <i class="bi bi-box-arrow-right"></i> Logout
+                                    </button>
+                                </form>
                             </li>
                         @else
                             <li><a href="{{ route('loginUser') }}"><i class="fa fa-user"></i> Daftar/Masuk</a></li>

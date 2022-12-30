@@ -37,7 +37,7 @@
                             <div class="card-body">
                                 <form class="row needs-validation" novalidate method="post" action="/admin/product" enctype="multipart/form-data">
                                     @csrf
-                                   <input type="hidden" name="sku" value="2">
+                                    <input type="hidden" name="sku" value="{{ rand(1 , 99) }}">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Name</label>
@@ -173,7 +173,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group ">
-                                            <button type="submit" class="btn btn-primary  start" name="tambah">
+                                            <button type="submit" class="btn btn-primary  start">
                                                 <i class="fas fa-upload"></i>
                                                 <span> Add New Product</span>
                                             </button>

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('capacity');
             $table->integer('price');
             $table->integer('weight');
-            $table->string('img')->unique();
+            $table->string('img')->unique()->nullable();
             $table->text('description');
             $table->timestamps();
         });

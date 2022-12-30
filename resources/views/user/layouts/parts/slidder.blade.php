@@ -11,7 +11,8 @@
                         <h3 class="caption title">
                             <span class="primary">{{ $slidder['title'] }}</span>
                         </h3>
-                        <h5 class="caption subtitle text-white">{{ htmlspecialchars_decode($slidder['description'], ENT_QUOTES) }}
+                        <h5 class="caption subtitle text-white">{!! $slidder['description'] !!}
+                        {{-- <h5 class="caption subtitle text-white">{{ htmlspecialchars_decode($slidder['description'], ENT_QUOTES) }} --}}
                         </h5>
                         <a class="caption button-radius btn btn-sm btn-primary"
                             href="{{ url('product/' . $slidder->product['id']) }}">Lihat Detail</a>
