@@ -69,19 +69,25 @@
                                         </thead>
                                         <tbody>
                                             <?php $i = 1; ?>
-                                            @foreach($products as $products)
+                                            @foreach($products as $product)
                                                 <tr class="text-center">
                                                     <td>{{  $i++; }}</td>
-                                                    <td><img src="{{ asset('storage/img/product/'. $products->img) }}" alt="" class="img-tumbnail rounded" width="100px"></td>
-                                                    <td>{{  strtoupper($products["name"]); }}</td>
-                                                    <td>{{ $products->brand->name }}</td>
-                                                    <td>{{  $products["price"]; }}</td>
-                                                    <td>{{  $products["capacity"]; }}</td>
-                                                    <td>{{  $products->category->id}}</td>
-                                                    <td>{{  $products["stok"]; }}</td>z
+                                                    <td><img src="{{ asset('storage/img/product/'. $product->img) }}" alt="" class="img-tumbnail rounded" width="100px"></td>
+                                                    <td>{{  strtoupper($product["name"]); }}</td>
+                                                    <td>{{ $product->brand->name }}</td>
+                                                    <td>{{  $product["price"]; }}</td>
+                                                    <td>{{  $product["capacity"]; }}</td>
+                                                    <td>{{  $product->category->name}}</td>
+                                                    <td>{{  $product["stok"]; }}</td>z
                                                     <td rowspan="2" class="row">
-                                                        <a href="{{ url('admin/product/'.$products['id'].'/edit') }}" class="btn btn-sm btn-info col-md-6 update-link">Edit</a>
-                                                        <a href="delete.php?id=<?= $products['id'] ?>" class="btn btn-sm btn-danger col-md-6 delete-link">Delete</a>
+
+                                                        <a href="{{ url('admin/product/'.$product['id'].'/edit') }}" class="btn btn-sm btn-info col-md-6 update-link">Edit</a>
+                                                        
+                                                        <form action="{{ url('admin/product/'.$product['id']) }}" method="post" class="d-inline">
+                                                            @method('delete')
+                                                            @csrf
+                                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                                        </form>
                                                     </td>
                                                     
                                                 </tr>

@@ -100,9 +100,7 @@ class AdminUserController extends Controller
             'password' => 'required|min:5|max:255',
             'confirmPassword' => 'password_confirmation|min:5|max|255'
         ];
-        // $validator = Validator::make($request->all(), [
-        //     'password' => ['required', 'confirmed', Password::min(8)],
-        // ]);
+        
 
         $validatedData = $request->validate($rules);
 
@@ -119,6 +117,7 @@ class AdminUserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        User::destroy($user->id);
+        return redirect('/admin/userAdmin')->with('success','User has been deleted!');
     }
 }
