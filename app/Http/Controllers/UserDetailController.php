@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\UserDetail;
 use App\Http\Requests\StoreUserDetailRequest;
 use App\Http\Requests\UpdateUserDetailRequest;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\User;
 
 class UserDetailController extends Controller
 {
@@ -45,10 +49,15 @@ class UserDetailController extends Controller
      * @param  \App\Models\UserDetail  $userDetail
      * @return \Illuminate\Http\Response
      */
-    public function show() {
+    public function show(User $user) {
         return view('user.userDetail.detail', [
             'title' => 'User Detail',
-            'active' => 'User_detail'
+            'active' => 'User_detail',
+            'user' => $user,
+            "newProducts" => Product::latest()->limit(4)->get(),
+            "randomProducts" => Product::inRandomOrder()->limit(10)->get(),
+            'categories' => Category::latest()->first()->limit(5)->get(),
+            "brands" => Brand::all(),
         ]);
         
     }
@@ -59,10 +68,13 @@ class UserDetailController extends Controller
      * @param  \App\Models\UserDetail  $userDetail
      * @return \Illuminate\Http\Response
      */
-    public function edit(){
+    public function edit(User $user){
         return view('user.userDetail.edit', [
             'title' => 'Detail User',
-            'active' => 'Detail_user'
+            'active' => 'Detail_user',
+            'user' => $user,
+            'categories' => Category::latest()->first()->limit(5)->get(),
+            "brands" => Brand::all(),
         ]);
         
     }

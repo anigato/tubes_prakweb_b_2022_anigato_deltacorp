@@ -7,8 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
    {{-- bootstrap css --}}
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
    {{-- fontawesome --}}
    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -55,8 +54,7 @@
                   @csrf
 
                   <div>
-                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                           id="name"placeholder="Nama"  value="{{ old('name') }}" required>
+                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name"placeholder="Nama"  value="{{ old('name') }}" required>
                      @error('name')
                            <div class="invalid-feedback text-center" style="margin-top: -15px; margin-bottom: -15px">
                               {{ $message }}

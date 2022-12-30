@@ -18,11 +18,12 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
     public function slidder(){
-        return $this->hashOne(Slidder::class);
+        return $this->hashMany(Slidder::class);
     }
     public function wishlist(){
-        return $this->hasOne(Wishlist::class);
+        return $this->hashMany(Wishlist::class);
     }
-    public function order(){
+    public function orderDetail(){
+        return $this->hasMany(OrderDetail::class);
     }
 }

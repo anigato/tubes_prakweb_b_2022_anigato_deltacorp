@@ -6,6 +6,8 @@ namespace Database\Seeders;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Models\Product;
 use App\Models\Slidder;
 use App\Models\User;
@@ -44,6 +46,7 @@ class DatabaseSeeder extends Seeder
             'password'=>bcrypt('user123'),
             'is_admin'=>false
         ]);
+
 
         Product::create([
             'sku'=>'6-120-SSD-350000',
@@ -162,6 +165,42 @@ class DatabaseSeeder extends Seeder
             'user_id' => '2'
         ]);
 
+        Order::create([
+            'kode_pemesanan' => 'INVN6D51B24052021',
+            'user_id' => 2,
+            'order_time' => now(),
+            'status' => 1,
+            'total_qty' => 2,
+            'total_price' => 800000,
+            'payment_method' => 'bri'
+        ]);
+        Order::create([
+            'kode_pemesanan' => 'assawe',
+            'user_id' => 3,
+            'order_time' => now(),
+            'status' => 1,
+            'total_qty' => 2,
+            'total_price' => 350000,
+            'payment_method' => 'ovo'
+        ]);
 
+        OrderDetail::create([
+            'product_id' => 1,
+            'order_id' => 1,
+            'qty' => 2,
+            'subtotal_price' => 700000
+        ]);
+        OrderDetail::create([
+            'product_id' => 2,
+            'order_id' => 1,
+            'qty' => 1,
+            'subtotal_price' => 100000
+        ]);
+        OrderDetail::create([
+            'product_id' => 1,
+            'order_id' => 2,
+            'qty' => 1,
+            'subtotal_price' => 350000
+        ]);
     }
 }

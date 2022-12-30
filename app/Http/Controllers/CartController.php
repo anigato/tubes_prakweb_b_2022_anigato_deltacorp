@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -15,7 +18,11 @@ class CartController extends Controller
     {
         return view('user.cart.index', [
             'title' => 'Keranjang User',
-            'active' => 'keranjang'
+            'active' => 'keranjang',
+            'categories' => Category::latest()->first()->limit(5)->get(),
+            "newProducts" => Product::latest()->limit(4)->get(),
+            "randomProducts" => Product::inRandomOrder()->limit(10)->get(),
+            "brands" => Brand::all(),
         ]);
     }
 

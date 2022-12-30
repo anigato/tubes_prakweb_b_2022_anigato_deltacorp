@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Order;
+use App\Models\OrderDetail;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -16,7 +20,13 @@ class TransactionController extends Controller
     {
         return view('user.transaction.index', [
             'title' => 'Transaction User',
-            'active' => 'transaction'
+            'active' => 'transaction',
+            'orders' => Order::where('user_id',auth()->user()->id)->get(),
+            // 'order_details' =>OrderDetail::where('order_id',2)->limit(1)->get(),
+            'categories' => Category::latest()->first()->limit(5)->get(),
+            "newProducts" => Product::latest()->limit(4)->get(),
+            "randomProducts" => Product::inRandomOrder()->limit(10)->get(),
+            "brands" => Brand::all(),
         ]);
     }
 
@@ -48,11 +58,15 @@ class TransactionController extends Controller
      * @return \Illuminate\Http\Response
      */
     // public function show(Order $order)
-    public function show($order)
+    public function show(Order $order)
     {
         return view('user.transaction.detail', [
             'title' => 'Detail Transaction',
-            'active' => 'detail transaction'
+            'active' => 'detail transaction',
+            'categories' => Category::latest()->first()->limit(5)->get(),
+            "newProducts" => Product::latest()->limit(4)->get(),
+            "randomProducts" => Product::inRandomOrder()->limit(10)->get(),
+            "brands" => Brand::all(),
         ]);
     }
 
