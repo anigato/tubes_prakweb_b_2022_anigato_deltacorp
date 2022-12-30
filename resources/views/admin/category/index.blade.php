@@ -69,8 +69,12 @@
                         <td rowspan="2" class="row">
                           <div class="col-md-3"></div>
                           <a href="{{ url('admin/category/'.$category['id'].'/edit') }}" class="btn btn-sm btn-info col-md-3 update-link">Edit</a>
-                          <a href="delete.php?id=<?= $category['id'] ?>" class="btn btn-sm btn-danger col-md-3 delete-link">Delete</a>
-                          <div class="col-md-3"></div>
+
+                          <form action="{{ url('admin/category/'.$category['id']) }}" method="post" class="d-inline">
+                            @method('delete')
+                            @csrf
+                            <button class="btn btn-sm btn-danger">Delete</button>
+                          </form> 
                         </td>
                       </tr>
                       @endforeach
