@@ -112,8 +112,9 @@ class AdminSlidderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Slidder $slidder)
     {
-        //
+        Slidder::destroy($slidder->id);
+        return redirect('/admin/slidder')->with('success', 'Post has been deleted');
     }
 }
