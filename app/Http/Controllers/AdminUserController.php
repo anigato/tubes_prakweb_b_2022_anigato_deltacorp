@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Hash;
+
  
 
 class AdminUserController extends Controller
@@ -53,6 +53,7 @@ class AdminUserController extends Controller
             'password' => 'required|min:5|max:255'
         ]);
 
+        
         User::create($validateData);
 
         return redirect('/admin/userAdmin');
@@ -93,16 +94,16 @@ class AdminUserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $rules = [
-            'name' => 'required|max:255',
-            'username' => ['required', 'min:3', 'max:255', 'unique:users'],
-            'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:5|max:255',
-            'confirmPassword' => 'password_confirmation|min:5|max|255'
-        ];
-        
+        $validatedData = $request->validate([
+            'name' => 'required|max:255|min:3',
+            'username' => ['required','min:3','max:255','unique:users'],
+            'email' => 'required|unique:users|min:3',
+            'password' => 'required|min:6|max:255',
+            'password_confirmation' => 'required|same:password'
+        ]);
 
-        $validatedData = $request->validate($rules);
+        $validatedData['password'] = Hash::make($validatedData['password']);
+        
 
         User::where('id', $user->id)
             ->update($validatedData);

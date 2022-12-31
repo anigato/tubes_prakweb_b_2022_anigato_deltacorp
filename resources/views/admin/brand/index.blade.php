@@ -53,12 +53,12 @@
 
                     <td rowspan="2" class="row">
                       <div class="col-md-3"></div>
-                      <a href="{{ url('admin/brand/'.$brand['id'].'/edit') }}" class="btn btn-sm btn-info col-md-3 update-link">Edit</a>
+                      <a href="{{ url('admin/brand/'.$brand['id'].'/edit') }}" class="btn btn-sm btn-info col-md-3 update-link"><i class="fas fa-pencil-alt"></i></a>
 
                       <form action="{{ url('admin/brand/'.$brand['id']) }}" method="post" class="d-inline">
                         @method('delete')
                         @csrf
-                        <button class="btn btn-sm btn-danger">Delete</button>
+                        <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
 
                       </form>
 

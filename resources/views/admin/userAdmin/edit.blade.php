@@ -46,6 +46,7 @@
                                               </div>
                                             </div>
                                           </div>
+
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label>Username</label>
@@ -57,6 +58,7 @@
                                               </div>
                                             </div>
                                           </div>
+
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label>Email</label>
@@ -68,6 +70,7 @@
                                               </div>
                                             </div>
                                           </div>
+
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label>Old Password</label>
@@ -79,6 +82,7 @@
                                               </div>
                                             </div>
                                           </div>
+
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label>New Password</label>
@@ -90,11 +94,12 @@
                                               </div>
                                             </div>
                                           </div>
+
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label>Confirm Password</label>
                                               <div class="input-group mb-3">
-                                                <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Confirm New Password" required value="">
+                                                <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Confirm New Password" required value="">
                                                 <div class="invalid-feedback">
                                                   Please Confirm your Password here.
                                                 </div>
@@ -111,7 +116,7 @@
                                                     <i class="fas fa-upload"></i>
                                                     <span> Add New User Admin</span>
                                                 </button>
-                                                <a href="index.php" class="btn btn-warning  cancel">
+                                                <a href="{{ url('admin/userAdmin/') }}" class="btn btn-warning  cancel">
                                                     <i class="fas fa-times-circle"></i>
                                                     <span> Cancel</span>
                                                 </a>

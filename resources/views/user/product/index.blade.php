@@ -8,7 +8,7 @@
 
    @include('user.layouts.parts.link-head')
 
-   <title>ANIGASTORE - <?= $title ?></title>
+   <title>Deltacorp - <?= $title ?></title>
 </head>
 
 <body>

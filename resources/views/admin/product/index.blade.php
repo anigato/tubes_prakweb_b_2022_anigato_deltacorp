@@ -78,15 +78,15 @@
                                                     <td>{{  $product["price"]; }}</td>
                                                     <td>{{  $product["capacity"]; }}</td>
                                                     <td>{{  $product->category->name}}</td>
-                                                    <td>{{  $product["stok"]; }}</td>z
+                                                    <td>{{  $product["stok"]; }}</td>
                                                     <td rowspan="2" class="row">
 
-                                                        <a href="{{ url('admin/product/'.$product['id'].'/edit') }}" class="btn btn-sm btn-info col-md-6 update-link">Edit</a>
+                                                        <a href="{{ url('admin/product/'.$product['id'].'/edit') }}" class="btn btn-sm btn-info col-md-6 update-link"><i class="fas fa-pencil-alt"></i></a>
                                                         
                                                         <form action="{{ url('admin/product/'.$product['id']) }}" method="post" class="d-inline">
                                                             @method('delete')
                                                             @csrf
-                                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
                                                         </form>
                                                     </td>
                                                     

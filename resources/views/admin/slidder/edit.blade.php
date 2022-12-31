@@ -92,7 +92,7 @@
                         <label for="description">Description</label>
                         <input id="description" type="hidden" name="description" required value="{{ old('description', $slidder->description) }}">
                         <div class="invalid-feedback">
-                          Please provide a valid the sli$slidder Description.
+                          Please provide a valid the slidder Description.
                         </div>
                         <trix-editor input="description"></trix-editor>
                       </div>
@@ -104,7 +104,7 @@
                           <i class="fas fa-upload"></i>
                           <span> Edit slidder</span>
                         </button>
-                        <a href="index.php" class="btn btn-warning  cancel">
+                        <a href="{{ url('admin/slidder/') }}" class="btn btn-warning  cancel">
                           <i class="fas fa-times-circle"></i>
                           <span> Cancel</span>
                         </a>
