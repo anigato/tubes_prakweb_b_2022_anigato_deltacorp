@@ -25,7 +25,7 @@
                     }
 
                     ?>
-                    <a href="../cart/index.php">Keranjang - <span class="cart-amunt">{{ $total }}</span> <i class="fa fa-shopping-cart"></i> <span class="product-count" style="width:30px; height:30px; font-size: 18px;"><?= $qty ?></span></a>
+                    <a href="{{ url('cart') }}">Keranjang - <span class="cart-amunt">{{ rupiah($total) }}</span> <i class="fa fa-shopping-cart"></i> <span class="product-count" style="width:30px; height:30px; font-size: 18px;">{{ $qty }}</span></a>
                 </div>
             </div>
         </div>
