@@ -51,8 +51,6 @@ class AdminProductController extends Controller
      */
     public function store(Request $request)
     {
-        
-        
         $validateData = $request->validate([
             'name' => 'required|max:255',
             'sku' => 'required',
@@ -65,13 +63,13 @@ class AdminProductController extends Controller
             'description' => 'required|min:5|max:255',
             'img' => 'image|file|max:1024'
         ]);
-
+        
         if ($request->file('img')) {
             $img = $request->file('img')->store('img/brand');
             $imageSplit = explode('/', $img);
             $validatedData['img'] = $imageSplit[2];
         }
-
+        
         Product::create($validateData);
 
         return redirect('/admin/product');
