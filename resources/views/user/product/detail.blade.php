@@ -97,17 +97,18 @@
                                           <td>{{ $detailProduct->stok }} pcs</td>
                                        </tr>
                                  </table>
-                                 <form method="post" action="../cart/index.php" class="cart">
+                                 <form method="post" action="{{ url('cart') }}" class="cart">
+                                    @csrf
                                        <div class="quantity">
-                                          <input type="hidden" name="product_id" value="">
-                                          <input type="hidden" name="img" value="">
+                                          <input type="hidden" name="product_id" value="{{ $detailProduct['id'] }}">
+                                          <input type="hidden" name="img" value="{{ $detailProduct['img'] }}">
+                                          <input type="hidden" name="name" value="{{ $detailProduct['name'] }}">
+                                          <input type="hidden" name="price" value="{{ $detailProduct['price'] }}">
+                                          <input type="text" class="form-control mb-2" placeholder="Jumlah" id="qty" name="qty" value="1" min="1" max=""required>
 
-                                          <input type="text" class="form-control mb-2" placeholder="Jumlah"
-                                             id="qty" name="qty" value="1" min="1"
-                                             max="" onkeypress="return onlyNumber(event)"
-                                             required>
-                                          <button type="submit" class="btn btn-primary add_to_cart_button"><i
-                                                   class="fas fa-cart-plus"></i> Masukan Ke Keranjang</button>
+                                          <button type="submit" class="btn btn-primary add_to_cart_button">
+                                             <i class="fas fa-cart-plus"></i> Masukan Ke Keranjang
+                                          </button>
                                        </div>
                                  </form>
                               </div>

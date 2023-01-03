@@ -16,13 +16,14 @@ class CartController extends Controller
      */
     public function index()
     {
+
         return view('user.cart.index', [
             'title' => 'Keranjang User',
             'active' => 'keranjang',
             'categories' => Category::latest()->first()->limit(5)->get(),
             "newProducts" => Product::latest()->limit(4)->get(),
             "randomProducts" => Product::inRandomOrder()->limit(10)->get(),
-            "brands" => Brand::all(),
+            "brands" => Brand::all()
         ]);
     }
 
@@ -44,7 +45,33 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        session_start();
+        if (!isset($_SESSION['cart'])) {
+            $_SESSION['cart'] = [];
+        }
+
+        $index = -1;
+        $cart = unserialize(serialize($_SESSION['cart']));
+
+        for ($i = 0; $i < count($cart); $i++) {
+            if ($cart[$i]['id'] == $request->product_id) {
+                $index = $i;
+                $_SESSION['cart'][$i]['qty'] += $request->qty;
+                break;
+            }
+        }
+        
+        if ($index == -1) {
+            $_SESSION['cart'][] = [
+                'id' => $request->product_id,
+                'img' => $request->img,
+                'name' => $request->name,
+                'price' => $request->price,
+                'qty' => $request->qty
+            ];
+        }
+
+        return back();
     }
 
     /**
