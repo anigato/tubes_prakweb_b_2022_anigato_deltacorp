@@ -66,9 +66,9 @@
                         <td>{{ $i++; }}</td>
                         <td>{{ strtoupper($category["name"]); }}</td>
 
-                        <td rowspan="2" class="row">
+                        <td>
                           <div class="col-md-3"></div>
-                          <a href="{{ url('admin/category/'.$category['id'].'/edit') }}" class="btn btn-sm btn-info col-md-3 update-link"><i class="fas fa-pencil-alt"></i></a>
+                          <a href="{{ url('admin/category/'.$category['id'].'/edit') }}" class="btn btn-sm btn-info update-link"><i class="fas fa-pencil-alt"></i></a>
 
                           <form action="{{ url('admin/category/'.$category['id']) }}" method="post" class="d-inline">
                             @method('delete')
