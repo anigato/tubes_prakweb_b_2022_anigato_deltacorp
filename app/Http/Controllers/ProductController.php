@@ -21,9 +21,15 @@ class ProductController extends Controller
     {
         if (empty(request('keyword'))) {
             $title = 'All Product';
+            $category_dropdown = "Kategori";
+            $brand_dropdown = "Brand";
         } else {
             $title = request('keyword');
+<<<<<<< HEAD
             $category_dropdown = "Category";
+=======
+            $category_dropdown = "Kategori";
+>>>>>>> 66d0ecb65576d15815c10045183111ba4bdebbb3
             $brand_dropdown = "Brand";
         }
 
