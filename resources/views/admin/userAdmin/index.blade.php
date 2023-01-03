@@ -63,21 +63,35 @@
                                         <tbody>
                                             <?php $i = 1; ?>
                                             @foreach ($users as $user)
-                                                
-                                            
                                             <tr class="text-center">
                                               <td>{{ $i++; }}</td>
                                               <td>{{  $user["username"]; }}</td>
                                               <td>{{  $user["email"]; }}</td>
                       
                                               <td>
-                                                <div class="col-md-4"></div>
-                                                <a href="{{ url('admin/userAdmin/'.$user['id'].'/edit') }}" class="btn btn-sm btn-info col-md-2 update-link"><i class="fas fa-user-edit"></i></a>
-                                                
-                                                <form action="{{ url('admin/userAdmin/'.$user['id']) }}" method="post" class="d-inline">
-                                                  @method('delete')
-                                                  @csrf
-                                                  <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                                <?php
+                                                  switch ($user['is_admin']) {
+                                                    case ('1'):
+                                                        ?>
+                                                         {{-- <a href="{{ url('admin/userAdmin/'.$user['id'].'/edit') }}" class="btn btn-sm btn-info col-md-2 update-link"><i class="fas fa-user-edit"></i></a> --}}
+                                                        <?php
+                                                        break;
+                                                    case ('0' ):
+                                                        ?>
+                                                         <a href="{{ url('admin/userAdmin/'.$user['id'].'/edit') }}" class=" d-inline btn btn-sm btn-info col-md 2 update-link"><i class="fas fa-user-edit"></i></a>
+
+                                                         <form action="{{ url('admin/userAdmin/'.$user['id']) }}" method="post" class="d-inline">
+                                                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                                            @method('delete')
+                                                            @csrf
+                                                         </form>
+                                                        <?php
+                                                        break;            
+                                                         }
+                                                         ?>
+                                                        
+                                            
+                                                  
                                               </td>
                                             </tr>
                                             @endforeach 
@@ -92,7 +106,7 @@
                                         </tfoot>
                                     </table>
                                 </div>
-                                <!-- /.card -->
+                                <!-- /.card -->                                                                                                                                                                                                                                                 
                             </div>
                             <!-- /.col -->
                         </div>

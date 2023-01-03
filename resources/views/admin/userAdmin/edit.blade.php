@@ -75,7 +75,7 @@
                                             <div class="form-group">
                                               <label>Old Password</label>
                                               <div class="input-group mb-3">
-                                                <input type="password" class="form-control" name="oldPassword" id="oldPassword" placeholder="Old Password" required value="">
+                                                <input type="password" class="form-control" name="oldPassword" id="oldPassword" placeholder="Old Password" required>
                                                 <div class="invalid-feedback">
                                                   Please provide a Password here.
                                                 </div>
