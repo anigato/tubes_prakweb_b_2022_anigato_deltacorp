@@ -2,6 +2,7 @@
 @section('container')
         <!-- Main content -->
         <div class="content-wrapper">
+
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid">
@@ -21,6 +22,7 @@
 
             <!-- Main content -->
             <section class="content">
+
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
@@ -71,6 +73,7 @@
                                                     </td>
                                                     
                                                 </tr>
+
                                             @endforeach
                                         </tbody>
                                         <tfoot>
@@ -95,6 +98,7 @@
                         <!-- /.row -->
                     </div>
                     <!-- /.container-fluid -->
+
             </section>
             <!-- /.content -->
         </div>
