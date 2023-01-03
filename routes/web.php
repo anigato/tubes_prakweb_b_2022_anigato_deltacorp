@@ -67,6 +67,7 @@ Route::resource('/admin/category', AdminCategoryController::class);
 
 // slidder
 Route::resource('/admin/slidder', AdminSlidderController::class);
+Route::put('/admin/slidder/{slidder}/inactive', [AdminSlidderController::class, 'inactive']);
 
 // Product Admin
 Route::resource('/admin/product', AdminProductController::class);

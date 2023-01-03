@@ -29,16 +29,22 @@ class ProductController extends Controller
             $judul = Category::where('id', request('category'))->get('name');
             $name = $judul[0]['name'];
             $title = 'Product with category ' . $name;
+            $category_dropdown = $name;
+            $brand_dropdown = "Brand";
         }
 
         if (request('brand')) {
             $judul = Brand::where('id', request('brand'))->get('name');
             $name = $judul[0]['name'];
             $title = 'Product with brand ' . $name;
+            $category_dropdown = "Kategori";
+            $brand_dropdown = $name;
         }
 
         return view('user.product.index', [
             'title' => $title,
+            'category_dropdown' => $category_dropdown,
+            'brand_dropdown' => $brand_dropdown,
             'active' => 'allProduct',
             'products' => Product::latest()->filter(request(['keyword', 'category', 'brand']))->paginate(20),
             'categories' => Category::latest()->first()->get(),

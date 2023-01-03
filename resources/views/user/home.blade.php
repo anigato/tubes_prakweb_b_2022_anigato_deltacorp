@@ -1,9 +1,12 @@
 @extends('user.layouts.main')
 @section('slidder')
-<div class="container">
-    <!-- End slider area -->
-    @include('user.layouts.parts.slidder')
-</div>
+    @empty($slidders)
+    @else
+    <div class="container">
+        <!-- End slider area -->
+        @include('user.layouts.parts.slidder')
+    </div>
+    @endempty
 @endsection
 @section('container')
 <?php

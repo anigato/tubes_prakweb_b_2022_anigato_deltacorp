@@ -117,4 +117,14 @@ class AdminSlidderController extends Controller
         Slidder::destroy($slidder->id);
         return redirect('/admin/slidder')->with('success', 'Post has been deleted');
     }
+
+    public function inactive(Request $request, Slidder $slidder){
+        
+        $validatedData = $request->validate([
+            'status' => 'required',
+        ]);
+
+        Slidder::where('id', $slidder->id)->update($validatedData);
+        return redirect('/admin/slidder/');
+    }
 }
