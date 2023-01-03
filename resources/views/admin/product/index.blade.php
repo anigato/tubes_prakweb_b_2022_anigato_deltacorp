@@ -79,7 +79,8 @@
                                                     <td>{{  $product["capacity"]; }}</td>
                                                     <td>{{  $product->category->name}}</td>
                                                     <td>{{  $product["stok"]; }}</td>
-                                                    <td rowspan="2" class="row">
+
+                                                    <td>
 
                                                         <a href="{{ url('admin/product/'.$product['id'].'/edit') }}" class="btn btn-sm btn-info col-md-6 update-link"><i class="fas fa-pencil-alt"></i></a>
                                                         

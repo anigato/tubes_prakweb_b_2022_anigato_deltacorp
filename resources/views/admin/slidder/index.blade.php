@@ -82,8 +82,8 @@
                           } ?>
                         </td>
 
-                        <td rowspan="2" class="row">
-                          <a href="{{ url ('admin/slidder/' .$slidder['id'].'/edit') }}" class="btn btn-sm btn-info col-md-6 update-link"><i class="fas fa-pencil-alt"></i></a>
+                        <td>
+                          <a href="{{ url ('admin/slidder/' .$slidder['id'].'/edit') }}" class="btn btn-sm btn-info update-link"><i class="fas fa-pencil-alt"></i></a>
 
                           <form action="{{ url('admin/slidder/'.$slidder['id']) }}" method="post" class="d-inline">
                             @method('delete')
@@ -94,10 +94,10 @@
                           <?php
                           switch ($slidder["status"]) {
                             case 0:
-                              echo '<a href="status.php?status=1&id=' . $slidder['id'] . '" class="btn btn-sm btn-success col-md-12 status-link">Activate</a>';
+                              echo '<a href="status.php?status=1&id=' . $slidder['id'] . '" class="btn btn-sm btn-success status-link"><i class="fas fa-eye"></i></a>';
                               break;
                             case 1:
-                              echo '<a href="status.php?status=0&id=' . $slidder['id'] . '" class="btn btn-sm btn-warning col-md-12 status-link">Inactivate</a>';
+                              echo '<a href="status.php?status=0&id=' . $slidder['id'] . '" class="btn btn-sm btn-warning status-link"><i class="fas fa-eye-slash"></i></a>';
                               break;
                           } ?>
 
