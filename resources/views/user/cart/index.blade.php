@@ -48,7 +48,6 @@
                         if (isset($_SESSION['cart'])) {
                         ?>
                         <tr>
-                            <td></td>
                             <td>Foto</td>
                             <td>Nama Produk</td>
                             <td>Jumlah</td>
@@ -60,7 +59,6 @@
                         <?php
                             $cart = unserialize(serialize($_SESSION['cart']));
                             $index = 0;
-                            $no = 1;
                             $total = 0;
                             $total_bayar = 0;
 
@@ -69,58 +67,53 @@
                                 $total_bayar += $total;
                             ?>
 
-                            <tr>
-                                <td><?= $no++ ?></td>
-                                <td><img src="{{ asset('storage/img/product/' . $cart[$i]['img']) }}" class="rounded"
-                                        width="70" alt=""></td>
-                                <td><a href="{{ url('product/' . $cart[$i]['product_id']) }}"><?= $cart[$i]['name'] ?></a>
-                                </td>
-                                <td>
-                                    <form action="" method="post">
-                                        <input type="hidden" name="id_product_update" value="<?= $cart[$i]['id'] ?>">
-                                        <input type="hidden" name="img_update" value="<?= $cart[$i]['img'] ?>">
-                                        <div class="row">
-                                            <input type="number" class="form-control col-md-5" name="qty_update"
-                                                value="<?= $cart[$i]['qty'] ?>">
-                                            <button type="submit" class="form-control col-md-3 btn btn-sm"><i
-                                                    class="fas fa-check"></i></button>
-                                        </div>
-                                    </form>
-                                </td>
-                                <td><?= rupiah($cart[$i]['price']) ?></td>
-                                <td><?= rupiah($total) ?></td>
-                                <td>
-                                    <a href="?delete=<?= $index ?>">
-                                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-                                    </a>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                <img src="{{ asset('storage/img/product/' . $cart[$i]['img']) }}" class="rounded"
+                                    width="70" alt="">
+                            </td>
+                            <td>
+                                <a href="{{ url('product/' . $cart[$i]['product_id']) }}">{{ $cart[$i]['name'] }}</a>
+                            </td>
+                            <td>
+                                <form action="{{ url('cart/' . $cart[$i]['product_id']) }}" method="post">
+                                    @csrf
+                                    @method('put')
+                                    <input type="hidden" name="product_id" id="product_id"
+                                        value="{{ $cart[$i]['product_id'] }}">
+                                    <div class="row">
+                                        <input type="number" class="form-control col-md-5" name="qty_update" value="{{ $cart[$i]['qty'] }}" onkeyup="submit()">
+                                        <button type="submit" class="form-control col-md-3 btn btn-sm"><i class="fas fa-check"></i></button>
+                                    </div>
+                                </form>
+                            </td>
+
+                            <td>{{ $cart[$i]['price'] }}</td>
+                            <td>{{ $total }}</td>
+                            <td>
+                                <form action="{{ url('cart/'.$index ) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <input type="hidden" name="index" id="index" value="{{ $index }}">
+                                    <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
 
                         <?php
                             $index++;
-                        }
-                        
-
-                        // hapus produk dalam cart
-                        if (isset($_GET['delete'])) {
-                            $cart = unserialize(serialize($_SESSION['cart']));
-                            unset($cart[$_GET['delete']]);
-                            $cart = array_values($cart);
-                            $_SESSION['cart'] = $cart;
-                        } ?>
-                                                <tr>
-                                                    <td colspan="4"><strong>Total Bayar</strong></td>
-                                                    <td colspan="2"><strong><?= rupiah($total_bayar) ?></strong></td>
-                                                    <td>
-                                                        <?php if (isset($_SESSION['user_name'])) : ?>
-                                                        <form action="" method="post">
-                                                            <button type="submit" name="checkout"
-                                                                class="btn btn-success btn-sm">Checkout</button>
-                                                        </form>
-                                                        <?php endif; ?>
-                                                    </td>
-                                                </tr>
-                                                <?php
+                        }?>
+                        <tr>
+                            <td colspan="4"><strong>Total Bayar</strong></td>
+                            <td colspan="2"><strong>{{ $total_bayar }}</strong></td>
+                            <td>
+                                <form action="{{ url('cart/checkout') }}" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn btn-success btn-sm">Checkout</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <?php
                         } else {
                         echo "<h1 class='text-danger'>Anda Tidak memiliki produk di dalam keranjang</h1>";
                         
@@ -169,54 +162,54 @@
             $status = checkout();
             if ($status == 'outstock') {
                 echo "
-                            <script type='text/javascript'>
-                            Swal.fire({
-                                title:'Opps!',
-                                text:'Maaf pesanan anda melebihi stok, silahkan cek kembali',
-                                icon:'error',
-                                confirmButtonColor: '#3085d6',
-                                confirmButtonText: 'OK'
-                            }).then((result) => {
-                                if (result.value) {
-                                document.location.href='../cart/index.php';
-                                }
-                            })
-                            </script>
-                        ";
+                                <script type='text/javascript'>
+                                Swal.fire({
+                                    title:'Opps!',
+                                    text:'Maaf pesanan anda melebihi stok, silahkan cek kembali',
+                                    icon:'error',
+                                    confirmButtonColor: '#3085d6',
+                                    confirmButtonText: 'OK'
+                                }).then((result) => {
+                                    if (result.value) {
+                                    document.location.href='../cart/index.php';
+                                    }
+                                })
+                                </script>
+                            ";
             } elseif ($status == 'success') {
                 echo "
-                            <script type='text/javascript'>
-                            
-                            Swal.fire({
-                                title:'Berhasil!',
-                                text:'Anda berhasil memesan, silahkan lanjutkan pembayaran',
-                                icon:'success',
-                                confirmButtonColor: '#3085d6',
-                                confirmButtonText: 'OK'
-                            }).then((result) => {
-                                if (result.value) {
-                                document.location.href='../transaction/index.php';
-                                }
-                            })
-                            </script>
-                        ";
+                                <script type='text/javascript'>
+                                
+                                Swal.fire({
+                                    title:'Berhasil!',
+                                    text:'Anda berhasil memesan, silahkan lanjutkan pembayaran',
+                                    icon:'success',
+                                    confirmButtonColor: '#3085d6',
+                                    confirmButtonText: 'OK'
+                                }).then((result) => {
+                                    if (result.value) {
+                                    document.location.href='../transaction/index.php';
+                                    }
+                                })
+                                </script>
+                            ";
             }
         } else {
             echo "
-                            <script type='text/javascript'>
-                            Swal.fire({
-                                title:'Maaf!',
-                                text:'Sebelum melakukan pemesanan, anda harus mengisi alamat dengan lengkap',
-                                icon:'warning',
-                                confirmButtonColor: '#3085d6',
-                                confirmButtonText: 'OK'
-                            }).then((result) => {
-                                if (result.value) {
-                                document.location.href='../user/detail.php';
-                                }
-                            })
-                            </script>
-                        ";
+                                <script type='text/javascript'>
+                                Swal.fire({
+                                    title:'Maaf!',
+                                    text:'Sebelum melakukan pemesanan, anda harus mengisi alamat dengan lengkap',
+                                    icon:'warning',
+                                    confirmButtonColor: '#3085d6',
+                                    confirmButtonText: 'OK'
+                                }).then((result) => {
+                                    if (result.value) {
+                                    document.location.href='../user/detail.php';
+                                    }
+                                })
+                                </script>
+                            ";
         }
     }
     

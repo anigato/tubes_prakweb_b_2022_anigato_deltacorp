@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('status');
             $table->integer('total_qty');
             $table->integer('total_price');
-            $table->string('payment_method');
+            $table->string('payment_method')->nullable();
             $table->timestamps();
         });
     }

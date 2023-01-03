@@ -17,6 +17,7 @@ class LoginController extends Controller
 
     public function indexUser() 
     {
+        session_start();
         return view('user.login', [
             'title' => 'Login',
             'active' => 'login'
