@@ -1,25 +1,5 @@
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ADMIN Panel | Add New User Admin</title>
-    @include('admin.layouts.parts.link-header')
-</head>
-
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
-    <div class="wrapper">
-        <!-- Navbar -->
-        @include('admin.layouts.parts.navbar')
-        <!-- endnavbar -->
-
-        <!-- sidebar -->
-        @include('admin.layouts.parts.sidebar')
-        <!-- endsidebar -->
-
+@extends('admin.layouts.main')
+@section('container')
         <!-- Main content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -57,7 +37,7 @@
                                                 <div class="input-group mb-3">
                                                     <input type="text" class="form-control" name="name" id="name" placeholder="name" required>
                                                     <div class="invalid-feedback">
-                                                        Please provide a valid Userame.
+                                                        Please provide a valid Name.
                                                     </div>
                                                 </div>
                                             </div>
@@ -68,7 +48,7 @@
                                                 <div class="input-group mb-3">
                                                     <input type="text" class="form-control" name="username" id="username" placeholder="username" required>
                                                     <div class="invalid-feedback">
-                                                        Please provide a valid Userame.
+                                                        Please provide a valid Username.
                                                     </div>
                                                 </div>
                                             </div>
@@ -79,7 +59,7 @@
                                                 <div class="input-group mb-3">
                                                     <input type="text" class="form-control" name="email" id="email" placeholder="email" required>
                                                     <div class="invalid-feedback">
-                                                        Please provide a valid Userame.
+                                                        Please provide a valid Email.
                                                     </div>
                                                 </div>
                                             </div>
@@ -105,11 +85,11 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group ">
-                                                <button type="submit" class="btn btn-primary  start" name="tambah">
+                                                <button type="submit" class="btn btn-primary  start" name="create">
                                                     <i class="fas fa-upload"></i>
                                                     <span> Add New User Admin</span>
                                                 </button>
-                                                <a href="index.php" class="btn btn-warning  cancel">
+                                                <a href="{{ url('admin/userAdmin/') }}" class="btn btn-warning  cancel">
                                                     <i class="fas fa-times-circle"></i>
                                                     <span> Cancel</span>
                                                 </a>
@@ -129,60 +109,69 @@
             <!-- /.content -->
         </div>
         <!-- end main content -->
-
-
-        <!-- footer -->
-        @include('admin.layouts.parts.footer')
-        <!-- endfooter -->
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
-
-    </div>
-
-    <!-- bs-custom-file-input -->
-    <script src=" {{ asset('theme/backend/js/input-form/bs-custom-file-input.min.js') }}"></script>
-   
-    @include('admin.layouts.parts.script-body')
-   
-
-    <!-- Page specific script -->
-    <script>
-        // validasi form
-        (function() {
-            'use strict';
-            window.addEventListener('load', function() {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function(form) {
-                    form.addEventListener('submit', function(event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
-        // menampilkan gambar ketika dipilih
-        function showImage(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#show-image')
-                        .attr('src', e.target.result)
-                };
-                reader.readAsDataURL(input.files[0]);
+        @endsection
+        @section('script-custom')
+        <!-- Select2 -->
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <!-- bs-custom-file-input -->
+        <script src="../../../themes/js/input-form/bs-custom-file-input.min.js"></script>
+    
+        <!-- Page specific script -->
+        <script>
+            // validasi form
+            (function() {
+                'use strict';
+                window.addEventListener('load', function() {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName('needs-validation');
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function(form) {
+                        form.addEventListener('submit', function(event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                }, false);
+            })();
+            // menampilkan gambar ketika dipilih
+            function showImage(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#show-image')
+                            .attr('src', e.target.result)
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                }
             }
-        }
-        
-        
-    </script>
-</body>
-
-</html>
+            // select2
+            $(function() {
+                bsCustomFileInput.init();
+            });
+            // menampilkan gambar ketika dipilih
+            function showImage(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#show-image')
+                            .attr('src', e.target.result)
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            // input form khusus nomor
+            function onlyNumber(evt) {
+                var charCode = (evt.which) ? evt.which : event.keyCode
+                if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+            //Initialize Select2 Elements
+            $('.select2').select2()
+        </script>
+    @endsection

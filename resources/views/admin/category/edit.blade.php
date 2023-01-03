@@ -53,7 +53,7 @@
                                                 <i class="fas fa-upload"></i>
                                                 <span> Update category</span>
                                             </button>
-                                            <a href="index.php" class="btn btn-warning  cancel">
+                                            <a href="{{ url('admin/category/') }}" class="btn btn-warning  cancel">
                                                 <i class="fas fa-times-circle"></i>
                                                 <span> Cancel</span>
                                             </a>

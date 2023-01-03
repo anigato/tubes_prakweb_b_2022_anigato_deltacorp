@@ -64,7 +64,6 @@
                                     </div>
 
                                     <div class="col-md-6">
-
                                         <div class="form-group">
                                             <label>Brand</label>
                                             <div class="input-group mb-3">
@@ -177,7 +176,7 @@
                                                 <i class="fas fa-upload"></i>
                                                 <span> Add New Product</span>
                                             </button>
-                                            <a href="index.php" class="btn btn-warning  cancel">
+                                            <a href="{{ url('admin/product/') }}" class="btn btn-warning  cancel">
                                                 <i class="fas fa-times-circle"></i>
                                                 <span> Cancel</span>
                                             </a>
