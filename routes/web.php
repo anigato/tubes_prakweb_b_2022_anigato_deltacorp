@@ -85,6 +85,7 @@ Route::resource('/wishlist', WishlistController::class);
 
 // cart
 Route::resource('/cart', CartController::class);
+Route::post('/cart/checkout', [CartController::class, 'checkOut']);
 
 //transaction
 Route::resource('/transaction', TransactionController::class);

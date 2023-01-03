@@ -70,11 +70,14 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Category</label>
-                                                <select class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;" name="category_id" required value="{{ old('category_id', $product->category_id) }}">
+
+                                                <select class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;" name="category_id" required
+                                                value="{{ old('category_id', $product->category_id) }}">
                                                     <option disabled value="">Open list Product Category</option>
                                                     @foreach ($categories as $category)
-                                                        @if(old('category_id', $product->category_id) == $category->id)
-                                                            <option value="{{ $category['id'] }}" selected>{{ $category['name'] }}</option>
+                                                        @if (old('category_id', $product->category_id) == $category->id)
+                                                            <option value="{{ $category['id'] }}" selected >{{ $category['name'] }}</option>
+
                                                         @else
                                                             <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
                                                         @endif
@@ -110,16 +113,16 @@
                                             <div class="form-group">
                                                 <label>Capacity</label>
                                                 <select class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;" name="capacity" required
-                                                value="{{ old('name', $product->capacity) }}">
-                                                    <option selected="selected" disabled value="">Open list Product Capacity</option>
-                                                    <option value="120">120 GB</option>
-                                                    <option value="128">128 GB</option>
-                                                    <option value="240">240 GB</option>
-                                                    <option value="256">256 GB</option>
-                                                    <option value="480">480 GB</option>
-                                                    <option value="512">512 GB</option>
-                                                    <option value="1">1 TB</option>
-                                                    <option value="2">2 TB</option>
+                                                value="{{ old('capacity', $product->capacity) }}">
+                                                    <option disabled>Open list Product Capacity</option>
+                                                    <option {{ ($product->capacity == '120') ? "selected" : "" }} value="120">120 GB</option>
+                                                    <option {{ ($product->capacity == '128') ? "selected" : "" }} value="128">128 GB</option>
+                                                    <option {{ ($product->capacity == '240') ? "selected" : "" }} value="240">240 GB</option>
+                                                    <option {{ ($product->capacity == '256') ? "selected" : "" }} value="256">256 GB</option>
+                                                    <option {{ ($product->capacity == '480') ? "selected" : "" }} value="480">480 GB</option>
+                                                    <option {{ ($product->capacity == '512') ? "selected" : "" }} value="512">512 GB</option>
+                                                    <option {{ ($product->capacity == '1') ? "selected" : "" }} value="1">1 TB</option>
+                                                    <option {{ ($product->capacity == '2') ? "selected" : "" }} value="2">2 TB</option>
                                                 </select>
 
                                                 <div class="invalid-feedback">
@@ -134,7 +137,7 @@
                                                         <label>Stock</label>
                                                         <div class="input-group mb-3">
                                                             <input type="text" class="form-control" name="stok" id="stok" placeholder="Product Stock" required onkeypress="return onlyNumber(event)" minlength="2" maxlength="2" required
-                                                            value="{{ old('stock', $product->stock) }}">
+                                                            value="{{ old('stok', $product->stok) }}">
                                                             <div class="invalid-feedback">
                                                                 Minimum Product Stock of 10 pcs and a maximum of 99 pcs
                                                             </div>
@@ -200,7 +203,12 @@
 
                                                 <div class="row">
                                                     <div class="col-md-3 mx-auto d-block">
+                                                        <p class="text-center">New Image</p>
                                                         <img class="rounded" src="#" alt="" id="show-image" style="width: 100%;">
+                                                    </div>
+                                                    <div class="col-md-3 mx-auto d-block">
+                                                        <p class="text-center">Old Image</p>
+                                                        <img class="rounded" src="{{ asset('storage/img/product/'.$product['img']) }}" alt="" style="width: 100%;">
                                                     </div>
                                                 </div>
                                             </div>
