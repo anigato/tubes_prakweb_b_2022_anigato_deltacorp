@@ -92,6 +92,7 @@
                 <div class="small-box-footer">Total Of All User <i class="fas fa-arrow-circle-right"></i></div>
               </div>
             </div>
+            
             <!-- ./col -->
           </div>
           <div class="row">
