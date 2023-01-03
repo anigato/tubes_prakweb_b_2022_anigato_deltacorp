@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta required name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    {{-- sweetalert --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
     @include('user.layouts.parts.link-head')
@@ -14,7 +17,17 @@
 </head>
 
 <body>
-
+    @if (session()->has('success'))
+    <script type='text/javascript'>
+        Swal.fire({
+            title: 'Success!',
+            text: '{{ session('success') }}',
+            icon: 'success',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK'
+        })
+    </script>
+    @endif
 
     <!-- End header area -->
     @include('user.layouts.parts.header')
@@ -96,7 +109,8 @@
                                                 <p class="card-text float-left mt-2 font-weight-bold">
                                                     {{ $order['total_price'] }}
                                                 </p>
-                                                <a href="../order/detail.php?id=" class="btn btn-primary float-right">Lihat Detail</a>
+                                                {{-- <a href="{{ url('transsaction/'.$order['id']) }}" class="btn btn-primary float-right">Lihat Detail</a> --}}
+                                                <a href="{{ url('trans/'.$order['id']) }}" class="btn btn-primary float-right">Lihat Detail</a>
                                             </div>
                                         </div>
                                     @endforeach

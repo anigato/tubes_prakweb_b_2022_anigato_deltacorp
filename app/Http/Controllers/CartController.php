@@ -136,8 +136,6 @@ class CartController extends Controller
 
     public function checkOut()
     {
-        // return Product::where('id', 1)->get('stok');
-        
         session_start();
         $cart = unserialize(serialize($_SESSION['cart']));
         $total_qty = 0;
@@ -168,11 +166,8 @@ class CartController extends Controller
         Order::create($dataOder);
 
         $order = Order::latest()->limit(1)->get('id');
-        // $order_id = 
-        return intval($order);
+        $order_id = $order[0]['id'];
 
-        return $order_id;
-        
         for ($i = 0; $i < count($cart); $i++) {
             $product_id = $cart[$i]['product_id'];
             $qty = $cart[$i]['qty'];
@@ -195,36 +190,14 @@ class CartController extends Controller
 
             OrderDetail::create($dataDetailOrder);
             
-            // $query = "INSERT INTO order_details  VALUES ('', $product_id,$id_order, $qty,$subtotal_price)";
-            // $order_detail = mysqli_query($conn, $query);
-            // if ($order_detail) {
-            //     $query = "UPDATE products SET stok = $stok WHERE id = $product_id";
-            //     mysqli_query($conn, $query);
-            // }
+            $updateStok = [
+                'stok' => $stok,
+            ];
 
-            // $product = query("SELECT*FROM products WHERE id = $product_id")[0];
-            // if ($product['stok'] == 0) {
-            //     $query = "UPDATE products SET status = 0 WHERE id = $product_id";
-            //     mysqli_query($conn, $query);
-            // }
+            Product::where('id', $product_id)->update($updateStok);
+            
         }
-
-        // unset session
-        // unset($_SESSION['cart']);
-        // return "success";
-
-
-
-
-        // $validatedData = $request->validate([
-        //     'product_id' => 'required',
-        //     'title' => 'required|max:255',
-        //     'description' => 'required'
-        // ]);
-
-        // Order::create();
-        // OrderDetail::create($validatedData);
-
-        // return redirect('/admin/slidder');
+        unset($_SESSION['cart']);
+        return redirect('/cart')->with('success','Berhasil dipesan, silahkan lakukan pembayaran');
     }
 }

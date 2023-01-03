@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -21,7 +22,7 @@ class TransactionController extends Controller
         return view('user.transaction.index', [
             'title' => 'Transaction User',
             'active' => 'transaction',
-            'orders' => Order::where('user_id',auth()->user()->id)->get(),
+            'orders' => Order::where('user_id',auth()->user()->id)->latest()->get(),
             // 'order_details' =>OrderDetail::where('order_id',2)->limit(1)->get(),
             'categories' => Category::latest()->first()->limit(5)->get(),
             "newProducts" => Product::latest()->limit(4)->get(),
@@ -67,6 +68,9 @@ class TransactionController extends Controller
             "newProducts" => Product::latest()->limit(4)->get(),
             "randomProducts" => Product::inRandomOrder()->limit(10)->get(),
             "brands" => Brand::all(),
+            "order" => Order::where('id',$order->id)->get(),
+            "detailOrders" => OrderDetail::where('order_id',$order->id)->get(),
+            "user" => User::find(Auth()->user()->id),
         ]);
     }
 
