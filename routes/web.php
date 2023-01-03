@@ -73,6 +73,7 @@ Route::resource('/admin/product', AdminProductController::class);
 
 // add User Admin
 Route::resource('/admin/userAdmin', AdminUserController::class);
+Route::get('/admin/user_admin/{user}/edit',[AdminUserController::class, "edit"]);
 
 // Order Admin
 Route::resource('/admin/order', AdminOrderController::class);

@@ -1,22 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ADMIN Panel</title>
-    @include('admin.layouts.parts.link-header')
-</head>
-
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
-    <div class="wrapper">
-        <!-- Navbar -->
-        @include('admin.layouts.parts.navbar')
-        <!-- endnavbar -->
-
-        <!-- sidebar -->
-        @include('admin.layouts.parts.sidebar')
-        <!-- endsidebar -->
+@extends('admin.layouts.main')
+@section('container')
 
         <!-- Main content -->
         <div class="content-wrapper">
@@ -73,12 +56,12 @@
                                                   switch ($user['is_admin']) {
                                                     case ('1'):
                                                         ?>
-                                                         {{-- <a href="{{ url('admin/userAdmin/'.$user['id'].'/edit') }}" class="btn btn-sm btn-info col-md-2 update-link"><i class="fas fa-user-edit"></i></a> --}}
+                                                         
                                                         <?php
                                                         break;
                                                     case ('0' ):
                                                         ?>
-                                                         <a href="{{ url('admin/userAdmin/'.$user['id'].'/edit') }}" class=" d-inline btn btn-sm btn-info col-md 2 update-link"><i class="fas fa-user-edit"></i></a>
+                                                         <a href="{{ url('admin/user_admin/'.$user['id'].'/edit') }}" class=" d-inline btn btn-sm btn-info col-md 2 update-link"><i class="fas fa-user-edit"></i></a>
 
                                                          <form action="{{ url('admin/userAdmin/'.$user['id']) }}" method="post" class="d-inline">
                                                             <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
@@ -117,6 +100,9 @@
             <!-- /.content -->
         </div>
         <!-- end main content -->
+        @endsection
+
+        @section('script-custom')
         <script>
           $(function() {
             $("#example1").DataTable({
@@ -206,9 +192,6 @@
     </div>
 
 
-    @include('admin.layouts.parts.script-body')
-    @include('admin.layouts.parts.script-dataTable')
+   
     
-</body>
-
-</html>
+@endsection

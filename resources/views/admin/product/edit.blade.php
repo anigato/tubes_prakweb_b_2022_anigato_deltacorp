@@ -1,30 +1,5 @@
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ADMIN Panel | Add New Product</title>
-    <!-- trix editor -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.css" integrity="sha512-CWdvnJD7uGtuypLLe5rLU3eUAkbzBR3Bm1SFPEaRfvXXI2v2H5Y0057EMTzNuGGRIznt8+128QIDQ8RqmHbAdg==" crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js" integrity="sha512-/1nVu72YEESEbcmhE/EvjH/RxTg62EKvYWLG3NdeZibTCuEtW5M4z3aypcvsoZw03FAopi94y04GhuqRU9p+CQ==" crossorigin="anonymous"></script>
-    <!-- Select2 -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    @include('admin.layouts.parts.link-header')
-
-</head>
-
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
-    <div class="wrapper">
-        <!-- Navbar -->
-        @include('admin.layouts.parts.navbar')
-        <!-- endnavbar -->
-
-        <!-- sidebar -->
-        @include('admin.layouts.parts.sidebar')
-        <!-- endsidebar -->
+@extends('admin.layouts.main')
+@section('container')
         <!-- Main content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -231,7 +206,7 @@
             <!-- /.content -->
         </div>
         <!-- end main content -->
-
+        @endsection
 
         <!-- footer -->
         @include('admin.layouts.parts.footer')
