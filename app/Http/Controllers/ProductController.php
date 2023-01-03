@@ -19,11 +19,30 @@ class ProductController extends Controller
      */
     public function index()
     {
+        if (empty(request('keyword'))) {
+            $title = 'All Product';
+        } else {
+            $title = request('keyword');
+        }
+
+        if (request('category')) {
+            $judul = Category::where('id', request('category'))->get('name');
+            $name = $judul[0]['name'];
+            $title = 'Product with category ' . $name;
+        }
+
+        if (request('brand')) {
+            $judul = Brand::where('id', request('brand'))->get('name');
+            $name = $judul[0]['name'];
+            $title = 'Product with brand ' . $name;
+        }
+
         return view('user.product.index', [
-            'title' => 'All Product',
+            'title' => $title,
             'active' => 'allProduct',
-            'products' => Product::latest()->paginate(20),
-            'categories' => Category::latest()->first()->limit(5)->get(),
+            'products' => Product::latest()->filter(request(['keyword', 'category', 'brand']))->paginate(20),
+            'categories' => Category::latest()->first()->get(),
+            'brandMenu' => Brand::latest()->first()->get(),
             'brands' => Brand::all(),
         ]);
     }
