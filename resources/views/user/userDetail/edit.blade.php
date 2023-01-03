@@ -1,29 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta required name="viewport" content="width=device-width, initial-scale=1">
-
-    @include('user.layouts.parts.link-head')
-
-
-
-    <title>ANIGASTORE - Ubah Profile</title>
-</head>
-
-<body>
-
+@extends('user.layouts.main')
+@section('css')
+    <style>
+        .profile-pic {
+            background: lightskyblue;
+            color: #eeeeee;
+            border-radius: 50%;
+            height: 8rem;
+            width: 8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 8rem;
+        }
+    </style>
+@endsection
+@section('container')
     
-    <!-- End header area -->
-    @include('user.layouts.parts.header')
+<?php
+function rupiah($harga)
+{
+    $hasil_harga = 'Rp. ' . number_format($harga, 0, ',', '.');
+    return $hasil_harga;
+}
 
-    <!-- End site branding area -->
-    @include('user.layouts.parts.branding-area')
-
-    <!-- End mainmenu area -->
-    @include('user.layouts.parts.main-menu')
+// generate user img
+function getProfilePicture($name)
+{
+    $name_slice = explode(' ', $name);
+    $name_slice = array_filter($name_slice);
+    $initials = '';
+    $initials .= (isset($name_slice[0][0])) ? strtoupper($name_slice[0][0]) : '';
+    return '<div class="profile-pic mx-auto">' . $initials . '</div>';
+}
+?>
 
     <div class="product-big-title-area">
         <div class="container">
@@ -234,7 +244,8 @@
                                 </div>
                                 <div class="col-md-3 mx-auto d-block">
                                     <p class="text-center">Foto Lama</p>
-                                    <img class="rounded" src="{{ asset('storage/img/user'.(empty($user->userDetail->img))?null:$user->userDetail->img) }}" alt="" style="width: 100%;">
+                                    <?=  getProfilePicture(Auth()->user()->username) ?>
+                                    {{-- <img class="rounded" src="{{ asset('storage/img/user'.(empty($user->userDetail->img))?null:$user->userDetail->img) }}" alt="" style="width: 100%;"> --}}
                                 </div>
                             </div>
                         </div>
@@ -258,111 +269,4 @@
         </div>
     </div>
     
-
-
-    <!-- End brands area -->
-    @include('user.layouts.parts.brands-area')
-
-    <!-- End footer bottom area -->
-    @include('user.layouts.parts.footer')
-
-    <!--End script-body-->
-    @include('user.layouts.parts.script-body')
-    <?php
-    if (isset($_POST['edit'])) {
-        $upload = uploadImage('../../../assets/img/users/', $_POST, 'edit-user');
-        if ($upload == "success") {
-            echo "
-                <script type='text/javascript'>
-                
-                Swal.fire({
-                    title:'Success!',
-                    text:'Profil anda berhasil diperbarui',
-                    icon:'success',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.value) {
-                    document.location.href='../user/detail.php';
-                    }
-                })
-                </script>
-                ";
-        } else if ($upload == "tooLarge") {
-            echo "
-                <script type='text/javascript'>
-                Swal.fire({
-                    title:'Error!',
-                    text:'Gambar Terllau besar, coba kecilkan ukuran gambar',
-                    icon:'error',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.value) {
-                    document.location.href='../user/detail.php';
-                    }
-                })
-                </script>
-                ";
-        } else if ($upload == "notImage") {
-            echo "
-                <script type='text/javascript'>
-                Swal.fire({
-                    title:'Error!',
-                    text:'Hanya gambar JPG, JPEG dan PNG yang diperbolehkan',
-                    icon:'error',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.value) {
-                    document.location.href='../user/detail.php';
-                    }
-                })
-                </script>
-            ";
-        }
-    }
-
-    ?>
-    <script>
-        (function() {
-            'use strict';
-            window.addEventListener('load', function() {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function(form) {
-                    form.addEventListener('submit', function(event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
-
-        function showImage(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#show-image')
-                        .attr('src', e.target.result)
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-        // input form khusus nomor
-        function onlyNumber(evt) {
-            var charCode = (evt.which) ? evt.which : event.keyCode
-            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-                return false;
-            } else {
-                return true;
-            }
-        }
-    </script>
-</body>
-
-</html>
+@endsection

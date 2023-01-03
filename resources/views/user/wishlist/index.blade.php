@@ -1,32 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta required name="viewport" content="width=device-width, initial-scale=1">
-
-
-    @include('user.layouts.parts.link-head')
-
-    <link rel="stylesheet" href="../../../css/frontend/user_style.css">
-
-
-
-    <title>ANIGASTORE - Daftar Keinginan</title>
-</head>
-
-<body>
-
-
-    @include('user.layouts.parts.header')
-    <!-- End header area -->
-
-    @include('user.layouts.parts.branding-area')
-    <!-- End site branding area -->
-
-    @include('user.layouts.parts.main-menu')
-    <!-- End mainmenu area -->
+@extends('user.layouts.main')
+@section('container')
+<?php
+function rupiah($harga)
+{
+    $hasil_harga = 'Rp. ' . number_format($harga, 0, ',', '.');
+    return $hasil_harga;
+}
+?>
 
     <div class="product-big-title-area">
         <div class="container">
@@ -75,7 +55,7 @@
                                                     href="{{ url('product/' . $wish->product->id) }}">{{ $wish->product->name }}</a>
                                             </td>
                                             <td>
-                                                {{ $wish->product->price }}
+                                                {{ rupiah($wish->product->price) }}
                                             </td>
                                             <td>
                                                 <a href="../wishlist/delete" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
@@ -108,18 +88,4 @@
             </div>
         </div>
     </div>
-
-
-
-    <!-- End brands area -->
-    @include('user.layouts.parts.brands-area')
-
-
-    <!-- End footer bottom area -->
-    @include('user.layouts.parts.footer')
-
-    <!--End script-body-->
-    @include('user.layouts.parts.script-body')
-</body>
-
-</html>
+@endsection

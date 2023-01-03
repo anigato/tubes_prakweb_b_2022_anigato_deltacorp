@@ -73,6 +73,8 @@ Route::resource('/admin/product', AdminProductController::class)->middleware('au
 
 // add User Admin
 Route::resource('/admin/userAdmin', AdminUserController::class)->middleware('auth');
+Route::get('/admin/user_admin/{user}/edit',[AdminUserController::class, "edit"])->middleware('auth');
+
 
 // Order Admin
 Route::resource('/admin/order', AdminOrderController::class)->middleware('auth');
@@ -85,9 +87,10 @@ Route::resource('/wishlist', WishlistController::class)->middleware('auth');
 
 // cart
 Route::resource('/cart', CartController::class);
+Route::post('/cart/checkout', [CartController::class, 'checkOut']);
 
 //transaction
 Route::resource('/transaction', TransactionController::class)->middleware('auth');
-
+Route::get('/trans/{order}', [TransactionController::class, "show"])->middleware('auth');
 // User List
 Route::resource('/admin/userList', AdminUserListController::class)->middleware('auth');

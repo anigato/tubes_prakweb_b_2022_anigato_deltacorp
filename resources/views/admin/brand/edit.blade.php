@@ -80,7 +80,7 @@
                                                 <i class="fas fa-upload"></i>
                                                 <span> Update Brand</span>
                                             </button>
-                                            <a href="index.php" class="btn btn-warning  cancel">
+                                            <a href="{{ url('admin/brand/') }}" class="btn btn-warning  cancel">
                                                 <i class="fas fa-times-circle"></i>
                                                 <span> Cancel</span>
                                             </a>

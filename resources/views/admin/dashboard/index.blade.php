@@ -66,7 +66,7 @@
               <!-- small box -->
               <div class="small-box bg-info py-3">
                 <div class="inner">
-                  {{-- <h3><?= $totalProduk['jumlah'] ?><sup style="font-size: 20px"> Units</sup></h3> --}}
+                  
                 </div>
                 <div class="icon">
                   <i class="fas fa-tags"></i>
@@ -79,7 +79,7 @@
               <!-- small box -->
               <div class="small-box bg-success py-3">
                 <div class="inner">
-                  {{-- <h3><?= $totalStok['jumlah'] ?><sup style="font-size: 20px"> Pcs</sup></h3> --}}
+                  
                 </div>
                 <div class="icon">
                   <i class="fas fa-cubes"></i>
@@ -92,7 +92,7 @@
               <!-- small box -->
               <div class="small-box bg-warning py-3">
                 <div class="inner">
-                  {{-- <h3><?= $totalAdmin['jumlah'] ?><sup style="font-size: 20px"> Users</sup></h3> --}}
+                  
                 </div>
                 <div class="icon">
                   <i class="fas fa-user-tie"></i>
@@ -105,7 +105,7 @@
               <!-- small box -->
               <div class="small-box bg-danger py-3">
                 <div class="inner">
-                  {{-- <h3><?= $totalUser['jumlah'] ?><sup style="font-size: 20px"> Users</sup></h3> --}}
+                
 
                   <p></p>
                 </div>
@@ -115,6 +115,7 @@
                 <div class="small-box-footer">Total Of All User <i class="fas fa-arrow-circle-right"></i></div>
               </div>
             </div>
+            
             <!-- ./col -->
           </div>
           <div class="row">

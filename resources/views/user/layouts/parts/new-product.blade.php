@@ -6,7 +6,7 @@
       class="img-tumbnail rounded recent-thumb">
    <h2><a class="text-uppercase" href="{{ url('product/'.$newProduct['id']) }}"><?= $newProduct['name'] ?></a></h2>
    <div class="product-sidebar-price">
-      <ins><?= $newProduct['price'] ?></ins>
+      <ins>{{ rupiah($newProduct['price']) }}</ins>
    </div>
 </div>
 @endforeach

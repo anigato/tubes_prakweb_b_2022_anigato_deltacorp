@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Hash;
+
  
 
 class AdminUserController extends Controller
@@ -53,6 +53,10 @@ class AdminUserController extends Controller
             'password' => 'required|min:5|max:255'
         ]);
 
+        $validateData['password'] = Hash::make($validateData['password']);
+        
+        
+        
         User::create($validateData);
 
         return redirect('/admin/userAdmin');
@@ -94,19 +98,23 @@ class AdminUserController extends Controller
     public function update(Request $request, User $user)
     {
         $rules = [
-            'name' => 'required|max:255',
-            'username' => ['required', 'min:3', 'max:255', 'unique:users'],
-            'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:5|max:255',
-            'confirmPassword' => 'password_confirmation|min:5|max|255'
+            'name' => 'required|max:255|min:3',
+            'username' => 'required',
+            'email' => 'required|unique:users|min:3',
+            'password' => 'min:6|max:255',
+            'password_confirmation' => 'same:password'
         ];
-        
 
         $validatedData = $request->validate($rules);
+        
+        return $request;
 
-        User::where('id', $user->id)
-            ->update($validatedData);
-        return redirect('/admin/userAdmin/');
+
+        $validatedData['password'] = Hash::make($validatedData['password']);
+
+        User::where('id', $user->id)->update($validatedData);
+
+        return redirect('/admin/userAdmin/')->with('success', 'Berhasil Melakukan Edit!');
     }
 
     /**
@@ -117,6 +125,7 @@ class AdminUserController extends Controller
      */
     public function destroy(User $user)
     {
+        
         User::destroy($user->id);
         return redirect('/admin/userAdmin')->with('success','User has been deleted!');
     }

@@ -1,8 +1,10 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="" class="brand-link">
-        <img src="{{ asset('image/deltacorp.png') }}" alt="ANIGASTORE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">ANIGASTORE</span>
+    
+        <img src="{{ asset('image/deltacorp.png') }}" alt="DELTACORP Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Deltacorp</span>
+        
     </a>
 
     <!-- Sidebar -->
@@ -122,7 +124,7 @@
 
                 <li class="nav-item">
                     <a href="" class="nav-link  @if (Request::is('admin/slidder') || Request::is('admin/slidder/create')) {{ 'active' }} @endif()">
-                        <i class="fas fa-star"></i>
+                        <i class="fas fa-strikethrough"></i>
                         <p>
                             Slidders
                             <i class="fas fa-angle-left right"></i>

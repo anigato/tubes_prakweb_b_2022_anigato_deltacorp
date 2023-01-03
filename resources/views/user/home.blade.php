@@ -1,47 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DeltaCorp - {{ $title }}</title>
-
-
-    @include('user.layouts.parts.link-head')
-
-</head>
-
-<body>
-    @if (session()->has('success'))
-    <script type='text/javascript'>
-        Swal.fire({
-            title: 'Success!',
-            text: '{{ session('success') }}',
-            icon: 'success',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'OK'
-        })
-    </script>
-    @endif
-
-    <!-- End header area -->
-    @include('user.layouts.parts.header')
-
-    <!-- End site branding area -->
-    @include('user.layouts.parts.branding-area')
-
-    <!-- End mainmenu area -->
-    @include('user.layouts.parts.main-menu')
-
-    <div class="container">
-        <!-- End slider area -->
-        @include('user.layouts.parts.slidder')
-    </div>
-
+@extends('user.layouts.main')
+@section('slidder')
+<div class="container">
+    <!-- End slider area -->
+    @include('user.layouts.parts.slidder')
+</div>
+@endsection
+@section('container')
+<?php
+function rupiah($harga)
+{
+    $hasil_harga = 'Rp. ' . number_format($harga, 0, ',', '.');
+    return $hasil_harga;
+}
+?>
     <!--End promo area -->
     @include('user.layouts.parts.promo')
-
     <div class="maincontent-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
@@ -63,7 +36,7 @@
                                             href="{{ url('product/'.$newProduct['id']) }}"><?= $newProduct['name'] ?></a>
                                     </h2>
                                     <div class="product-carousel-price">
-                                        <h2><ins>100000</ins></h2>
+                                        <h2><ins>{{ rupiah($newProduct['price']) }}</ins></h2>
                                     </div>
                                 </div>
                             @endforeach
@@ -73,20 +46,10 @@
             </div>
         </div>
     </div>
+@endsection
 
-    <!-- End brands area -->
-    @include('user.layouts.parts.brands-area')
-
-    <!-- End footer bottom area -->
-    @include('user.layouts.parts.footer')
-
-    <!--End Script-body area-->
-    @include('user.layouts.parts.script-body')
-
+@section('custom-script')
     <!-- Slider -->
     <script type="text/javascript" src="{{ asset('theme/frontend/js/bxslider.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/frontend/js/script.slider.js') }}"></script>
-
-</body>
-
-</html>
+@endsection
