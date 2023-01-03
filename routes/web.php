@@ -89,6 +89,6 @@ Route::post('/cart/checkout', [CartController::class, 'checkOut']);
 
 //transaction
 Route::resource('/transaction', TransactionController::class);
-
+Route::get('/trans/{order}', [TransactionController::class, "show"]);
 // User List
 Route::resource('/admin/userList', AdminUserListController::class);

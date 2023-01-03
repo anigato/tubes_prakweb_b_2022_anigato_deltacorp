@@ -5,14 +5,26 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    {{-- sweetalert --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @include('user.layouts.parts.link-head')
-    <title>ANIGASTORE - Keranjang</title>
+    <title>DeltaCorp - Keranjang</title>
 </head>
 
 <body>
-
+    @if (session()->has('success'))
+    <script type='text/javascript'>
+        Swal.fire({
+            title: 'Success!',
+            text: '{{ session('success') }}',
+            icon: 'success',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK'
+        })
+    </script>
+    @endif
 
     <!-- End header area -->
     @include('user.layouts.parts.header')
