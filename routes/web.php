@@ -67,6 +67,7 @@ Route::resource('/admin/category', AdminCategoryController::class)->middleware('
 
 // slidder
 Route::resource('/admin/slidder', AdminSlidderController::class)->middleware('auth');
+Route::put('/admin/slidder/{slidder}/inactive', [AdminSlidderController::class, 'inactive']);
 
 // Product Admin
 Route::resource('/admin/product', AdminProductController::class)->middleware('auth');

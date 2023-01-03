@@ -14,7 +14,11 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Kategori Produk
+                            @if (request('category'))
+                                Kategori "{{ $category_dropdown }}"
+                            @else
+                                Kategori Produk
+                            @endif
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @foreach ($categories as $category)
@@ -24,7 +28,11 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Brand Produk
+                            @if (request('brand'))
+                                Brand "{{ $brand_dropdown }}"
+                            @else
+                                Brand Produk
+                            @endif
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @foreach ($brands as $brand)

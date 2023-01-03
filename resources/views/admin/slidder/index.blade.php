@@ -74,15 +74,31 @@
                             <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
                           </form>
 
-                          <?php
-                          switch ($slidder["status"]) {
-                            case 0:
-                              echo '<a href="status.php?status=1&id=' . $slidder['id'] . '" class="btn btn-sm btn-success status-link"><i class="fas fa-eye"></i></a>';
-                              break;
-                            case 1:
-                              echo '<a href="status.php?status=0&id=' . $slidder['id'] . '" class="btn btn-sm btn-warning status-link"><i class="fas fa-eye-slash"></i></a>';
-                              break;
-                          } ?>
+                          
+
+                        <?php
+                        switch ($slidder["status"]) {
+                          case 0:
+                            ?>  
+                            <form action="{{ url('admin/slidder/'.$slidder['id'].'/inactive') }}" method="post" class="d-inline">
+                              @method('put')
+                              @csrf
+                              <input type="hidden" name="status" value="1">
+                              <button class="btn btn-sm btn-success status-link"><i class="fas fa-eye"></i></button>
+                            </form>
+                            <?php
+                            break;
+                          case 1:
+                          ?>  
+                            <form action="{{ url('admin/slidder/'.$slidder['id'].'/inactive') }}" method="post" class="d-inline">
+                              @method('put')
+                              @csrf
+                              <input type="hidden" name="status" value="0">
+                              <button class="btn btn-sm btn-warning status-link"><i class="fas fa-eye-slash"></i></button>
+                            </form>
+                            <?php
+                            break;
+                        } ?>
 
                         </td>
                       </tr>

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DeltaCorp Admin | {{ $title }}</title>
   @yield('script-head')
+  @yield('css')
   @include('admin.layouts.parts.link-header')
 </head>
 

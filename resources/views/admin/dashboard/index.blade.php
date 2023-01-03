@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ADMIN Panel</title>
-
-  
-  @include('admin.layouts.parts.link-header')
+@extends('admin.layouts.main')
+@section('css')
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="{{ asset('theme/backend/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
 
@@ -19,23 +11,8 @@
 
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('theme/backend/plugins/summernote/summernote-bs4.min.css') }}">
-
-</head>
-
-<body class="hold-transition sidebar-mini layout-fixed">
-  <div class="wrapper">
-
-    <!-- Preloader -->
-    <!-- <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-    </div> -->
-
-    <!-- Navbar -->
-    @include('admin.layouts.parts.navbar')
-    <!-- /.navbar -->
-
-    <!-- Main Sidebar Container -->
-    @include('admin.layouts.parts.sidebar')
+@endsection
+@section('container')
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -66,7 +43,7 @@
               <!-- small box -->
               <div class="small-box bg-info py-3">
                 <div class="inner">
-                  
+                  <h3>{{ $total_product }}<sup style="font-size: 20px"> Units</sup></h3>
                 </div>
                 <div class="icon">
                   <i class="fas fa-tags"></i>
@@ -79,7 +56,7 @@
               <!-- small box -->
               <div class="small-box bg-success py-3">
                 <div class="inner">
-                  
+                  <h3>{{ $totalStok }}<sup style="font-size: 20px"> Pcs</sup></h3>
                 </div>
                 <div class="icon">
                   <i class="fas fa-cubes"></i>
@@ -92,7 +69,7 @@
               <!-- small box -->
               <div class="small-box bg-warning py-3">
                 <div class="inner">
-                  
+                  <h3>{{ $totalAdmin }}<sup style="font-size: 20px"> Users</sup></h3>
                 </div>
                 <div class="icon">
                   <i class="fas fa-user-tie"></i>
@@ -105,7 +82,7 @@
               <!-- small box -->
               <div class="small-box bg-danger py-3">
                 <div class="inner">
-                
+                  <h3>{{ $totalUser }}<sup style="font-size: 20px"> Users</sup></h3>
 
                   <p></p>
                 </div>
@@ -151,15 +128,10 @@
                 </div>
                 <div class="card-body">
                   <table class="table table-condensed" style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%;">
-                    {{-- <?php foreach ($stockLow as $product) : ?>
-                      <tr class="<?= ($product['stok'] < 10) ? 'text-danger font-weight-bold' : '' ?>">
-                        <td><?= $product['name'] ?></td>
-                        <td><?= $product['stok'] ?> Pcs</td>
-                      </tr>
-                    <?php endforeach; ?> --}}
+                    
                   </table>
                 </div>
-                <!-- /.card-body --> 
+                <!-- /.card-body -->
               </div>
               <!-- /.card -->
             </div>
@@ -171,7 +143,7 @@
               <!-- small box -->
               <div class="small-box bg-info py-3">
                 <div class="inner">
-                  {{-- <h3><?= //$newOrder['jumlah'] ?></h3> --}}
+                  <h3></h3>
                 </div>
                 <div class="icon">
                   <i class="far fa-bookmark"></i>
@@ -184,7 +156,7 @@
               <!-- small box -->
               <div class="small-box bg-success py-3">
                 <div class="inner">
-                  {{-- <h3><?= //$waitPaymentOrder['jumlah'] ?></h3> --}}
+                  <h3></h3>
                 </div>
                 <div class="icon">
                   <i class="fas fa-money-bill-wave"></i>
@@ -197,7 +169,7 @@
               <!-- small box -->
               <div class="small-box bg-warning py-3">
                 <div class="inner">
-                  {{-- <h3><?= //$waitConfirmOrder['jumlah'] ?></h3> --}}
+                  <h3></h3>
                 </div>
                 <div class="icon">
                 <i class="fas fa-dolly-flatbed"></i>
@@ -210,7 +182,7 @@
               <!-- small box -->
               <div class="small-box bg-danger py-3">
                 <div class="inner">
-                  {{-- <h3><?= //$waitSentOrder['jumlah'] ?></h3> --}}
+                  <h3></h3>
 
                   <p></p>
                 </div>
@@ -317,22 +289,14 @@
 
           </section>
         </div>
+      </section>
     </div><!-- /.container-fluid -->
-    </section>
     <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  @include('admin.layouts.parts.footer')
+  
+@endsection
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-  </div>
-  <!-- ./wrapper -->
-
-  <!-- jQuery UI 1.11.4 -->
+@section('script-custom')
+    <!-- jQuery UI 1.11.4 -->
   <script src="../../../themes/plugins/jquery-ui/jquery-ui.min.js"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
   <script>
@@ -352,26 +316,23 @@
   <!-- daterangepicker -->
   <script src=" {{ asset('theme/backend/plugins/daterangepicker/daterangepicker.js') }}"></script>
  
-
   <!-- Tempusdominus Bootstrap 4 -->
   <script src="{{ asset('theme/backend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 
   <!-- Summernote -->
   <script src="{{ asset('theme/backend/plugins/summernote/summernote-bs4.min.js') }}"></script>
-  
-  
-  @include('admin.layouts.parts.script-body')
+
   {{-- <script>
     $(function() {
 
       var categoryChartCanvas = $('#categoryChart').get(0).getContext('2d')
       var donutData = {
         labels: [
-          "SSD (<?= //$jumlahSSD['jumlah'] ?>)", "HDD (<?= //jumlahHDD['jumlah'] ?>)", "SSHD (<?= //$jumlahSSHD['jumlah'] ?>)", "SSD NVME (<?= //jumlahNVME['jumlah'] ?>)"
+          "SSD (<?= $jumlahSSD['jumlah'] ?>)", "HDD (<?= $jumlahHDD['jumlah'] ?>)", "SSHD (<?= $jumlahSSHD['jumlah'] ?>)", "SSD NVME (<?= $jumlahNVME['jumlah'] ?>)"
         ],
         datasets: [{
           data: [
-            <?= //$jumlahSSD['jumlah'] ?>, <?= //$jumlahHDD['jumlah'] ?>, <?= //$jumlahSSHD['jumlah'] ?>, <?= //$jumlahNVME['jumlah'] ?>
+            <?= $jumlahSSD['jumlah'] ?>, <?= $jumlahHDD['jumlah'] ?>, <?= $jumlahSSHD['jumlah'] ?>, <?= $jumlahNVME['jumlah'] ?>
           ],
           backgroundColor: ['#00f5d4', '#9b5de5', '#38b000', '#f15bb5'],
         }]
@@ -573,6 +534,4 @@
       options: salesGraphChartOptions
     })
   </script> --}}
-</body>
-
-</html>
+@endsection
