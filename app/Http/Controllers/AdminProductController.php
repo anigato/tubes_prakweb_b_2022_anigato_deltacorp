@@ -51,8 +51,10 @@ class AdminProductController extends Controller
      */
     public function store(Request $request)
     {
+        return $request->img;
+
         $validateData = $request->validate([
-            'name' => 'required|max:255',
+            'name' => 'max:255',
             'sku' => 'required',
             'category_id' => 'required' ,
             'brand_id' => 'required',
@@ -60,18 +62,12 @@ class AdminProductController extends Controller
             'capacity' => 'required',
             'price' => 'required', 'min:2', 'max:8',
             'weight' => 'required', 'min:3', 'max:4',
-            'description' => 'required|min:5|max:255',
-            'img' => 'image|file|max:1024',
+            'description' => 'min:5|max:255',
             'img' => 'image|file|max:1024'
         ]);
+
         if ($request->file('img')) {
             $img = $request->file('img')->store('img/product');
-            $imageSplit = explode('/', $img);
-            $validatedData['img'] = $imageSplit[2];
-        }
-        
-        if ($request->file('img')) {
-            $img = $request->file('img')->store('img/brand');
             $imageSplit = explode('/', $img);
             $validatedData['img'] = $imageSplit[2];
         }
