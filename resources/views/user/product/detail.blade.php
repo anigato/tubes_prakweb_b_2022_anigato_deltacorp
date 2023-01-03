@@ -1,27 +1,12 @@
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-   <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   @include('user.layouts.parts.link-head')
-
-   <title>ANIGASTORE - {{ $title }}</title>
-</head>
-
-<body>
-
-   @include('user.layouts.parts.header')
-   <!-- End header area -->
-
-   @include('user.layouts.parts.branding-area')
-   <!-- End site branding area -->
-
-   @include('user.layouts.parts.main-menu')
-   <!-- End mainmenu area -->
-
+@extends('user.layouts.main')
+@section('container')
+<?php
+function rupiah($harga)
+{
+   $hasil_harga = 'Rp. ' . number_format($harga, 0, ',', '.');
+   return $hasil_harga;
+}
+?>
    <div class="product-big-title-area">
       <div class="container">
          <div class="row">
@@ -122,8 +107,6 @@
                                           <a class="nav-link active" id="description-tab" data-toggle="tab"
                                              href="#description" role="tab" aria-controls="description"
                                              aria-selected="true">Deskripsi</a>
-                                          <a class="nav-link" id="review-tab" data-toggle="tab" href="#review"
-                                             role="tab" aria-controls="review" aria-selected="false">Ulasan</a>
                                           <a class="nav-link" id="disscusion-tab" data-toggle="tab" href="#disscusion"
                                              role="tab" aria-controls="disscusion"
                                              aria-selected="false">Diskusi</a>
@@ -174,28 +157,8 @@
                                              {!! $detailProduct->description !!}
                                           </article>
                                        </div>
-                                       <div class="tab-pane fade" id="review" role="tabpanel"
-                                          aria-labelledby="review-tab">
-                                          <div class="submit-review">
-                                             <p><label for="name">Name</label> <input name="name"
-                                                      type="text"></p>
-                                             <p><label for="email">Email</label> <input name="email"
-                                                      type="email"></p>
-                                             <div class="rating-chooser">
-                                                   <p>Your rating</p>
-                                                   <div class="rating-wrap-post">
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                      <i class="fa fa-star"></i>
-                                                   </div>
-                                             </div>
-                                             <p><label for="review">Your review</label>
-                                                   <textarea name="review" id="" cols="30" rows="10"></textarea>
-                                             </p>
-                                             <p><input type="submit" value="Submit"></p>
-                                          </div>
+                                       <div class="tab-pane fade" id="disscusion" role="tabpanel" aria-labelledby="disscusion-tab">
+                                          <div id="disqus_thread"></div>
                                        </div>
                                  </div>
                               </div>
@@ -209,40 +172,24 @@
          </div>
       </div>
    </div>
+@endsection
+   
 
-   @include('user.layouts.parts.brands-area')
-   <!-- End brands area -->
+@section('custom-script')
+<!-- share button -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-63a57699101d958a"></script>
 
-   @include('user.layouts.parts.footer')
-   <!-- End footer bottom area -->
+<!-- disqus -->
+<script>
+   (function() { // DON'T EDIT BELOW THIS LINE
+   var d = document, s = d.createElement('script');
+   s.src = 'https://deltacorp-1.disqus.com/embed.js';
+   s.setAttribute('data-timestamp', +new Date());
+   (d.head || d.body).appendChild(s);
+   })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-   @include('user.layouts.parts.script-body')
-   <!-- share button -->
-   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-63a57699101d958a"></script>
+<script id="dsq-count-scr" src="//deltacorp-1.disqus.com/count.js" async></script>
+@endsection
 
-   <!-- disqus -->
-   <script>
-      (function() {
-         var d = document,
-               s = d.createElement('script');
-         s.src = 'https://anigastore.disqus.com/embed.js';
-         s.setAttribute('data-timestamp', +new Date());
-         (d.head || d.body).appendChild(s);
-      })();
-
-      // input form khusus nomor
-      function onlyNumber(evt) {
-         var charCode = (evt.which) ? evt.which : event.keyCode
-         if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-               return false;
-         } else {
-               return true;
-         }
-      }
-   </script>
-   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
-         Disqus.</a></noscript>
-   <script id="dsq-count-scr" src="//anigastore.disqus.com/count.js" async></script>
-</body>
-
-</html>
