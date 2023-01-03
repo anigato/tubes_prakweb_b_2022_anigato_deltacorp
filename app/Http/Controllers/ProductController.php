@@ -23,6 +23,8 @@ class ProductController extends Controller
             $title = 'All Product';
         } else {
             $title = request('keyword');
+            $category_dropdown = "Kategori";
+            $brand_dropdown = "Brand";
         }
 
         if (request('category')) {
