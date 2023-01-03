@@ -44,7 +44,7 @@ Route::get('/register', [RegisterController::class, 'indexUser'])->name('registe
 Route::post('/register', [RegisterController::class, 'storeUser']);
 
 // login admin
-Route::get('/admin/login', [LoginController::class, 'indexAdmin'])->name('loginAdmin');
+Route::get('/admin/login', [LoginController::class, 'indexAdmin'])->name('loginAdmin')->middleware('guest');
 Route::post('/admin/login', [LoginController::class, 'authenticateAdmin']);
 
 // login user
@@ -54,28 +54,28 @@ Route::post('/login', [LoginController::class, 'authenticateUser']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 //Dashboard Admin
-Route::get('/admin/dashboard', [AdminDashboardController::class, 'dashboardAdmin'])->name('dashboardAdmin');
+Route::get('/admin/dashboard', [AdminDashboardController::class, 'dashboardAdmin'])->name('dashboardAdmin')->middleware('auth');
 
 // product user
 Route::resource('/product', ProductController::class);
 
 // brand
-Route::resource('/admin/brand', AdminBrandController::class);
+Route::resource('/admin/brand', AdminBrandController::class)->middleware('auth');
 
 // category
-Route::resource('/admin/category', AdminCategoryController::class);
+Route::resource('/admin/category', AdminCategoryController::class)->middleware('auth');
 
 // slidder
-Route::resource('/admin/slidder', AdminSlidderController::class);
+Route::resource('/admin/slidder', AdminSlidderController::class)->middleware('auth');
 
 // Product Admin
-Route::resource('/admin/product', AdminProductController::class);
+Route::resource('/admin/product', AdminProductController::class)->middleware('auth');
 
 // add User Admin
-Route::resource('/admin/userAdmin', AdminUserController::class);
+Route::resource('/admin/userAdmin', AdminUserController::class)->middleware('auth');
 
 // Order Admin
-Route::resource('/admin/order', AdminOrderController::class);
+Route::resource('/admin/order', AdminOrderController::class)->middleware('auth');
 
 // user detail
 Route::resource('/user', UserDetailController::class);
@@ -90,4 +90,4 @@ Route::resource('/cart', CartController::class);
 Route::resource('/transaction', TransactionController::class);
 
 // User List
-Route::resource('/admin/userList', AdminUserListController::class);
+Route::resource('/admin/userList', AdminUserListController::class)->middleware('auth');
