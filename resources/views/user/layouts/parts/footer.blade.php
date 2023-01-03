@@ -3,13 +3,15 @@
         <div class="row">
             <div class="col-md-6 col-lg-3 col-sm-6">
                 <div class="footer-about-us">
-                    <h2>ANIGA<span>STORE</span></h2>
-                    <p>ANIGASTORE adalah toko resmi dari Channel Youtube ANIGATO. ANIGASTORE juga tersedia di online shop Tokopedia dan Shopee.</p>
+                    <h2>Delta<span>corp</span></h2>
+                    <p> Deltacorp tersedia di online shop Tokopedia dan Shopee.</p>
                     <div class="footer-social">
-                        <a href="https://web.facebook.com/khoerul.anam.7758235/" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://web.facebook.com/khoerul.anam.7758235/" target="_blank"><i
+                                class="fab fa-facebook"></i></a>
                         <a href="https://twitter.com/yt_anigato" target="_blank"><i class="fab fa-twitter"></i></a>
                         <a href="http://www.youtube.com/anigato" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.instagram.com/yt.anigato/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/yt.anigato/" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -18,19 +20,14 @@
                 <div class="footer-menu">
                     <h2 class="footer-wid-title">Navigasi</h2>
                     <ul>
-                        <?php if (isset($_COOKIE['user_name'])) {
-                            $_SESSION['user_name'] = $_COOKIE['user_name'];
-                        } ?>
-                        <?php if (isset($_SESSION['user_name'])) : ?>
-                            <li><a href="../user/detail.php">Akun Saya</a></li>
-                            <li><a href="../wishlist/index.php"></i> Daftar Keinginan</a></li>
-                            <li><a href="../cart/index.php"> Keranjang Saya</a></li>
-                            <li><a href="../transaction/index.php"> Transaksi Saya</a></li>
-                        <?php else : ?>
-                            <li><a href="#">Akun Saya</a></li>
-                            <li><a href="#">Keranjang Saya</a></li>
-                            <li><a href="#">Daftar Keinginan</a></li>
-                        <?php endif; ?>
+                        @auth
+                            <li><a href="{{ url('user/' . auth()->user()->id) }}">Akun Saya</a></li>
+                            <li><a href="{{ url('wishlist') }}"></i> Daftar Keinginan</a></li>
+                            <li><a href="{{ url('cart') }}"> Keranjang Saya</a></li>
+                            <li><a href="{{ url('transaction') }}"> Transaksi Saya</a></li>
+                        @else
+                            <li><a href="{{ url('cart') }}"> Keranjang Saya</a></li>
+                        @endauth
                     </ul>
                 </div>
             </div>
@@ -40,7 +37,7 @@
                     <h2 class="footer-wid-title">Kategori</h2>
                     <ul>
                         @foreach ($categories as $category)
-                        <li><a href="../product/search.php?search=category&keyword=SSD">SSD</a></li>
+                            <li><a href="../product/search.php?search=category&keyword=SSD">SSD</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -49,9 +46,10 @@
             <div class="col-md-6 col-lg-3 col-sm-6">
                 <div class="footer-newsletter">
                     <h2 class="footer-wid-title">Langganan</h2>
-                    <p>Langganan ke Channel Youtube ANIGATO sekarang juga!</p>
+                    <p>Langganan Deltacorp sekarang juga!</p>
                     <div class="newsletter-form">
-                        <a class="btn btn-sm btn-danger" href="http://www.youtube.com/anigato" target="_blank">Klik Saya</a>
+                        <a class="btn btn-sm btn-danger" href="http://www.youtube.com/anigato" target="_blank">Klik
+                            Saya</a>
                     </div>
                 </div>
             </div>
@@ -64,7 +62,8 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="copyright">
-                    <p>&copy; 2022 <a href="http://www.youtube.com/anigato" target="_blank">DeltaCorp</a>. All Rights Reserved. </p>
+                    <p>&copy; 2022 <a href="http://www.youtube.com/anigato" target="_blank">DeltaCorp</a>. All Rights
+                        Reserved. </p>
                 </div>
             </div>
 

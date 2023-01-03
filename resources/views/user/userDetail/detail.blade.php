@@ -1,31 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('user.layouts.main')
+@section('css')
+    <style>
+        .profile-pic {
+            background: lightskyblue;
+            color: #eeeeee;
+            border-radius: 50%;
+            height: 8rem;
+            width: 8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 8rem;
+        }
+    </style>
+@endsection
+@section('container')
+    
+<?php
+function rupiah($harga)
+{
+    $hasil_harga = 'Rp. ' . number_format($harga, 0, ',', '.');
+    return $hasil_harga;
+}
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-    @include('user.layouts.parts.link-head')
-    <link rel="stylesheet" href="../../../css/frontend/user_style.css">
-
-
-
-    <title>ANIGASTORE - User Profile</title>
-</head>
-
-<body>
-
-
-    <!-- End header area -->
-    @include('user.layouts.parts.header')
-
-    <!-- End site branding area -->
-    @include('user.layouts.parts.branding-area')
-
-    <!-- End mainmenu area -->
-    @include('user.layouts.parts.main-menu')
+// generate user img
+function getProfilePicture($name)
+{
+    $name_slice = explode(' ', $name);
+    $name_slice = array_filter($name_slice);
+    $initials = '';
+    $initials .= (isset($name_slice[0][0])) ? strtoupper($name_slice[0][0]) : '';
+    return '<div class="profile-pic mx-auto">' . $initials . '</div>';
+}
+?>
 
     <div class="product-big-title-area">
         <div class="container">
@@ -58,8 +66,7 @@
                                 <!-- Breadcrumb -->
                                 <nav aria-label="breadcrumb" class="main-breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="../product/index.php">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">User Profile</li>
                                     </ol>
                                 </nav>
@@ -70,26 +77,10 @@
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="d-flex flex-column align-items-center text-center">
-                                                    {{-- <?php
-                                                    if (empty($user['img'])) {
-                                                        echo getProfilePicture($_SESSION['user_name']);
-                                                    } else {
-                                                        echo '<img src="../../../assets/img/users/' . $user['img'] . '" style="border-radius:50%"  alt="User Image">';
-                                                    }
-                                                    ?> --}}
-                                                    <img src="" style="border-radius:50%" alt="User Image">
-
+                                                    <?=  getProfilePicture(Auth()->user()->username) ?>
+                                                    
                                                     <div class="mt-3">
                                                         <h4>{{ $user['username'] }}</h4>
-                                                        @empty($user->userDetail)
-                                                            <p class="text-secondary mb-1">Nama Lengkap</p>
-                                                            <p class="text-muted font-size-sm">Nomor Telepon</p>
-                                                        @else
-                                                            <p class="text-secondary mb-1">
-                                                                {{ $user->userDetail->full_name }}</p>
-                                                            <p class="text-muted font-size-sm">
-                                                                {{ $user->userDetail->phone }}</p>
-                                                        @endempty
                                                     </div>
                                                 </div>
                                             </div>
@@ -155,9 +146,7 @@
                                                 <div class="col-md-12 mb-3">
                                                     <div class="card h-100">
                                                         <div class="card-body">
-                                                            <h6 class="d-flex align-items-center mb-3"><i
-                                                                    class="material-icons text-info mr-2">Alamat</i>Pengiriman
-                                                                Anda</h6>
+                                                            <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Alamat</i>Pengiriman Anda</h6>
                                                             <div class="row">
                                                                 <div class="col-md-5">
                                                                     <h6 class="mb-0">Nama Jalan</h6>
@@ -314,18 +303,4 @@
                 </div>
             </div>
         </div>
-
-
-        <!-- End brands area -->
-        @include('user.layouts.parts.brands-area')
-
-        <!-- End footer bottom area -->
-        @include('user.layouts.parts.footer')
-
-        <!--End script-body-->
-        @include('user.layouts.parts.script-body')
-
-
-</body>
-
-</html>
+@endsection

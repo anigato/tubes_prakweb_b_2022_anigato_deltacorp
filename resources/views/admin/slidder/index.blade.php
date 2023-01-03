@@ -1,22 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ADMIN Panel | <?= $title ?></title>
-  @include('admin.layouts.parts.link-header')
-</head>
-
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
-  <div class="wrapper">
-    <!-- Navbar -->
-    @include('admin.layouts.parts.navbar')
-    <!-- endnavbar -->
-
-    <!-- sidebar -->
-    @include('admin.layouts.parts.sidebar')
-    <!-- endsidebar -->
+@extends('admin.layouts.main')
+@section('container')
 
     <!-- Main content -->
     <div class="content-wrapper">
@@ -82,22 +65,22 @@
                           } ?>
                         </td>
 
-                        <td rowspan="2" class="row">
-                          <a href="{{ url ('admin/slidder/' .$slidder['id'].'/edit') }}" class="btn btn-sm btn-info col-md-6 update-link">Edit</a>
+                        <td>
+                          <a href="{{ url ('admin/slidder/' .$slidder['id'].'/edit') }}" class="btn btn-sm btn-info update-link"><i class="fas fa-pencil-alt"></i></a>
 
                           <form action="{{ url('admin/slidder/'.$slidder['id']) }}" method="post" class="d-inline">
                             @method('delete')
                             @csrf
-                            <button class="btn btn-sm btn-danger">Delete</button>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
                           </form>
 
                           <?php
                           switch ($slidder["status"]) {
                             case 0:
-                              echo '<a href="status.php?status=1&id=' . $slidder['id'] . '" class="btn btn-sm btn-success col-md-12 status-link">Activate</a>';
+                              echo '<a href="status.php?status=1&id=' . $slidder['id'] . '" class="btn btn-sm btn-success status-link"><i class="fas fa-eye"></i></a>';
                               break;
                             case 1:
-                              echo '<a href="status.php?status=0&id=' . $slidder['id'] . '" class="btn btn-sm btn-warning col-md-12 status-link">Inactivate</a>';
+                              echo '<a href="status.php?status=0&id=' . $slidder['id'] . '" class="btn btn-sm btn-warning status-link"><i class="fas fa-eye-slash"></i></a>';
                               break;
                           } ?>
 
@@ -129,22 +112,9 @@
       <!-- /.content -->
     </div>
     <!-- end main content -->
+    @endsection
 
-
-    <!-- footer -->
-    @include('admin.layouts.parts.footer')
-    <!-- endfooter -->
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-
-  </div>
-
-  @include('admin.layouts.parts.script-body')
-  @include('admin.layouts.parts.script-dataTable')
+  @section('script-custom')
   <script>
     $(function() {
       $("#example1").DataTable({
@@ -220,6 +190,4 @@
       });
     });
   </script>
-</body>
-
-</html>
+@endsection

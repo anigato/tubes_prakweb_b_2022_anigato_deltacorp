@@ -12,6 +12,7 @@ class UserHomeController extends Controller
 {
     public function homeUser()
     {
+        session_start();
         return view('user.home',[
             'title' => 'Home User',
             'active' => 'home',

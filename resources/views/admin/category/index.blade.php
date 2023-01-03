@@ -1,22 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ADMIN Panel | <?= $title ?></title>
-  @include('admin.layouts.parts.link-header')
-</head>
-
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
-  <div class="wrapper">
-    <!-- Navbar -->
-    @include('admin.layouts.parts.navbar')
-    <!-- endnavbar -->
-
-    <!-- sidebar -->
-    @include('admin.layouts.parts.sidebar')
-    <!-- endsidebar -->
+@extends('admin.layouts.main')
+@section('container')
 
     <!-- Main content -->
     <div class="content-wrapper">
@@ -66,14 +49,14 @@
                         <td>{{ $i++; }}</td>
                         <td>{{ strtoupper($category["name"]); }}</td>
 
-                        <td rowspan="2" class="row">
+                        <td>
                           <div class="col-md-3"></div>
-                          <a href="{{ url('admin/category/'.$category['id'].'/edit') }}" class="btn btn-sm btn-info col-md-3 update-link">Edit</a>
+                          <a href="{{ url('admin/category/'.$category['id'].'/edit') }}" class="btn btn-sm btn-info update-link"><i class="fas fa-pencil-alt"></i></a>
 
                           <form action="{{ url('admin/category/'.$category['id']) }}" method="post" class="d-inline">
                             @method('delete')
                             @csrf
-                            <button class="btn btn-sm btn-danger">Delete</button>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
                           </form> 
                         </td>
                       </tr>
@@ -100,22 +83,8 @@
       <!-- /.content -->
     </div>
     <!-- end main content -->
-
-
-    <!-- footer -->
-    @include('admin.layouts.parts.footer')
-    <!-- endfooter -->
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-
-  </div>
-
-  @include('admin.layouts.parts.script-body')
-  @include('admin.layouts.parts.script-dataTable')
+    @endsection
+  @section('script-custom')
   <script>
     $(function() {
       $("#example1").DataTable({
@@ -191,6 +160,4 @@
       });
     });
   </script>
-</body>
-
-</html>
+@endsection

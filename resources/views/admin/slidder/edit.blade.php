@@ -1,28 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ADMIN Panel | Edit slidder</title>
-
-  <!-- trix editor -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.css" integrity="sha512-CWdvnJD7uGtuypLLe5rLU3eUAkbzBR3Bm1SFPEaRfvXXI2v2H5Y0057EMTzNuGGRIznt8+128QIDQ8RqmHbAdg==" crossorigin="anonymous" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js" integrity="sha512-/1nVu72YEESEbcmhE/EvjH/RxTg62EKvYWLG3NdeZibTCuEtW5M4z3aypcvsoZw03FAopi94y04GhuqRU9p+CQ==" crossorigin="anonymous"></script>
-  <!-- Select2 -->
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-  @include('admin.layouts.parts.link-header')
-</head>
-
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
-  <div class="wrapper">
-    <!-- Navbar -->
-    @include('admin.layouts.parts.navbar')
-    <!-- endnavbar -->
-
-    <!-- sidebar -->
-    @include('admin.layouts.parts.sidebar')
-    <!-- endsidebar -->
+@extends('admin.layouts.main')
+@section('container')
 
     <!-- Main content -->
     <div class="content-wrapper">
@@ -92,7 +69,7 @@
                         <label for="description">Description</label>
                         <input id="description" type="hidden" name="description" required value="{{ old('description', $slidder->description) }}">
                         <div class="invalid-feedback">
-                          Please provide a valid the sli$slidder Description.
+                          Please provide a valid the slidder Description.
                         </div>
                         <trix-editor input="description"></trix-editor>
                       </div>
@@ -104,7 +81,7 @@
                           <i class="fas fa-upload"></i>
                           <span> Edit slidder</span>
                         </button>
-                        <a href="index.php" class="btn btn-warning  cancel">
+                        <a href="{{ url('admin/slidder/') }}" class="btn btn-warning  cancel">
                           <i class="fas fa-times-circle"></i>
                           <span> Cancel</span>
                         </a>
@@ -125,26 +102,9 @@
     </div>
     <!-- end main content -->
 
+    @endsection
 
-    <!-- footer -->
-    @include('admin.layouts.parts.footer')
-    <!-- endfooter -->
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-
-  </div>
-
-  <!-- Select2 -->
-  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-  <!-- bs-custom-file-input -->
-  <script src="../../../themes/jsinput-form/bs-custom-file-input.min.js"></script>
-  @include('admin.layouts.parts.script-body')
-
-  <!-- Page specific script -->
+    @section('script-custom')
   <script>
     // validasi form
     (function() {
@@ -172,6 +132,4 @@
     //Initialize Select2 Elements
     $('.select2').select2()
   </script>
-</body>
-
-</html>
+@endsection

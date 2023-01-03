@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminProductController extends Controller
 {
@@ -42,7 +43,7 @@ class AdminProductController extends Controller
     
     }
 
-    /**
+    /*
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -50,18 +51,27 @@ class AdminProductController extends Controller
      */
     public function store(Request $request)
     {
-        $validateData = $request->validate([
-            'name' => 'required|max:255',
+        // return $request;
+        $validatedData = $request->validate([
             'sku' => 'required',
+            'name' => 'max:255',
             'category_id' => 'required' ,
             'brand_id' => 'required',
-            'stok' => 'required', 'min:2', 'max:2',
+            'stok' => 'required|min:2|max:2',
             'capacity' => 'required',
-            'price' => 'required', 'min:2', 'max:8',
-            'weight' => 'required', 'min:3', 'max:4',
-            'description' => 'required|min:5|max:255'
+            'price' => 'required|min:2|max:8',
+            'weight' => 'required|min:3|max:4',
+            'description' => 'min:5|max:255',
+            'img' => 'image|file|max:1024'
         ]);
-        Product::create($validateData);
+
+        if ($request->file('img')) {
+            $img = $request->file('img')->store('img/product');
+            $imageSplit = explode('/', $img);
+            $validatedData['img'] = $imageSplit[2];
+        }
+        
+        Product::create($validatedData);
 
         return redirect('/admin/product');
     }
@@ -88,8 +98,11 @@ class AdminProductController extends Controller
         return view('admin.product.edit',[
             'title' => 'Edit category',
             'active' => 'editCategory',
-            'product' => $product
+            'product' => $product,
+            'brands' => Brand::all(),
+            'categories' => Category::all()
         ]);
+        
     }
 
     /**
@@ -110,11 +123,17 @@ class AdminProductController extends Controller
             'capacity' => 'required',
             'price' => 'required', 'min:2', 'max:8',
             'weight' => 'required', 'min:3', 'max:4',
-            'description' => 'required|min:5|max:255'
+            'description' => 'required|min:5|max:255',
+            'img' => 'image|file|max:1024'
         ];
 
         $validatedData = $request->validate($rules);
         
+        if ($request->file('img')) {
+            $img = $request->file('img')->store('img/brand');
+            $imageSplit = explode('/', $img);
+            $validatedData['img'] = $imageSplit[2];
+        }
 
         Product::where('id', $product->id)
             ->update($validatedData);
@@ -129,7 +148,10 @@ class AdminProductController extends Controller
      */
     public function destroy( Product $product)
     {
+        if ($product->img) {
+            Storage::delete($product->img);
         Product::destroy($product->id);
         return redirect('/admin/product')->with('success','Product has been deleted!');
     }
+}
 }

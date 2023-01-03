@@ -72,7 +72,9 @@ Route::resource('/admin/slidder', AdminSlidderController::class)->middleware('au
 Route::resource('/admin/product', AdminProductController::class)->middleware('auth');
 
 // add User Admin
-Route::resource('/admin/userAdmin', AdminUserController::class)->middleware('auth');
+Route::resource('/admin/userAdmin', AdminUserController::class);
+Route::get('/admin/user_admin/{user}/edit',[AdminUserController::class, "edit"]);
+
 
 // Order Admin
 Route::resource('/admin/order', AdminOrderController::class)->middleware('auth');
@@ -85,9 +87,10 @@ Route::resource('/wishlist', WishlistController::class);
 
 // cart
 Route::resource('/cart', CartController::class);
+Route::post('/cart/checkout', [CartController::class, 'checkOut']);
 
 //transaction
 Route::resource('/transaction', TransactionController::class);
-
+Route::get('/trans/{order}', [TransactionController::class, "show"]);
 // User List
 Route::resource('/admin/userList', AdminUserListController::class)->middleware('auth');

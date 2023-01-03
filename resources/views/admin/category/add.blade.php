@@ -51,7 +51,7 @@
                                                 <i class="fas fa-upload"></i>
                                                 <span> Add New Category</span>
                                             </button>
-                                            <a href="index.php" class="btn btn-warning  cancel">
+                                            <a href="{{ url('admin/category/') }}" class="btn btn-warning  cancel">
                                                 <i class="fas fa-times-circle"></i>
                                                 <span> Cancel</span>
                                             </a>
