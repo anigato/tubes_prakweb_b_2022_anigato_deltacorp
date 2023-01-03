@@ -61,8 +61,14 @@ class AdminProductController extends Controller
             'capacity' => 'required',
             'price' => 'required', 'min:2', 'max:8',
             'weight' => 'required', 'min:3', 'max:4',
-            'description' => 'required|min:5|max:255'
+            'description' => 'required|min:5|max:255',
+            'img' => 'image|file|max:1024'
         ]);
+        if ($request->file('img')) {
+            $img = $request->file('img')->store('img/product');
+            $imageSplit = explode('/', $img);
+            $validatedData['img'] = $imageSplit[2];
+        }
 
         Product::create($validateData);
 
