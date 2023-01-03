@@ -48,7 +48,7 @@ Route::get('/admin/login', [LoginController::class, 'indexAdmin'])->name('loginA
 Route::post('/admin/login', [LoginController::class, 'authenticateAdmin']);
 
 // login user
-Route::get('/login', [LoginController::class, 'indexUser'])->name('loginUser');
+Route::get('/login', [LoginController::class, 'indexUser'])->name('loginUser')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticateUser']);
 //logout
 Route::post('/logout', [LoginController::class, 'logout']);
@@ -78,16 +78,16 @@ Route::resource('/admin/userAdmin', AdminUserController::class)->middleware('aut
 Route::resource('/admin/order', AdminOrderController::class)->middleware('auth');
 
 // user detail
-Route::resource('/user', UserDetailController::class);
+Route::resource('/user', UserDetailController::class)->middleware('auth');
 
 // wishlist
-Route::resource('/wishlist', WishlistController::class);
+Route::resource('/wishlist', WishlistController::class)->middleware('auth');
 
 // cart
 Route::resource('/cart', CartController::class);
 
 //transaction
-Route::resource('/transaction', TransactionController::class);
+Route::resource('/transaction', TransactionController::class)->middleware('auth');
 
 // User List
 Route::resource('/admin/userList', AdminUserListController::class)->middleware('auth');
