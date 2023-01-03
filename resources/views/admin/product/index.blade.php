@@ -81,7 +81,6 @@
                                                     <td>{{  $product["stok"]; }}</td>
 
                                                     <td>
-
                                                         <a href="{{ url('admin/product/'.$product['id'].'/edit') }}" class="btn btn-sm btn-info col-md-6 update-link"><i class="fas fa-pencil-alt"></i></a>
                                                         
                                                         <form action="{{ url('admin/product/'.$product['id']) }}" method="post" class="d-inline">
@@ -132,5 +131,80 @@
     </div>
     @include('admin.layouts.parts.script-body')
     @include('admin.layouts.parts.script-dataTable')
+    <script>
+        $(function() {
+          $("#example1").DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+          }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+          $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+          });
+        });
+        jQuery(document).ready(function($) {
+          $('.delete-link').on('click', function() {
+            var getLink = $(this).attr('action');
+    
+            Swal.fire({
+              title: 'Warning!',
+              text: 'Are you sure you want to delete it? data will be lost',
+              type: 'warning',
+              // html:true,
+              showCancelButton: true,
+              cancelButtonColor: '#d33',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Yes, Delete It!',
+              allowOutsideClick: false
+            }).then((result) => {
+              if (result.value) {
+                Swal.fire({
+                  title: 'Success!',
+                  text: 'One Admin has been deleted',
+                  type: 'success',
+                  confirmButtonColor: '#3085d6',
+                  confirmButtonText: 'OK',
+                  allowOutsideClick: false
+                }).then((result) => {
+                  if (result.value) {
+                    window.location.href = getLink;
+                  }
+                })
+    
+              }
+            });
+            return false;
+          });
+        });
+    
+        jQuery(document).ready(function($) {
+          $('.update-link').on('click', function() {
+            var getLink = $(this).attr('href');
+    
+            Swal.fire({
+              title: 'Warning!',
+              text: 'Are you sure you want to edit this product?',
+              type: 'question',
+              // html:true,
+              showCancelButton: true,
+              cancelButtonColor: '#d33',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Yes'
+            }).then((result) => {
+              if (result.value) {
+                window.location.href = getLink;
+              }
+            });
+            return false;
+          });
+        });
+      </script>
 </body>
 </html>

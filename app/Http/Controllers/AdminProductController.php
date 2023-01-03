@@ -51,7 +51,7 @@ class AdminProductController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->img;
+        
 
         $validateData = $request->validate([
             'name' => 'max:255',
