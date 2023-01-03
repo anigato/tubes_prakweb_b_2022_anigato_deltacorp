@@ -71,14 +71,13 @@
                                               <td>{{  $user["email"]; }}</td>
                       
                                               <td rowspan="2" class="row">
-                                                <div class="col-md-3"></div>
-                                                <a href="{{ url('admin/userAdmin/'.$user['id'].'/edit') }}" class="btn btn-sm btn-info col-md-3 update-link">Edit</a>
+                                                <div class="col-md-4"></div>
+                                                <a href="{{ url('admin/userAdmin/'.$user['id'].'/edit') }}" class="btn btn-sm btn-info col-md-2 update-link"><i class="fas fa-user-edit"></i></a>
                                                 
                                                 <form action="{{ url('admin/userAdmin/'.$user['id']) }}" method="post" class="d-inline">
-                                                    @method('delete')
-                                                    @csrf
-                                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                                </form>
+                                                  @method('delete')
+                                                  @csrf
+                                                  <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
                                               </td>
                                             </tr>
                                             @endforeach 
@@ -104,7 +103,81 @@
             <!-- /.content -->
         </div>
         <!-- end main content -->
-
+        <script>
+          $(function() {
+            $("#example1").DataTable({
+              "responsive": true,
+              "lengthChange": false,
+              "autoWidth": false,
+              "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+              "paging": true,
+              "lengthChange": false,
+              "searching": false,
+              "ordering": true,
+              "info": true,
+              "autoWidth": false,
+              "responsive": true,
+            });
+          });
+          jQuery(document).ready(function($) {
+            $('.delete-link').on('click', function() {
+              var getLink = $(this).attr('href');
+        
+              Swal.fire({
+                title: 'Warning!',
+                text: 'Are you sure you want to delete it? data will be lost',
+                type: 'warning',
+                // html:true,
+                showCancelButton: true,
+                cancelButtonColor: '#d33',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, Delete It!',
+                allowOutsideClick: false
+              }).then((result) => {
+                if (result.value) {
+                  Swal.fire({
+                    title: 'Success!',
+                    text: 'One Brand has been deleted',
+                    type: 'success',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'OK',
+                    allowOutsideClick: false
+                  }).then((result) => {
+                    if (result.value) {
+                      window.location.href = getLink;
+                    }
+                  })
+        
+                }
+              });
+              return false;
+            });
+          });
+        
+          jQuery(document).ready(function($) {
+            $('.update-link').on('click', function() {
+              var getLink = $(this).attr('href');
+        
+              Swal.fire({
+                title: 'Warning!',
+                text: 'Are you sure you want to edit it?',
+                type: 'question',
+                // html:true,
+                showCancelButton: true,
+                cancelButtonColor: '#d33',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Yes'
+              }).then((result) => {
+                if (result.value) {
+                  window.location.href = getLink;
+                }
+              });
+              return false;
+            });
+          });
+        </script>
 
         <!-- footer -->
         @include('admin.layouts.parts.footer')
@@ -121,6 +194,7 @@
 
     @include('admin.layouts.parts.script-body')
     @include('admin.layouts.parts.script-dataTable')
+    
 </body>
 
 </html>

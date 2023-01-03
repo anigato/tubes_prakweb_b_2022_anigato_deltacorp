@@ -55,11 +55,14 @@
                                 </div>
                                 <div class="card-body">
                                     <form class="row needs-validation" novalidate method="post" action="/admin/product/{{ $product->id }}" enctype="multipart/form-data">
+                                        @method('put')
+                                        @csrf
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Name</label>
                                                 <div class="input-group mb-3">
-                                                    <input type="text" class="form-control" name="name" id="name" placeholder="Product Name" required>
+                                                    <input type="text" class="form-control" name="name" id="name" placeholder="Product Name" required
+                                                    value="{{ old('name', $product->name) }}">
                                                     <div class="invalid-feedback">
                                                         Please provide a valid Product Name.
                                                     </div>
@@ -67,12 +70,13 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Category</label>
-                                                <select class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;" name="category" required>
+                                                <select class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;" name="category_id" required
+                                                value="{{ old('name', $product->category) }}">
                                                     <option selected="selected" disabled value="">Open list Product Category</option>
-                                                    <option value="HDD">HDD</option>
-                                                    <option value="SSHD">SSHD</option>
-                                                    <option value="SSD">SSD</option>
-                                                    <option value="SSD NVME">SSD NVME</option>
+                                                    @foreach ($categories as $category)
+                                                            <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                                                        @endforeach
+                                                    
                                                 </select>
                                                 <div class="invalid-feedback">
                                                     Please provide a valid Product Category.
@@ -82,23 +86,25 @@
 
                                         <div class="col-md-6">
 
-                                            {{-- <div class="form-group">
+                                            <div class="form-group">
                                                 <label>Brand</label>
                                                 <div class="input-group mb-3">
-                                                    <select class="custom-select text-uppercase" name="brand" required>
+                                                    <select class="custom-select text-uppercase" name="brand_id" required
+                                                    value="{{ old('name', $product->brand) }}">
                                                         <option value="" disabled selected>Pilih Brand</option>
-                                                        <?php foreach ($brands as $brand) : ?>
-                                                            <option value="<?= $brand['id']; ?>"><?= $brand['name']; ?></option>
-                                                        <?php endforeach; ?>
+                                                        @foreach ($brands as $brand)
+                                                            <option value="{{ $brand['id'] }}">{{ $brand['name'] }}</option>
+                                                        @endforeach
                                                     </select>
                                                     <div class="invalid-feedback">
                                                         Please provide a valid Product Brand.
                                                     </div>
                                                 </div>
-                                            </div> --}}
+                                            </div>
                                             <div class="form-group">
                                                 <label>Capacity</label>
-                                                <select class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;" name="capacity" required>
+                                                <select class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;" name="capacity" required
+                                                value="{{ old('name', $product->capacity) }}">
                                                     <option selected="selected" disabled value="">Open list Product Capacity</option>
                                                     <option value="120">120 GB</option>
                                                     <option value="128">128 GB</option>
@@ -121,7 +127,8 @@
                                                     <div class="form-group">
                                                         <label>Stock</label>
                                                         <div class="input-group mb-3">
-                                                            <input type="text" class="form-control" name="stok" id="stok" placeholder="Product Stock" required onkeypress="return onlyNumber(event)" minlength="2" maxlength="2">
+                                                            <input type="text" class="form-control" name="stok" id="stok" placeholder="Product Stock" required onkeypress="return onlyNumber(event)" minlength="2" maxlength="2" required
+                                                            value="{{ old('stock', $product->stock) }}">
                                                             <div class="invalid-feedback">
                                                                 Minimum Product Stock of 10 pcs and a maximum of 99 pcs
                                                             </div>
@@ -136,7 +143,8 @@
                                                                 <div class="input-group-prepend">
                                                                     <span class="input-group-text">Rp.</span>
                                                                 </div>
-                                                                <input type="text" class="form-control" name="price" id="price" placeholder="Product Price" required onkeypress="return onlyNumber(event)" minlength="5" maxlength="8">
+                                                                <input type="text" class="form-control" name="price" id="price" placeholder="Product Price" required onkeypress="return onlyNumber(event)" minlength="5" maxlength="8"required
+                                                                value="{{ old('price', $product->price) }}">
                                                                 <div class="input-group-append">
                                                                     <span class="input-group-text">.00</span>
                                                                 </div>
@@ -151,7 +159,8 @@
                                                     <div class="form-group">
                                                         <label>Weight</label>
                                                         <div class="input-group mb-3">
-                                                            <input type="text" class="form-control" name="weight" id="weight" placeholder="Product Weight" required onkeypress="return onlyNumber(event)" minlength="3" maxlength="4">
+                                                            <input type="text" class="form-control" name="weight" id="weight" placeholder="Product Weight" required onkeypress="return onlyNumber(event)" minlength="3" maxlength="4" required
+                                                            value="{{ old('weight', $product->weight) }}">
                                                             <div class="input-group-append">
                                                                 <span class="input-group-text">gr</span>
                                                             </div>
@@ -166,7 +175,8 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="description">Description</label>
-                                                <input id="description" type="hidden" name="description">
+                                                <input id="description" type="hidden" name="description" required
+                                                value="{{ old('description', $product->description) }}">
                                                 <trix-editor input="description"></trix-editor>
                                             </div>
                                         </div>
@@ -174,7 +184,8 @@
                                             <div class="form-group">
                                                 <label>Image</label>
                                                 <div class="custom-file mb-2">
-                                                    <input type="file" class="custom-file-input form-control" name="img" id="img" onchange="showImage(this);" required>
+                                                    <input type="file" class="custom-file-input form-control" name="img" id="img" onchange="showImage(this);" >
+                                                    <input type="hidden" name="oldImg" value="{{ $product->img }}">
                                                     <label class="custom-file-label" for="img">Choose an image</label>
                                                     <div class="invalid-feedback">
                                                         Please provide a valid Product Image.
@@ -194,7 +205,7 @@
                                                     <i class="fas fa-upload"></i>
                                                     <span> Add New Product</span>
                                                 </button>
-                                                <a href="index.php" class="btn btn-warning  cancel">
+                                                <a href="{{ url('admin/product/') }}" class="btn btn-warning  cancel">
                                                     <i class="fas fa-times-circle"></i>
                                                     <span> Cancel</span>
                                                 </a>

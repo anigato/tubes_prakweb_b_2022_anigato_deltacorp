@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-md-6 col-lg-3 col-sm-6">
                 <div class="footer-about-us">
-                    <h2>ANIGA<span>STORE</span></h2>
-                    <p>ANIGASTORE adalah toko resmi dari Channel Youtube ANIGATO. ANIGASTORE juga tersedia di online shop Tokopedia dan Shopee.</p>
+                    <h2>Delta<span>corp</span></h2>
+                    <p> Deltacorp tersedia di online shop Tokopedia dan Shopee.</p>
                     <div class="footer-social">
                         <a href="https://web.facebook.com/khoerul.anam.7758235/" target="_blank"><i class="fab fa-facebook"></i></a>
                         <a href="https://twitter.com/yt_anigato" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -49,7 +49,7 @@
             <div class="col-md-6 col-lg-3 col-sm-6">
                 <div class="footer-newsletter">
                     <h2 class="footer-wid-title">Langganan</h2>
-                    <p>Langganan ke Channel Youtube ANIGATO sekarang juga!</p>
+                    <p>Langganan Deltacorp sekarang juga!</p>
                     <div class="newsletter-form">
                         <a class="btn btn-sm btn-danger" href="http://www.youtube.com/anigato" target="_blank">Klik Saya</a>
                     </div>
