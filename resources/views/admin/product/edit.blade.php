@@ -70,12 +70,14 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Category</label>
+
                                                 <select class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;" name="category_id" required
                                                 value="{{ old('category_id', $product->category_id) }}">
                                                     <option disabled value="">Open list Product Category</option>
                                                     @foreach ($categories as $category)
                                                         @if (old('category_id', $product->category_id) == $category->id)
                                                             <option value="{{ $category['id'] }}" selected >{{ $category['name'] }}</option>
+
                                                         @else
                                                             <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
                                                         @endif
@@ -93,12 +95,15 @@
                                             <div class="form-group">
                                                 <label>Brand</label>
                                                 <div class="input-group mb-3">
-                                                    <select class="custom-select text-uppercase" name="brand_id" required
-                                                    value="{{ old('name', $product->brand) }}">
-                                                        <option value="" disabled selected>Pilih Brand</option>
-                                                        @foreach ($brands as $brand)
+                                                    <select class="custom-select text-uppercase" name="brand_id" required value={{ old('brand_id', $product->brand_id) }}">
+                                                    <option disabled value="">Open list Product Brand</option>
+                                                    @foreach ($brands as $brand)
+                                                        @if(old('category_id', $product->brand_id) == $brand->id)
+                                                            <option value="{{ $brand['id'] }}" selected>{{ $brand['name'] }}</option>
+                                                        @else
                                                             <option value="{{ $brand['id'] }}">{{ $brand['name'] }}</option>
-                                                        @endforeach
+                                                        @endif
+                                                    @endforeach
                                                     </select>
                                                     <div class="invalid-feedback">
                                                         Please provide a valid Product Brand.

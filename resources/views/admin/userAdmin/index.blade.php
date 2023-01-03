@@ -70,7 +70,7 @@
                                               <td>{{  $user["username"]; }}</td>
                                               <td>{{  $user["email"]; }}</td>
                       
-                                              <td rowspan="2" class="row">
+                                              <td>
                                                 <div class="col-md-4"></div>
                                                 <a href="{{ url('admin/userAdmin/'.$user['id'].'/edit') }}" class="btn btn-sm btn-info col-md-2 update-link"><i class="fas fa-user-edit"></i></a>
                                                 
