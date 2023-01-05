@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: #eee;
+}
+
+
+.container h1 {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.container .hr {
+    width: 40px;
+    margin: 0 auto;
+}
+
+.container .delta img {
+    width: 150px;
+    height: 80px;
+    top: 180px;
+    border: none;
+}
+
+.container .delta h2 {
+    text-align: center;
+    margin-top: 8rem;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.container .delta h2 .d {
+    color: #5a88ca;
+}
+
+.container .delta h2 .c {
+    color: #666;
+}
+
+.container .row h3{
+    text-align: center;
+    padding-top: 2.5rem;
+    padding-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+img{
+    height: 150px;
+    width: 150px;
+    border: 8px solid #eee;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%,-50%);
+    border-radius:50%;
+}
+
+.card{
+    position:relative;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+
+.card:hover {
+    background-color: #5a88ca;
+}
+
+.name{
+    font-size: 20px;
+    margin-bottom: 6px;
+    padding-top: 90px;
+}
+.job{
+    color: #fa2525;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.container .card .icons .icon {
+    font-size: 14px;
+    width: 30px;
+    height: 30px;
+    color: white;
+    background-color: #5a88ca;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.dis{
+    color: #7e7c7c;
+    line-height: 2;
+}
+
+/* .container .card:hover {
+    background-color: #5a88ca;
+} */
+
+/* .container .card:hover .icons .icon {
+    background-color: gray;
+}
+.container .card:hover .text-center{
+    background-color: #5a88ca;
+    color: white;
+}
+.container .card:hover .job,.container .card:hover .name{
+    color: white;
+}
+.container .card:hover .dis{
+    color: #c4c4c4;
+} */
+.container .card .icons .icon:hover{
+    background-color: rgb(235, 103, 103);
+}
+.mt-80{
+    margin-top: 80px;
+}

@@ -65,7 +65,7 @@
                       <div class="col-md-3"></div>
                     </td>
                   </tr>
-                  @endforeach;
+                  @endforeach
 
                 </tbody>
                 <tfoot>

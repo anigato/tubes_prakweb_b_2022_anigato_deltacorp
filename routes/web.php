@@ -95,3 +95,6 @@ Route::resource('/transaction', TransactionController::class)->middleware('auth'
 Route::get('/trans/{order}', [TransactionController::class, "show"])->middleware('auth');
 // User List
 Route::resource('/admin/userList', AdminUserListController::class)->middleware('auth');
+
+//About Us
+Route::get('/about/us/', [UserHomeController::class, 'aboutUs']);

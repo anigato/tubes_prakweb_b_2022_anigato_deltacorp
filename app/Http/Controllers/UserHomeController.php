@@ -25,4 +25,8 @@ class UserHomeController extends Controller
             'newProducts' => Product::latest()->paginate(10),
         ]);
     }
+
+    public function aboutUs(){
+        return view('about');
+    }
 }

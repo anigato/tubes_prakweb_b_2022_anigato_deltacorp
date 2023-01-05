@@ -4,7 +4,7 @@
             <div class="col-md-6 col-lg-3 col-sm-6">
                 <div class="footer-about-us">
                     <h2>Delta<span>corp</span></h2>
-                    <p> Deltacorp tersedia di online shop Tokopedia dan Shopee.</p>
+                    <p> Deltacorp Selalu menyediakan yang terbaik untuk anda.</p>
                     <div class="footer-social">
                         <a href="https://web.facebook.com/khoerul.anam.7758235/" target="_blank"><i
                                 class="fab fa-facebook"></i></a>
