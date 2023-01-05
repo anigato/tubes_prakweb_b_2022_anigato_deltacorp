@@ -25,18 +25,6 @@
         </script>
     @endif
 
-    @if (session()->has('success'))
-    <script type='text/javascript'>
-        Swal.fire({
-            title: 'Success!',
-            text: '{{ session('success') }}',
-            icon: 'success',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'OK'
-        })
-    </script>
-    @endif
-
     <div class="main">
         <input type="checkbox" id="logReg" aria-hidden="true">
 
@@ -49,6 +37,8 @@
                 <input type="text" name="username" id="username" placeholder="Username" autofocus required>
 
                 <input type="password" name="password" id="password" placeholder="Password" required>
+                
+                <a href="{{ route('loginAdmin') }}">Are you Admin?</a>
 
                 <button type="submit">Masuk</button>
             </form>

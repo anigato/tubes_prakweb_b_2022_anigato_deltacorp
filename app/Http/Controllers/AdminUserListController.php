@@ -17,7 +17,7 @@ class AdminUserListController extends Controller
         return view('admin.userList.index', [
             'title' => 'All Userlist',
             'active' => 'allUserlist',
-            'users' => User::all()
+            'users' => User::where('is_admin',0)->get()
         ]);
     }
 
@@ -50,6 +50,7 @@ class AdminUserListController extends Controller
      */
     public function show(User $user)
     {
+        
         return view('admin.userList.detail', [
             'user' => $user
         ]);

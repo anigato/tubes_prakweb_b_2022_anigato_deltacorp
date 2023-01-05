@@ -4,7 +4,7 @@
 <div class="thubmnail-recent">
    <img src="{{ asset('storage/img/product/'.$newProduct['img']) }}"
       class="img-tumbnail rounded recent-thumb">
-   <h2><a class="text-uppercase" href="{{ url('product/'.$newProduct['id']) }}"><?= $newProduct['name'] ?></a></h2>
+   <h6><a class="text-uppercase" href="{{ url('product/'.$newProduct['id']) }}"><?= $newProduct['name'] ?></a></h2>
    <div class="product-sidebar-price">
       <ins>{{ rupiah($newProduct['price']) }}</ins>
    </div>

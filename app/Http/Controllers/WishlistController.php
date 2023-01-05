@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Wishlist;
-use App\Http\Requests\StoreWishlistRequest;
-use App\Http\Requests\UpdateWishlistRequest;
+use Illuminate\Http\Request;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -17,6 +16,7 @@ class WishlistController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
+        session_start();
         return view('user.wishlist.index', [
             'title' => 'Wishlist User',
             'active' => 'wishlist',
@@ -45,9 +45,15 @@ class WishlistController extends Controller
      * @param  \App\Http\Requests\StoreWishlistRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreWishlistRequest $request)
+    public function store(Product $product)
     {
-        //
+        $data = [
+            'product_id' => $product['id'],
+            'user_id' => Auth()->user()->id
+        ];
+        Wishlist::create($data);
+
+        return back()->with('success', 'Berhasil Tambahkan ke wishlist');
     }
 
     /**
@@ -79,7 +85,7 @@ class WishlistController extends Controller
      * @param  \App\Models\Wishlist  $wishlist
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateWishlistRequest $request, Wishlist $wishlist)
+    public function update(Request $request, Wishlist $wishlist)
     {
         //
     }
@@ -92,6 +98,7 @@ class WishlistController extends Controller
      */
     public function destroy(Wishlist $wishlist)
     {
-        //
+        Wishlist::destroy($wishlist->id);
+        return back()->with('success', 'Berhasil hapus dari wishlist');
     }
 }

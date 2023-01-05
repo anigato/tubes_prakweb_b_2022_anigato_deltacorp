@@ -31,10 +31,10 @@ body { font-family:Arial, Helvetica, sans-serif; }
 
 
 .header-area {
-    background: none repeat scroll 0 0 #f4f4f4;
+    background: none repeat scroll 0 0 #6C6864;
 }
 .header-area a {
-    color: #888;
+    color: rgb(212, 212, 212);
 }
 .user-menu ul {
     list-style: outside none none;
@@ -73,11 +73,18 @@ body { font-family:Arial, Helvetica, sans-serif; }
     text-align: center;
 }
 
-.mainmenu-area {background: none repeat scroll 0 0 #fbfbfb;
+.mainmenu-area {background: none repeat scroll 0 0 #999999;
 font-family: "Roboto Condensed",sans-serif;
 text-transform: uppercase;
 width: 100%;
 z-index: 999;}
+
+/* .mainmenu-area a {
+    color: rgb(224, 224, 224) !important;
+}
+.mainmenu-area a:hover {
+    color: white !important;
+} */
 
 
 
@@ -352,7 +359,7 @@ z-index: 999;}
   padding: 20px 0 20px;
 }
 
-.promo-area .zigzag-bottom, .brands-area .zigzag-bottom{background: #f4f4f4}
+.promo-area .zigzag-bottom, .brands-area .zigzag-bottom{background: #6C6864}
 .single-promo {
     font-size: 25px;
     font-weight: 200;
@@ -475,7 +482,7 @@ a:hover.wishlist{
 }
 
 .latest-product .owl-nav div, .related-products-wrapper .owl-nav div {
-  background:#fa8072;
+  background:#5a88ca;
   color:#FFF;
   display: inline-block;
   margin-left: 15px;
@@ -560,8 +567,8 @@ a:hover.wishlist{
   padding-bottom: 30px;
   padding-top: 30px;
 }
-.product-widget-area .zigzag-bottom{background: #f4f4f4;}
-.footer-top-area .zigzag-bottom{background: #f4f4f4}
+.product-widget-area .zigzag-bottom{background: #6C6864;}
+.footer-top-area .zigzag-bottom{background: #6C6864}
 .footer-top-area {background: none repeat scroll 0 0 #333;
 color: #999;
 padding: 35px 0 180px;}
@@ -704,7 +711,7 @@ width: 10px;
   padding: 50px 0;color: #fff;
 }
 
-.single-product-area .zigzag-bottom {background-color: #f4f4f4}
+.single-product-area .zigzag-bottom {background-color: #6C6864}
 
 .single-product-area {
   padding: 80px 0 130px;
@@ -915,7 +922,7 @@ table.shop_table th, table.shop_table td {
     text-align: center;
 }
 table.shop_table th {
-    background: none repeat scroll 0 0 #f4f4f4;
+    background: none repeat scroll 0 0 #6C6864;
     font-size: 15px;
     text-transform: uppercase;
 }
@@ -982,7 +989,7 @@ div.cart-collaterals ul.products li.product {
     padding: 10px;
 }
 .cart_totals table th {
-    background: none repeat scroll 0 0 #f4f4f4;
+    background: none repeat scroll 0 0 #6C6864;
 }
 .onsale {
 }
@@ -1016,7 +1023,7 @@ div.cart-collaterals ul.products li.product .price ins {
 
 
 .woocommerce-info {
-    background: none repeat scroll 0 0 #f4f4f4;
+    background: none repeat scroll 0 0 #6C6864;
     font-size: 18px;
     margin-bottom: 20px;
     padding: 15px;
@@ -1044,7 +1051,7 @@ div.cart-collaterals ul.products li.product .price ins {
     text-transform: uppercase;
 }
 .create-account {
-    background: none repeat scroll 0 0 #f4f4f4;
+    background: none repeat scroll 0 0 #6C6864;
     margin-bottom: 50px;
     padding: 15px;
 }
@@ -1099,7 +1106,7 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 
 
 #login-form-wrap, #coupon-collapse-wrap {
-    background: none repeat scroll 0 0 #f4f4f4;
+    background: none repeat scroll 0 0 #6C6864;
     margin-bottom: 30px;
     padding: 25px;
 }

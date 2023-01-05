@@ -39,79 +39,59 @@
         <div class="container-fluid">
           <!-- Small boxes (Stat box) -->
           <div class="row">
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-info py-3">
-                <div class="inner">
-                  <h3>{{ $total_product }}<sup style="font-size: 20px"> Units</sup></h3>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-tags"></i>
-                </div>
-                <div class="small-box-footer">Total Of All Products <i class="fas fa-arrow-circle-right"></i></div>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-success py-3">
-                <div class="inner">
-                  <h3>{{ $totalStok }}<sup style="font-size: 20px"> Pcs</sup></h3>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-cubes"></i>
-                </div>
-                <div class="small-box-footer">Total Of All Producs Stock <i class="fas fa-arrow-circle-right"></i></div>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-warning py-3">
-                <div class="inner">
-                  <h3>{{ $totalAdmin }}<sup style="font-size: 20px"> Users</sup></h3>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-user-tie"></i>
-                </div>
-                <div class="small-box-footer">Total Of User Admin <i class="fas fa-arrow-circle-right"></i></div>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-danger py-3">
-                <div class="inner">
-                  <h3>{{ $totalUser }}<sup style="font-size: 20px"> Users</sup></h3>
-
-                  <p></p>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-user"></i>
-                </div>
-                <div class="small-box-footer">Total Of All User <i class="fas fa-arrow-circle-right"></i></div>
-              </div>
-            </div>
-            
-            <!-- ./col -->
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <!-- DONUT CHART -->
-              <div class="card card-primary">
-                <div class="card-header">
-                  <h3 class="card-title">Total Products per Category</h3>
-
-                  <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                      <i class="fas fa-minus"></i>
-                    </button>
+            <div class="col-md-6 row">
+              <div class="col-md-6 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info py-3">
+                  <div class="inner">
+                    <h3>{{ $total_product }}<sup style="font-size: 20px"> Units</sup></h3>
                   </div>
+                  <div class="icon">
+                    <i class="fas fa-tags"></i>
+                  </div>
+                  <div class="small-box-footer">Total Of All Products <i class="fas fa-arrow-circle-right"></i></div>
                 </div>
-                <div class="card-body">
-                  <canvas id="categoryChart" style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%;"></canvas>
+              </div>
+              <!-- ./col -->
+              <div class="col-md-6 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success py-3">
+                  <div class="inner">
+                    <h3>{{ $totalStok }}<sup style="font-size: 20px"> Pcs</sup></h3>
+                  </div>
+                  <div class="icon">
+                    <i class="fas fa-cubes"></i>
+                  </div>
+                  <div class="small-box-footer">Total Of All Producs Stock <i class="fas fa-arrow-circle-right"></i></div>
                 </div>
-                <!-- /.card-body -->
+              </div>
+              <!-- ./col -->
+              <div class="col-md-6 col-6">
+                <!-- small box -->
+                <div class="small-box bg-warning py-3">
+                  <div class="inner">
+                    <h3>{{ $totalAdmin }}<sup style="font-size: 20px"> Users</sup></h3>
+                  </div>
+                  <div class="icon">
+                    <i class="fas fa-user-tie"></i>
+                  </div>
+                  <div class="small-box-footer">Total Of User Admin <i class="fas fa-arrow-circle-right"></i></div>
+                </div>
+              </div>
+              <!-- ./col -->
+              <div class="col-md-6 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger py-3">
+                  <div class="inner">
+                    <h3>{{ $totalUser }}<sup style="font-size: 20px"> Users</sup></h3>
+  
+                    <p></p>
+                  </div>
+                  <div class="icon">
+                    <i class="fas fa-user"></i>
+                  </div>
+                  <div class="small-box-footer">Total Of All User <i class="fas fa-arrow-circle-right"></i></div>
+                </div>
               </div>
             </div>
             <div class="col-md-6">
@@ -128,7 +108,12 @@
                 </div>
                 <div class="card-body">
                   <table class="table table-condensed" style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%;">
-                    
+                    @foreach ($stokLow as $product)
+                      <tr class="{{ ($product['stok'] < 10) ? 'text-danger font-weight-bold' : '' }}">
+                        <td>{{ $product['name'] }}</td>
+                        <td><span class="text-bold">{{ $product['stok'] }}</span> Pcs Remainings</td>
+                      </tr>
+                    @endforeach
                   </table>
                 </div>
                 <!-- /.card-body -->
@@ -136,109 +121,6 @@
               <!-- /.card -->
             </div>
           </div>
-
-
-          <div class="row">
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-info py-3">
-                <div class="inner">
-                  <h3></h3>
-                </div>
-                <div class="icon">
-                  <i class="far fa-bookmark"></i>
-                </div>
-                <a href="../orders/index_unpaid.php" class="small-box-footer">New Order Unpaid <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-success py-3">
-                <div class="inner">
-                  <h3></h3>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-money-bill-wave"></i>
-                </div>
-                <a href="../orders/index_wait_payment.php" class="small-box-footer">Waiting Payment Order <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-warning py-3">
-                <div class="inner">
-                  <h3></h3>
-                </div>
-                <div class="icon">
-                <i class="fas fa-dolly-flatbed"></i>
-                </div>
-                <a href="../orders/index_wait_confirm.php" class="small-box-footer">Waiting Confirmation Order <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-danger py-3">
-                <div class="inner">
-                  <h3></h3>
-
-                  <p></p>
-                </div>
-                <div class="icon">
-                <i class="fas fa-shipping-fast"></i>
-                </div>
-                <a href="../orders/index_process.php" class="small-box-footer">Waiting Sent Order <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-          </div>
-
-
-          <div class="row">
-            <div class="col-md-6">
-              <!-- DONUT CHART -->
-              <div class="card card-primary">
-                <div class="card-header">
-                  <h3 class="card-title">Percentage Orders</h3>
-
-                  <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                      <i class="fas fa-minus"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <canvas id="successCancel" style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%;"></canvas>
-                </div>
-                <!-- /.card-body -->
-              </div>
-            </div>
-            <div class="col-md-6">
-              <!-- BAR CHART -->
-              <div class="card card-success">
-                <div class="card-header">
-                  <h3 class="card-title">Top Sale Product!!</h3>
-
-                  <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                      <i class="fas fa-minus"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <canvas id="topSale" style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%;"></canvas>
-                </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-            </div>
-          </div>
-
-          <!-- /.row -->
-          <!-- Main row -->
-
           <div class="row">
             <section class="col-lg-12 connectedSortable">
               <!-- solid sales graph -->
@@ -322,119 +204,13 @@
   <!-- Summernote -->
   <script src="{{ asset('theme/backend/plugins/summernote/summernote-bs4.min.js') }}"></script>
 
-  {{-- <script>
-    $(function() {
-
-      var categoryChartCanvas = $('#categoryChart').get(0).getContext('2d')
-      var donutData = {
-        labels: [
-          "SSD (<?= $jumlahSSD['jumlah'] ?>)", "HDD (<?= $jumlahHDD['jumlah'] ?>)", "SSHD (<?= $jumlahSSHD['jumlah'] ?>)", "SSD NVME (<?= $jumlahNVME['jumlah'] ?>)"
-        ],
-        datasets: [{
-          data: [
-            <?= $jumlahSSD['jumlah'] ?>, <?= $jumlahHDD['jumlah'] ?>, <?= $jumlahSSHD['jumlah'] ?>, <?= $jumlahNVME['jumlah'] ?>
-          ],
-          backgroundColor: ['#00f5d4', '#9b5de5', '#38b000', '#f15bb5'],
-        }]
-      }
-      var donutOptions = {
-        maintainAspectRatio: false,
-        responsive: true,
-      }
-      new Chart(categoryChartCanvas, {
-        type: 'doughnut',
-        data: donutData,
-        options: donutOptions
-      })
-
-
-      var barData = {
-        labels: [
-          "",
-          <?php foreach ($topSale as $row) {
-            $id_product = $row['id_product'];
-            $product = query("SELECT * FROM products WHERE id = $id_product")[0];
-            echo "'" . strtoupper(shortString($product['name'], 15)) . "',";
-          } ?> ""
-        ],
-        datasets: [{
-          label: 'Top Sales Product',
-          backgroundColor: '#00ff2f',
-          borderColor: 'rgba(60,141,188,0.8)',
-          pointRadius: false,
-          pointColor: '#3b8bba',
-          pointStrokeColor: 'rgba(217, 15, 15,1)',
-          pointHighlightFill: '#fff',
-          pointHighlightStroke: 'rgba(60,141,188,1)',
-          data: [
-            0,
-            <?php foreach ($topSale as $row) {
-              echo $row['jumlah'] . ",";
-            } ?>
-            0
-          ]
-        }]
-      }
-
-    })
-
-    var topSaleCanvas = $('#topSale').get(0).getContext('2d')
-    var topSaleData = {
-      labels: [
-        <?php foreach ($topSale as $row) {
-          $id_product = $row['id_product'];
-          $product = query("SELECT * FROM products WHERE id = $id_product")[0];
-          echo "'" . strtoupper(shortString($product['name'], 100)) . "',";
-        } ?>
-      ],
-      datasets: [{
-        data: [
-          <?php foreach ($topSale as $row) {
-            echo $row['jumlah'] . ",";
-          } ?>
-        ],
-        backgroundColor: ['#28a745', '#17a2b8', '#ffc107', '#dc3545'],
-        hoverOffset: 5,
-      }]
-    }
-    var pieOptions = {
-      maintainAspectRatio: false,
-      responsive: true,
-    }
-    new Chart(topSaleCanvas, {
-      type: 'pie',
-      data: topSaleData,
-      options: pieOptions
-    })
-
-
-    var successCancelCanvas = $('#successCancel').get(0).getContext('2d')
-    var successCancelData = {
-      labels: [
-        "Successful (<?= $successOrder['jumlah'] ?>)", "Shipped (<?= $onShipOrder['jumlah'] ?>)", "Canceled (<?= $CancelOrder['jumlah'] ?>)"
-      ],
-      datasets: [{
-        data: [<?= $successOrder['jumlah'] ?>, <?= $onShipOrder['jumlah'] ?>, <?= $CancelOrder['jumlah'] ?>],
-        backgroundColor: ['#28a745', '#17a2b8', '#dc3545'],
-        hoverOffset: 5,
-      }]
-    }
-    var polarOptions = {
-      maintainAspectRatio: false,
-      responsive: true,
-    }
-    new Chart(successCancelCanvas, {
-      type: 'polarArea',
-      data: successCancelData,
-      options: polarOptions
-    })
-
+  <script>
     // Sales graph chart
     var salesGraphChartCanvas = $('#saleChart').get(0).getContext('2d')
     var saleData = {
       datasets: [{
         label: 'Order',
-        data: [<?= $order6Days['jumlah'] ?>, <?= $order5Days['jumlah'] ?>, <?= $order4Days['jumlah'] ?>, <?= $order3Days['jumlah'] ?>, <?= $order2Days['jumlah'] ?>, <?= $orderYesaterday['jumlah'] ?>, <?= $orderToday['jumlah'] ?>],
+        data: [<?= $order7d ?>, <?= $order6d ?>, <?= $order5d ?>, <?= $order4d ?>, <?= $order3d ?>, <?= $order2d ?>, <?= $orderToday ?>],
         backgroundColor: [
           'rgba(255, 99, 132, 0.8)',
           'rgba(232, 62, 140, 0.8)',
@@ -455,7 +231,8 @@
         ],
         borderWidth: 1,
         order: 2
-      }, {
+      }, 
+      {
         type: 'line',
         label: 'Product',
         backgroundColor: '#dc3545',
@@ -465,14 +242,13 @@
         pointStrokeColor: 'rgba(255,99,132,1)',
         pointHighlightFill: '#fff',
         pointHighlightStroke: 'rgba(220,220,220,1)',
-        data: [<?= $order6Days['qty'] ?>, <?= $order5Days['qty'] ?>, <?= $order4Days['qty'] ?>, <?= $order3Days['qty'] ?>, <?= $order2Days['qty'] ?>, <?= $orderYesaterday['qty'] ?>, <?= $orderToday['qty'] ?>],
+        data: [<?= $order7dQty ?>, <?= $order6dQty ?>, <?= $order5dQty ?>, <?= $order4dQty ?>, <?= $order3dQty ?>, <?= $order2dQty ?>, <?= $orderTodayQty ?>],
         borderWidth: 3,
         tension: 0.4,
         order: 1
       }],
       labels: ['6 Days Ago', '5 Days Ago', '4 Days Ago', '3 Days Ago', '2 Days Ago', 'Yesterday', 'Today'],
     }
-
     var salesGraphChartOptions = {
       maintainAspectRatio: false,
       datasetFill: false,
@@ -493,6 +269,7 @@
     })
 
 
+    //earning
     var earningChartCanvas = $('#earningChart').get(0).getContext('2d')
     var earningData = {
       datasets: [{
@@ -506,7 +283,7 @@
         pointStrokeColor: 'rgba(255,99,132,1)',
         pointHighlightFill: '#fff',
         pointHighlightStroke: 'rgba(220,220,220,1)',
-        data: [<?= $order6Days['price'] ?>, <?= $order5Days['price'] ?>, <?= $order4Days['price'] ?>, <?= $order3Days['price'] ?>, <?= $order2Days['price'] ?>, <?= $orderYesaterday['price'] ?>, <?= $orderToday['price'] ?>],
+        data: [<?= $earn7d ?>, <?= $earn6d ?>, <?= $earn5d ?>, <?= $earn4d ?>, <?= $earn3d ?>, <?= $earn2d ?>, <?= $earnToday ?>],
         borderWidth: 3,
         tension: 0.3,
         order: 1
@@ -533,5 +310,5 @@
       data: earningData,
       options: salesGraphChartOptions
     })
-  </script> --}}
+  </script>
 @endsection

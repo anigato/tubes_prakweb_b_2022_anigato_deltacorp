@@ -185,7 +185,7 @@
                                 <p>All orders</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="../orders/index_unpaid.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Unpaid</p>
@@ -226,7 +226,7 @@
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Canceled Orders</p>
                             </a>
-                        </li>
+                        </li> --}}
                         
                     </ul>
                 </li>

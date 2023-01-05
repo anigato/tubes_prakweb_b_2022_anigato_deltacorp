@@ -29,15 +29,16 @@
                                 <h3 class="card-title">Edit Product</h3>
                             </div>
                             <div class="card-body">
-                                <form class="row needs-validation" novalidate method="post" action="{{ url('admin/product/'.$product->id) }}" enctype="multipart/form-data">
-                                    @csrf
+                                <form class="row needs-validation" novalidate method="post" action="/admin/product/{{ $product->id }}" enctype="multipart/form-data">
                                     @method('put')
-                                    <input type="hidden" name="sku" value="{{ $product->sku }}">
+                                    @csrf
+                                    <input type="text" name="sku" value="{{ $product->sku }}">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Name</label>
                                             <div class="input-group mb-3">
-                                                <input type="text" class="form-control" name="name" id="name" placeholder="Product Name" required value="{{ old('name', $product->name) }}">
+                                                <input type="text" class="form-control" name="name" id="name" placeholder="Product Name" required
+                                                value="{{ old('name', $product->name) }}">
                                                 <div class="invalid-feedback">
                                                     Please provide a valid Product Name.
                                                 </div>
@@ -45,6 +46,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Category</label>
+
                                             <select class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;" name="category_id" required
                                             value="{{ old('category_id', $product->category_id) }}">
                                                 <option disabled value="">Open list Product Category</option>
@@ -70,15 +72,15 @@
                                             <label>Brand</label>
                                             <div class="input-group mb-3">
                                                 <select class="custom-select text-uppercase" name="brand_id" required value={{ old('brand_id', $product->brand_id) }}">
-                                                    <option disabled value="">Open list Product Brand</option>
-                                                    @foreach ($brands as $brand)
-                                                        @if(old('category_id', $product->brand_id) == $brand->id)
-                                                            <option value="{{ $brand['id'] }}" selected>{{ $brand['name'] }}</option>
-                                                        @else
-                                                            <option value="{{ $brand['id'] }}">{{ $brand['name'] }}</option>
-                                                        @endif
-                                                    @endforeach
-                                                    </select>
+                                                <option disabled value="">Open list Product Brand</option>
+                                                @foreach ($brands as $brand)
+                                                    @if(old('category_id', $product->brand_id) == $brand->id)
+                                                        <option value="{{ $brand['id'] }}" selected>{{ $brand['name'] }}</option>
+                                                    @else
+                                                        <option value="{{ $brand['id'] }}">{{ $brand['name'] }}</option>
+                                                    @endif
+                                                @endforeach
+                                                </select>
                                                 <div class="invalid-feedback">
                                                     Please provide a valid Product Brand.
                                                 </div>
@@ -110,7 +112,7 @@
                                                 <div class="form-group">
                                                     <label>Stock</label>
                                                     <div class="input-group mb-3">
-                                                        <input type="text" class="form-control" name="stok" id="stok" placeholder="Product Stock"  onkeypress="return onlyNumber(event)" minlength="2" maxlength="2" required
+                                                        <input type="text" class="form-control" name="stok" id="stok" placeholder="Product Stock" required onkeypress="return onlyNumber(event)" minlength="2" maxlength="2" required
                                                         value="{{ old('stok', $product->stok) }}">
                                                         <div class="invalid-feedback">
                                                             Minimum Product Stock of 10 pcs and a maximum of 99 pcs
@@ -126,7 +128,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text">Rp.</span>
                                                             </div>
-                                                            <input type="text" class="form-control" name="price" id="price" placeholder="Product Price"  onkeypress="return onlyNumber(event)" minlength="5" maxlength="8" required
+                                                            <input type="text" class="form-control" name="price" id="price" placeholder="Product Price" required onkeypress="return onlyNumber(event)" minlength="5" maxlength="8"required
                                                             value="{{ old('price', $product->price) }}">
                                                             <div class="input-group-append">
                                                                 <span class="input-group-text">.00</span>
@@ -142,7 +144,7 @@
                                                 <div class="form-group">
                                                     <label>Weight</label>
                                                     <div class="input-group mb-3">
-                                                        <input type="text" class="form-control" name="weight" id="weight" placeholder="Product Weight"  onkeypress="return onlyNumber(event)" minlength="3" maxlength="4" required
+                                                        <input type="text" class="form-control" name="weight" id="weight" placeholder="Product Weight" required onkeypress="return onlyNumber(event)" minlength="3" maxlength="4" required
                                                         value="{{ old('weight', $product->weight) }}">
                                                         <div class="input-group-append">
                                                             <span class="input-group-text">gr</span>
@@ -167,7 +169,8 @@
                                         <div class="form-group">
                                             <label>Image</label>
                                             <div class="custom-file mb-2">
-                                                <input type="file" class="custom-file-input form-control" name="img" id="img" onchange="showImage(this);" value="{{ $product->img }}">
+                                                <input type="file" class="custom-file-input form-control" name="img" id="img" onchange="showImage(this);" >
+                                                <input type="text" name="oldImg" value="{{ $product->img }}">
                                                 <label class="custom-file-label" for="img">Choose an image</label>
                                                 <div class="invalid-feedback">
                                                     Please provide a valid Product Image.
@@ -190,9 +193,9 @@
                                         <div class="form-group ">
                                             <button type="submit" class="btn btn-primary  start" name="tambah">
                                                 <i class="fas fa-upload"></i>
-                                                <span>Update Product</span>
+                                                <span> Update Product</span>
                                             </button>
-                                            <a href="index.php" class="btn btn-warning  cancel">
+                                            <a href="{{ url('admin/product/') }}" class="btn btn-warning  cancel">
                                                 <i class="fas fa-times-circle"></i>
                                                 <span> Cancel</span>
                                             </a>

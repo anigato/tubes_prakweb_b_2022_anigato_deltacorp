@@ -7,6 +7,8 @@
         return $hasil_harga;
     }
     ?>
+    {{-- {{ unserialize(serialize($_SESSION['cart'])) }} --}}
+
     <div class="product-big-title-area">
         <div class="container">
             <div class="row">
@@ -28,7 +30,8 @@
                     <table class="table table-condensed">
 
                         <?php
-                if (isset($_SESSION['cart'])) {
+                        
+                if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
                 ?>
                         <tr>
                             <td>Foto</td>
@@ -49,7 +52,6 @@
                         $total = $_SESSION['cart'][$i]['price'] * $_SESSION['cart'][$i]['qty'];
                         $total_bayar += $total;
                     ?>
-
                         <tr>
                             <td>
                                 <img src="{{ asset('storage/img/product/' . $cart[$i]['img']) }}" class="rounded"

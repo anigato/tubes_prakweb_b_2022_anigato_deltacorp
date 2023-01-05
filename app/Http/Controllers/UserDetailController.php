@@ -88,7 +88,40 @@ class UserDetailController extends Controller
      */
     public function update(UpdateUserDetailRequest $request, UserDetail $userDetail)
     {
-        //
+        $dataUser = [
+            'password' => 'required|min:5|max:255',
+            'email' => 'required|email|unique:users'
+        ];
+
+        $dataDetaill = [
+            'nick_name' => 'required|min:3',
+            'full_name' => 'required|min:3',
+            'phone' => 'required|min:6',
+            'street' => 'required|min:3',
+            'rt    ' => 'required|min:3',
+            'rw' => 'required|min:3',
+            'dusun' => 'required|min:3',
+            'desa' => 'required|min:3',
+            'kecamatan' => 'required|min:3',
+            'kabupaten' => 'required|min:3',
+            'provinsi' => 'required|min:3',
+            'postal_code' => 'required|min:3',
+            'img' => 'image|file|max:1024'
+        ];
+
+        $validDataUser = $request->validate($dataUser);
+        $validDataDetaill = $request->validate($dataDetaill);
+
+        if ($request->file('img')) {
+            $img = $request->file('img')->store('img/user');
+            $imageSplit = explode('/', $img);
+            $validatedData['img'] = $imageSplit[2];
+        }
+
+
+        User::where('id', Auth()->user()->id)->update($validDataUser);
+        UserDetail::where('id', $userDetail->id)->update($validDataDetaill);
+        return back()->with('success','Profil anda berhasil diperbarui');
     }
 
     /**
