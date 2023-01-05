@@ -10,13 +10,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
-    <title>Document</title>
+    <title>About Us</title>
 </head>
 <body>
     {{-- Main Content --}}
 
     <div class="container">
         <h1>About Us</h1>
+        <a href="{{ url('/') }}"class="btn btn-sm btn-secondary"><i class="fas fa-reply"></i></a>
+
         <hr class="hr">
 
         <div class="delta">
@@ -39,7 +41,7 @@
                     <p class="job">Project Manager</p>
                     <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
                         <li class="icon mx-2"><span class="fab fa-facebook"></span></li>
-                        <li class="icon "><span class="fab fa-instagram"></span></li>
+                        <li class="icon "><a style="text-decoration: none; color: white;   " href="https://www.instagram.com/yt.anigato/" rel="stylesheet"><span class="fab fa-instagram"></span></a>
                     </ul>
                     <p class="dis pb-4" >203040096</p>
                 </div>
@@ -53,7 +55,7 @@
                     <p class="job">Front-End</p>
                     <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
                         <li class="icon mx-2"><span class="fab fa-facebook"></span></li>
-                        <li class="icon "><span class="fab fa-instagram"></span></li>
+                        <li class="icon "><a style="text-decoration: none; color: white;   " href="https://www.instagram.com/qistiizatus_/" rel="stylesheet"><span class="fab fa-instagram"></span></a>
                     </ul>
                     <p class="dis pb-4" >203040083</p>
                 </div>
@@ -67,7 +69,7 @@
                     <p class="job">Back-End</p>
                     <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
                         <li class="icon mx-2"><span class="fab fa-facebook"></span></li>
-                        <li class="icon "><span class="fab fa-instagram"></span></li>
+                        <li class="icon "><a style="text-decoration: none; color: white;   " href="https://www.instagram.com/zay.nvr/" rel="stylesheet"><span class="fab fa-instagram"></span></a>
                     </ul>
                     <p class="dis pb-4" >203040090</p>
                 </div>
@@ -81,7 +83,7 @@
                     <p class="job">Back-End</p>
                     <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
                         <li class="icon mx-2"><span class="fab fa-facebook"></span></li>
-                        <li class="icon "><span class="fab fa-instagram"></span></li>
+                        <li class="icon "><a style="text-decoration: none; color: white;   " href="https://www.instagram.com/fakihfavian/" rel="stylesheet"><span class="fab fa-instagram"></span></a>
                     </ul>
                     <p class="dis pb-4" >203040073</p>
                 </div>

@@ -125,3 +125,7 @@ img{
 .mt-80{
     margin-top: 80px;
 }
+
+.container .btn {
+    border-radius: 50%;
+}
