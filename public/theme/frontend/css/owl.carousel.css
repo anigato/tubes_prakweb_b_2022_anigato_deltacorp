@@ -87,6 +87,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  border-radius: 5px;
 }
 .owl-carousel.owl-loaded {
   display: block;

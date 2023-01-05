@@ -36,6 +36,9 @@ function rupiah($harga)
                                 <h3>Daftar Keinginan</h3>
                             </div>
                             <div class="card-body">
+                                @empty($record)
+                                <h1 class='text-danger'>Anda tidak memiliki produk di dalam daftar keinginan</h1>
+                                @else
                                 <table class="table table-condensed">
                                     <tr>
                                         <td>Foto</td>
@@ -58,19 +61,26 @@ function rupiah($harga)
                                                 {{ rupiah($wish->product->price) }}
                                             </td>
                                             <td>
-                                                <a href="../wishlist/delete" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                                                <a href="{{ url('wishlist/delete/' . $wish['id']) }}"
+                                                    class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
                                             </td>
                                             <td>
-                                                <form method="post" action="../cart/index.php" class="cart">
+                                                <form method="post" action="{{ url('cart') }}" class="cart">
+                                                    @csrf
                                                     <div class="quantity">
-                                                        <input type="hidden" name="id_product" value="">
-                                                        <input type="hidden" name="img" value="">
+                                                        <input type="hidden" name="product_id"
+                                                            value="{{ $wish->product['id'] }}">
+                                                        <input type="hidden" name="img"
+                                                            value="{{ $wish->product['img'] }}">
+                                                        <input type="hidden" name="name"
+                                                            value="{{ $wish->product['name'] }}">
+                                                        <input type="hidden" name="price"
+                                                            value="{{ $wish->product['price'] }}">
+                                                        <input type="hidden" name="qty" value="1">
 
-                                                        <input type="hidden" id="qty" name="qty"
-                                                            value="1">
-                                                        <button type="submit"
-                                                            class="btn btn-sm btn-primary add_to_cart_button"><i
-                                                                class="fas fa-cart-plus"></i></button>
+                                                        <button type="submit" class="btn btn-primary add_to_cart_button">
+                                                            <i class="fas fa-cart-plus"></i>
+                                                        </button>
                                                     </div>
                                                 </form>
                                             </td>
@@ -79,6 +89,7 @@ function rupiah($harga)
 
 
                                 </table>
+                                @endempty
                             </div>
                         </div>
                         @include('user.layouts.parts.related-product')

@@ -61,7 +61,7 @@
                             <td>{{ $i++; }}</td>
                             <td>{{ $user["username"]; }}</td>
                             <td>{{ $user["email"]; }}</td>
-                            <td><a href="{{ url ('admin/userList/' .$user['id']) }}" class="btn btn-sm btn-info update-link"><i class="fas fa-info-circle"></i></a></td>
+                            <td><a href="{{ url('admin/userList/'.$user['id']) }}" class="btn btn-sm btn-info update-link"><i class="fas fa-info-circle"></i></a></td>
                             <?php
                             break;            
                             }

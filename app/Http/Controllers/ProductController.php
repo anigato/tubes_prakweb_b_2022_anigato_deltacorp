@@ -19,17 +19,21 @@ class ProductController extends Controller
      */
     public function index()
     {
+        session_start();
+        if(Auth()->user()){
+            $wish = Wishlist::where('user_id',Auth()->user()->id)->get();
+        }else{
+            $wish = null;
+        }
         if (empty(request('keyword'))) {
             $title = 'All Product';
+            $active = 'allProduct';
             $category_dropdown = "Kategori";
             $brand_dropdown = "Brand";
         } else {
             $title = request('keyword');
-<<<<<<< HEAD
-            $category_dropdown = "Category";
-=======
+            $active = 'allProduct';
             $category_dropdown = "Kategori";
->>>>>>> 66d0ecb65576d15815c10045183111ba4bdebbb3
             $brand_dropdown = "Brand";
         }
 
@@ -37,6 +41,7 @@ class ProductController extends Controller
             $judul = Category::where('id', request('category'))->get('name');
             $name = $judul[0]['name'];
             $title = 'Product with category ' . $name;
+            $active = 'categoryProduct';
             $category_dropdown = $name;
             $brand_dropdown = "Brand";
         }
@@ -45,6 +50,7 @@ class ProductController extends Controller
             $judul = Brand::where('id', request('brand'))->get('name');
             $name = $judul[0]['name'];
             $title = 'Product with brand ' . $name;
+            $active = 'brandProduct';
             $category_dropdown = "Kategori";
             $brand_dropdown = $name;
         }
@@ -53,11 +59,12 @@ class ProductController extends Controller
             'title' => $title,
             'category_dropdown' => $category_dropdown,
             'brand_dropdown' => $brand_dropdown,
-            'active' => 'allProduct',
+            'active' => $active,
             'products' => Product::latest()->filter(request(['keyword', 'category', 'brand']))->paginate(20),
             'categories' => Category::latest()->first()->get(),
             'brandMenu' => Brand::latest()->first()->get(),
             'brands' => Brand::all(),
+            'wishs'=>$wish,
         ]);
     }
 
@@ -90,6 +97,13 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        session_start();
+        if(Auth()->user()){
+            $wishs = Wishlist::where('user_id',Auth()->user()->id)->get();
+        }else{
+            $wishs = null;
+        }
+        
         return view('user.product.detail', [
             "title" => $product->name,
             "active" => "posts",
@@ -99,6 +113,7 @@ class ProductController extends Controller
             "randomProducts" => Product::inRandomOrder()->limit(10)->get(),
             "brands" => Brand::all(),
             // "checkWish" => Wishlist::with(['user',2])->get()
+            'wishs'=>$wishs
         ]);
     }
 

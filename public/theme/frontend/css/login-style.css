@@ -36,6 +36,15 @@ label{
 	cursor: pointer;
 	transition: .5s ease-in-out;
 }
+a{
+	color: #fff;
+	justify-content: center;
+	display: flex;
+	font-weight: bold;
+	cursor: pointer;
+	text-decoration: none;
+}
+
 input{
 	width: 60%;
 	height: 20px;

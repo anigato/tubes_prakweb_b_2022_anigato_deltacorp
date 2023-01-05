@@ -150,8 +150,8 @@ class AdminProductController extends Controller
     {
         if ($product->img) {
             Storage::delete($product->img);
+        }
         Product::destroy($product->id);
         return redirect('/admin/product')->with('success','Product has been deleted!');
-    }
 }
 }

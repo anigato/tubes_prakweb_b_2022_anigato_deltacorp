@@ -55,7 +55,9 @@ function getProfilePicture($name)
                     <h3 class="card-title">Atur Profil Anda</h3>
                 </div>
                 <div class="card-body">
-                    <form class="row needs-validation" novalidate method="post" action="" enctype="multipart/form-data">
+                    <form class="row needs-validation" novalidate method="post" action="{{ url('user/'.$user['id']) }}" enctype="multipart/form-data">
+                        @method('put')
+                        @csrf
                         <input type="hidden" required name="user_id" value="{{ $user['id'] }}">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -127,7 +129,7 @@ function getProfilePicture($name)
                             <div class="form-group">
                                 <label>Nama Jalan / Nomor Rumah</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="additional" id="additional" placeholder="Nama Jalan / Nomor Rumah" value="<?= (empty($user->userDetail->street))?null:$user->userDetail->street ?>">
+                                    <input type="text" class="form-control" name="street" id="street" placeholder="Nama Jalan / Nomor Rumah" value="<?= (empty($user->userDetail->street))?null:$user->userDetail->street ?>">
                                     <div class="invalid-feedback">
                                         Silahkan perbaiki Nama Jalan / Nomor Rumah.
                                     </div>
@@ -138,7 +140,7 @@ function getProfilePicture($name)
                             <div class="form-group">
                                 <label>Kode POS</label>
                                 <div class="input-group mb-3">
-                                    <input type="number" class="form-control" required name="kode_pos" onkeypress="return onlyNumber(event)" minlength="3" maxlength="6"  id="kode_pos" placeholder="Kode POS" value="<?= (empty($user->userDetail->postal_code))?null:$user->userDetail->postal_code ?>">
+                                    <input type="number" class="form-control" required name="postal_code" onkeypress="return onlyNumber(event)" minlength="3" maxlength="6"  id="kode_pos" placeholder="Kode POS" value="<?= (empty($user->userDetail->postal_code))?null:$user->userDetail->postal_code ?>">
                                     <div class="invalid-feedback">
                                         Silahkan perbaiki Kode POS.
                                     </div>
@@ -255,7 +257,7 @@ function getProfilePicture($name)
                                     <i class="fas fa-upload"></i>
                                     <span> Perbarui Profil</span>
                                 </button>
-                                <a href="detail.php" class="btn btn-warning  cancel">
+                                <a href="{{ url('user/'.$user['id']) }}" class="btn btn-warning  cancel">
                                     <i class="fas fa-times-circle"></i>
                                     <span> Batal</span>
                                 </a>
@@ -269,4 +271,19 @@ function getProfilePicture($name)
         </div>
     </div>
     
+@endsection
+@section('custom-script')
+    <script>
+        // menampilkan gambar ketika dipilih
+        function showImage(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#show-image')
+                        .attr('src', e.target.result)
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 @endsection
