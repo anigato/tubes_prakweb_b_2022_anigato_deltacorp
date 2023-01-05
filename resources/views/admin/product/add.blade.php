@@ -37,7 +37,7 @@
                             <div class="card-body">
                                 <form class="row needs-validation" novalidate method="post" action="{{ url('admin/product') }}" enctype="multipart/form-data">
                                     @csrf
-                                    <input type="hidden" name="sku" value="2">
+                                    <input type="hidden" name="sku" value="1">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Name</label>
