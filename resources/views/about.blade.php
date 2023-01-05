@@ -17,6 +17,7 @@
 
     <div class="container">
         <h1>About Us</h1>
+        {{-- Tombol Kembali ke Home --}}
         <a href="{{ url('/') }}"class="btn btn-sm btn-secondary"><i class="fas fa-reply"></i></a>
 
         <hr class="hr">
