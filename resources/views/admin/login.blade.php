@@ -44,31 +44,9 @@
                 @enderror
 
                 <input type="password" name="password" id="password" placeholder="Password" required>
-
+                
+                <a href="{{ route('loginUser') }}">Login User</a>
                 <button type="submit">Masuk</button>
             </form>
         </div>
-
-
-
-
-
-        <!-- <div class="login-reg-panel">
-            <div class="white-panel">
-                <div class="login-show show-log-panel mt-5">
-                    <h2>MASUK</h2>
-                    <form action="{{ route('loginAdmin') }}" method="post">
-                        @csrf
-                        <input type="hidden" name="is_admin" readonly value="1">
-
-                        <input type="email" name="email" id="email" placeholder="name@example.com" autofocus required value="{{ old('email') }}">
-
-                        <input type="password" name="password" id="password" placeholder="Password" required>
-
-                        <button type="submit" name="login" class="submit">Masuk</button>
-
-                    </form>
-                </div>
-            </div>
-        </div> -->
 </body>

@@ -1,19 +1,20 @@
 <div class="mainmenu-area">
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+        {{-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> --}}
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only"></span></a>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ route('home') }}">Home <span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('product') }}">Semua Produk</a>
+                        <a class="nav-link {{ ($active=='allProduct') ? 'active' : '' }}" href="{{ url('product') }}">Semua Produk</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle  {{ ($active=='categoryProduct') ? 'active' : '' }}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             @if (request('category'))
                                 Kategori "{{ $category_dropdown }}"
                             @else
@@ -27,7 +28,7 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle {{ ($active=='brandProduct') ? 'active' : '' }}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             @if (request('brand'))
                                 Brand "{{ $brand_dropdown }}"
                             @else
@@ -51,7 +52,7 @@
                     <input type="hidden" name="brand" value="{{ request('brand') }}">
                     @endif
                     <input class="form-control mr-sm-2" type="search" placeholder="Cari Produk" name="keyword" aria-label="Search" value="{{ request('keyword') }}">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="go">Go!</button>
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit" name="go">Go!</button>
                 </form>
 
                 </form>

@@ -96,6 +96,13 @@ function rupiah($harga)
                                           </button>
                                        </div>
                                  </form>
+                                 @auth
+                                    @empty ($wish['id'])
+                                       <a href="{{ url('wishlist/add/'.$detailProduct['id'])}}" class="btn btn-secondary mt-3"><i class="far fa-heart"></i> Tambah Keinginan</a>
+                                    @else
+                                       <a href="{{ url('wishlist/delete/'.$wish['id'])}}" class="btn btn-danger mt-3"><i class="fas fa-heart"></i> Hapus Keinginan</a>
+                                    @endempty
+                                 @endauth
                               </div>
                            </div>
                      </div>

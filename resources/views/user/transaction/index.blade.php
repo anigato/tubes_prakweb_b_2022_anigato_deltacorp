@@ -76,7 +76,7 @@ function rupiah($harga)
 
                                             <p class="card-text mb-n1">Total Belanja</p>
                                             <p class="card-text float-left mt-2 font-weight-bold">
-                                                {{ $order['total_price'] }}
+                                                {{ rupiah($order['total_price']) }}
                                             </p>
                                             {{-- <a href="{{ url('transsaction/'.$order['id']) }}" class="btn btn-primary float-right">Lihat Detail</a> --}}
                                             <a href="{{ url('trans/'.$order['id']) }}" class="btn btn-primary float-right">Lihat Detail</a>

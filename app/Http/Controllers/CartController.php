@@ -19,7 +19,6 @@ class CartController extends Controller
     public function index()
     {
         session_start();
-        // return $_SESSION['cart'];
         return view('user.cart.index', [
             'title' => 'Keranjang User',
             'active' => 'keranjang',

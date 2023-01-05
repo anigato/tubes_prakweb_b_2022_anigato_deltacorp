@@ -50,6 +50,7 @@ class AdminUserListController extends Controller
      */
     public function show(User $user)
     {
+        
         return view('admin.userList.detail', [
             'user' => $user
         ]);

@@ -33,6 +33,7 @@ use App\Http\Controllers\CartController;
 
 // home user
 Route::get('/', [UserHomeController::class, 'homeUser'])->name('home');
+Route::get('/about/us/', [UserHomeController::class, 'aboutUs']);
 
 
 //Register Admin
@@ -85,6 +86,8 @@ Route::resource('/user', UserDetailController::class)->middleware('auth');
 
 // wishlist
 Route::resource('/wishlist', WishlistController::class)->middleware('auth');
+Route::get('wishlist/add/{product}', [WishlistController::class, "store"]);
+Route::get('wishlist/delete/{wishlist}', [WishlistController::class, "destroy"]);
 
 // cart
 Route::resource('/cart', CartController::class);
@@ -93,5 +96,7 @@ Route::post('/cart/checkout', [CartController::class, 'checkOut']);
 //transaction
 Route::resource('/transaction', TransactionController::class)->middleware('auth');
 Route::get('/trans/{order}', [TransactionController::class, "show"])->middleware('auth');
+
 // User List
 Route::resource('/admin/userList', AdminUserListController::class)->middleware('auth');
+Route::get('/admin/userList/{user}', [AdminUserListController::class, "show"])->middleware('auth');

@@ -18,13 +18,12 @@
                                 <a href="{{ url('transaction') }}"><i class="fas fa-vote-yea"></i> Transaksi Saya</a>
                             </li>
                             <li>
-                                {{-- <a href="" onclick="return logout()"><i class="fa fa-user"></i> Logout</a> --}}
-
-                                <form action="/logout" method="post">
+                                {{-- <a href id="logout" ><i class="bi bi-box-arrow-right"></i> Logout</a> --}}
+                                
+                                <form action="/logout" method="post" id="form-logout">
                                     @csrf
-                                    <button type="submit" class="dropdown-item">
-                                        <i class="bi bi-box-arrow-right"></i> Logout
-                                    </button>
+                                    {{-- <a href onclick="submit()"><i class="bi bi-box-arrow-right"></i> Logout</a> --}}
+                                    <button class="btn btn-outline-light"><i class="bi bi-box-arrow-right"></i> Logout</button>
                                 </form>
                             </li>
                         @else
@@ -36,35 +35,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    function logout() {
-        Swal.fire({
-            title: 'Opps!',
-            text: 'Anda Yakin Mau Keluar?',
-            icon: 'warning',
-            showCancelButton: true,
-            cancelButtonColor: '#d33',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Ya!',
-            allowOutsideClick: false
-        }).then((result) => {
-            if (result.value) {
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Anda Berhasil Keluar',
-                    icon: 'success',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'OK',
-                    allowOutsideClick: false
-                }).then((result) => {
-                    if (result.value) {
-                        window.location.href = '{{ url("logout") }}';
-                    }
-                })
-
-            }
-        });
-        return false;
-    }
-</script>

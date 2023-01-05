@@ -40,7 +40,7 @@
                                                 <th>NO</th>
                                                 <th>USERNAME</th>
                                                 <th>EMAIL</th>
-                                                <th>ACTION</th>
+                                                {{-- <th>ACTION</th> --}}
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -51,7 +51,7 @@
                                               <td>{{  $user["username"]; }}</td>
                                               <td>{{  $user["email"]; }}</td>
                       
-                                              <td>
+                                              {{-- <td>
                                                 <?php
                                                   switch ($user['is_admin']) {
                                                     case ('1'):
@@ -75,7 +75,7 @@
                                                         
                                             
                                                   
-                                              </td>
+                                              </td> --}}
                                             </tr>
                                             @endforeach 
                                         </tbody>
@@ -84,7 +84,7 @@
                                                 <th>NO</th>
                                                 <th>USERNAME</th>
                                                 <th>EMAIL</th>
-                                                <th>ACTION</th>
+                                                {{-- <th>ACTION</th> --}}
                                             </tr>
                                         </tfoot>
                                     </table>
