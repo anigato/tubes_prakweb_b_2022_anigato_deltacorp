@@ -31,7 +31,7 @@ class AdminSlidderController extends Controller
     public function create()
     {
         return view('admin.slidder.add',[
-            
+            'title' => 'All Slidder',
             'products' => Product::all()
         ]);
     }

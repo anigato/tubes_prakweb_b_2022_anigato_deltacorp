@@ -43,7 +43,7 @@
 
                 <li class="nav-item">
                     <a href="{{ url('/admin/dashboard') }}" class="nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="fas fa-qrcode"></i>
                         <p>
                             Dashboard
                         </p>
@@ -148,7 +148,7 @@
                 
                 <li class="nav-item">
                     <a href="#" class="nav-link @if (Request::is('admin/category') || Request::is('admin/category/create')) {{ 'active' }} @endif()">
-                        <i class="fas fa-star"></i>
+                        <i class="fas fa-tasks"></i>
                         <p>
                             Categories
                             <i class="fas fa-angle-left right"></i>

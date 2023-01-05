@@ -58,14 +58,14 @@
                       <form action="{{ url('admin/brand/'.$brand['id']) }}" method="post" class="d-inline">
                         @method('delete')
                         @csrf
-                        <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+                        <button class="btn btn-sm btn-danger" class="kembali"><i class="fas fa-trash-alt"></i></button>
 
                       </form>
 
                       <div class="col-md-3"></div>
                     </td>
                   </tr>
-                  @endforeach;
+                  @endforeach
 
                 </tbody>
                 <tfoot>

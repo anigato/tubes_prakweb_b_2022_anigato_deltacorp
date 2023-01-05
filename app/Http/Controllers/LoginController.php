@@ -32,9 +32,11 @@ class LoginController extends Controller
             'is_admin' => 'required'
         ]);
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended('/admin/dashboard');
+        if($credentials['is_admin']==1 or $credentials['is_admin']==2){
+            if (Auth::attempt($credentials)) {
+                $request->session()->regenerate();
+                return redirect()->intended('/admin/dashboard');
+            }
         }
     
         return back()->with('loginError', 'Username atau Password Salah!');
