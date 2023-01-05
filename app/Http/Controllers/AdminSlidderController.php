@@ -30,7 +30,10 @@ class AdminSlidderController extends Controller
      */
     public function create()
     {
-        return view('admin.slidder.add');
+        return view('admin.slidder.add',[
+            
+            'products' => Product::all()
+        ]);
     }
 
     /**

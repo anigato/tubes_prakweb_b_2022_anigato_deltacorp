@@ -17,7 +17,7 @@ class AdminUserListController extends Controller
         return view('admin.userList.index', [
             'title' => 'All Userlist',
             'active' => 'allUserlist',
-            'users' => User::all()
+            'users' => User::where('is_admin',0)->get()
         ]);
     }
 

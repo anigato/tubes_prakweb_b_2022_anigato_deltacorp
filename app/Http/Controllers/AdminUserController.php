@@ -20,8 +20,7 @@ class AdminUserController extends Controller
         return view('admin.userAdmin.index', [
             'title' => 'Add User Admin',
             'active' => 'adduserAdmin',
-            'users' => User::all()
-            
+            'users' => User::where('is_admin',1)->get()
         ]);
     }
 
@@ -52,6 +51,8 @@ class AdminUserController extends Controller
             'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:5|max:255'
         ]);
+
+        $validateData['is_admin'] = 1;
 
         $validateData['password'] = Hash::make($validateData['password']);
         

@@ -1,4 +1,8 @@
 @extends('admin.layouts.main')
+@section('script-head')
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+<script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+@endsection
 @section('container')
 
     <!-- Main content -->
@@ -39,10 +43,14 @@
                         <label>Product</label>
                         <div class="input-group mb-3">
                           <select class="custom-select" name="product_id" required>
-                            <option value="" disabled selected>Choose Product</option>
-                            <option value="1" selected>1</option>
-                            <option value="2" selected>2</option>
-                            <option value="3" selected>3</option>
+                            @foreach ($products as $product)
+                                @if (old('product_id', $slidder->product->id) == $slidder->product_id)
+                                    <option value="{{ $product['id'] }}" selected >{{ $product['name'] }}</option>
+
+                                @else
+                                    <option value="{{ $product['id'] }}">{{ $product['name'] }}</option>
+                                @endif
+                            @endforeach
 
                           </select>
                           <div class="invalid-feedback">
@@ -105,6 +113,11 @@
     @endsection
 
     @section('script-custom')
+    <!-- Select2 -->
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <!-- bs-custom-file-input -->
+  <script src="../../../themes/js/input-form/bs-custom-file-input.min.js"></script>
+  @include('admin.layouts.parts.script-body')
   <script>
     // validasi form
     (function() {

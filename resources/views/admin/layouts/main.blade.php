@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DeltaCorp Admin | {{ $title }}</title>
+  <link rel="icon" href="{{ asset('image/deltacorp.png') }}">
   @yield('script-head')
   @yield('css')
   @include('admin.layouts.parts.link-header')

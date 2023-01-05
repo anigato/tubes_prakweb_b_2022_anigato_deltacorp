@@ -53,7 +53,6 @@ class AdminProductController extends Controller
     {
         // return $request;
         $validatedData = $request->validate([
-            'sku' => 'required',
             'name' => 'max:255',
             'category_id' => 'required' ,
             'brand_id' => 'required',
@@ -70,6 +69,7 @@ class AdminProductController extends Controller
             $imageSplit = explode('/', $img);
             $validatedData['img'] = $imageSplit[2];
         }
+        $validatedData['sku'] = substr($validatedData['brand_id'], 0, 3) .'-'. $validatedData['capacity'] . '-' . $validatedData['category_id'] . '-' . $validatedData['price'];
         
         Product::create($validatedData);
 
@@ -114,26 +114,34 @@ class AdminProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $rules = [
-            'name' => 'required|max:225',
+        // return$request;
+
+
+        $validatedData = $request->validate([
             'sku' => 'required',
+            'name' => 'max:255',
             'category_id' => 'required' ,
             'brand_id' => 'required',
-            'stok' => 'required', 'min:2', 'max:2',
+            'stok' => 'required|min:2|max:2',
             'capacity' => 'required',
-            'price' => 'required', 'min:2', 'max:8',
-            'weight' => 'required', 'min:3', 'max:4',
-            'description' => 'required|min:5|max:255',
+            'price' => 'required|min:2|max:8',
+            'weight' => 'required|min:3|max:4',
+            'description' => 'min:5|max:255',
             'img' => 'image|file|max:1024'
-        ];
+        ]);
 
-        $validatedData = $request->validate($rules);
-        
+        return 1;
+
         if ($request->file('img')) {
-            $img = $request->file('img')->store('img/brand');
+            $img = $request->file('img')->store('img/product');
             $imageSplit = explode('/', $img);
             $validatedData['img'] = $imageSplit[2];
+        }else {
+            $validatedData['img'] = $validatedData['oldImg'];
         }
+        $validatedData['sku'] = substr($validatedData['brand_id'], 0, 3) .'-'. $validatedData['capacity'] . '-' . $validatedData['category_id'] . '-' . $validatedData['price'];
+
+        
 
         Product::where('id', $product->id)
             ->update($validatedData);

@@ -61,9 +61,9 @@
                         <div class="input-group mb-3">
                           <select class="custom-select" name="product_id" required>
                             <option value="" disabled selected>Choose Product</option>
-                            <option value="1" selected>1</option>
-                            <option value="2" selected>2</option>
-                            <option value="3" selected>3</option>
+                            @foreach ($products as $product)
+                                <option value="{{ $product['id'] }}">{{ $product['name'] }}</option>
+                            @endforeach
 
                           </select>
                           <div class="invalid-feedback">
